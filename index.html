@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJB Case Opening — Process Flow</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #2d3436; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, #1e3a5f, #2c5282); color: white; padding: 24px 32px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header p { font-size: 13px; opacity: 0.8; }
+
+  /* Layout */
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+  /* Legend */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; padding: 16px; background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 40px; }
+  .timeline::before { content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 3px; background: #cbd5e0; border-radius: 2px; }
+
+  /* Phase */
+  .phase { position: relative; margin-bottom: 32px; }
+  .phase-marker { position: absolute; left: -40px; top: 0; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: white; z-index: 2; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+
+  .phase-card { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; transition: box-shadow 0.2s; }
+  .phase-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  .phase-header { padding: 16px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .phase-header:hover { background: #f7fafc; }
+  .phase-title { font-size: 17px; font-weight: 700; }
+  .phase-meta { display: flex; gap: 12px; align-items: center; }
+  .phase-timing { font-size: 12px; color: #718096; background: #edf2f7; padding: 3px 10px; border-radius: 12px; font-weight: 500; }
+  .phase-owner { font-size: 12px; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+  .phase-chevron { font-size: 18px; color: #a0aec0; transition: transform 0.2s; }
+  .phase-card.open .phase-chevron { transform: rotate(180deg); }
+
+  .phase-body { display: none; padding: 0 20px 20px; border-top: 1px solid #edf2f7; }
+  .phase-card.open .phase-body { display: block; }
+
+  .phase-goal { font-size: 13px; color: #718096; margin: 12px 0 16px; font-style: italic; }
+
+  /* Steps */
+  .step-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .step-table th { text-align: left; padding: 8px 12px; background: #f7fafc; color: #4a5568; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #e2e8f0; }
+  .step-table td { padding: 8px 12px; border-bottom: 1px solid #edf2f7; vertical-align: top; }
+  .step-table tr:hover td { background: #f7fafc; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .badge-human { background: #ebf4ff; color: #2b6cb0; }
+  .badge-auto { background: #f0fff4; color: #276749; }
+  .badge-attorney { background: #faf5ff; color: #6b46c1; }
+  .badge-mgmt { background: #fffaf0; color: #c05621; }
+
+  /* Task outcome badges */
+  .outcome { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; }
+  .outcome-required { background: #fed7d7; color: #9b2c2c; }
+  .outcome-cna { background: #fefcbf; color: #975a16; }
+
+  /* Gate / checkpoint styling */
+  .gate-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #f59e0b; border-radius: 8px; padding: 12px 16px; margin-top: 12px; }
+  .gate-box h4 { font-size: 13px; color: #92400e; margin-bottom: 6px; }
+  .gate-box ul { font-size: 12px; color: #78350f; padding-left: 18px; }
+  .gate-box li { margin-bottom: 3px; }
+
+  /* Parallel track callout */
+  .parallel-callout { background: linear-gradient(135deg, #e0f2fe, #bae6fd); border: 2px dashed #0284c7; border-radius: 8px; padding: 14px 18px; margin: 24px 0; }
+  .parallel-callout h3 { font-size: 14px; color: #0369a1; margin-bottom: 4px; }
+  .parallel-callout p { font-size: 12px; color: #075985; }
+
+  /* Scoring summary */
+  .scoring-summary { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 20px; margin-top: 24px; }
+  .scoring-summary h3 { font-size: 16px; margin-bottom: 12px; color: #1e3a5f; }
+  .score-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .score-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; }
+  .score-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .score-card p { font-size: 11px; color: #718096; }
+  .score-card .scale { font-size: 12px; font-weight: 600; color: #2b6cb0; margin-top: 6px; }
+
+  /* Arrow connectors between phases */
+  .connector { text-align: center; padding: 4px 0; color: #a0aec0; font-size: 20px; }
+
+  /* Overview bar */
+  .overview-bar { display: flex; gap: 2px; margin-bottom: 24px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .ov-phase { flex: 1; padding: 10px 6px; text-align: center; color: white; font-size: 10px; font-weight: 700; cursor: pointer; transition: filter 0.2s; }
+  .ov-phase:hover { filter: brightness(1.1); }
+  .ov-phase span { display: block; font-size: 8px; font-weight: 400; opacity: 0.85; margin-top: 2px; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 24px; font-size: 11px; color: #a0aec0; }
+
+  @media (max-width: 768px) {
+    .container { padding: 12px; }
+    .timeline { padding-left: 32px; }
+    .phase-marker { left: -32px; width: 28px; height: 28px; font-size: 11px; }
+    .phase-meta { flex-wrap: wrap; }
+    .overview-bar { flex-wrap: wrap; }
+    .ov-phase { flex: 1 1 25%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>BJB Case Opening — Process Flow</h1>
+  <p>Litigation Transfer Through File-Ready &bull; 8 Phases &bull; Click any phase to expand</p>
+</div>
+
+<div class="container">
+
+<!-- Overview mini-bar -->
+<div class="overview-bar">
+  <div class="ov-phase" style="background:#2b6cb0" onclick="scrollToPhase(1)">1. Intake<span>Day 0</span></div>
+  <div class="ov-phase" style="background:#2c7a7b" onclick="scrollToPhase(2)">2. Contact<span>Day 1-20</span></div>
+  <div class="ov-phase" style="background:#6b46c1" onclick="scrollToPhase(3)">3. Pre-OA<span>Before OA</span></div>
+  <div class="ov-phase" style="background:#c05621" onclick="scrollToPhase(4)">4. OA Call<span>24 biz hrs</span></div>
+  <div class="ov-phase" style="background:#9b2c2c" onclick="scrollToPhase(5)">5. Post-OA<span>+1 hour</span></div>
+  <div class="ov-phase" style="background:#276749" onclick="scrollToPhase(6)">6. Complaint<span>OA+3-15d</span></div>
+  <div class="ov-phase" style="background:#744210" onclick="scrollToPhase(7)">7. Records<span>Day 20-107</span></div>
+  <div class="ov-phase" style="background:#1e3a5f" onclick="scrollToPhase(8)">8. Complete<span>Gate Check</span></div>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#2b6cb0"></div> Legal Asst / Para</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#6b46c1"></div> Attorney</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#276749"></div> System / Auto</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#c05621"></div> Management</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e53e3e"></div> Intake Specialist</div>
+  <div class="legend-item"><span class="outcome outcome-required">Required</span> Must complete</div>
+  <div class="legend-item"><span class="outcome outcome-cna">C / NA / D</span> Complete, Not Applicable, or Deferred</div>
+</div>
+
+<!-- Parallel track callout -->
+<div class="parallel-callout">
+  <h3>Treatment Monitoring runs as a PARALLEL TRACK</h3>
+  <p>Once treatment starts (typically after Phase 4 OA), the 30-day Treatment Monitoring cycle runs alongside these phases. It is NOT a sequential step — it loops continuously until treatment ends. See the Treatment Monitoring SOP for details.</p>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline">
+
+<!-- PHASE 1 -->
+<div class="phase" id="phase-1">
+  <div class="phase-marker" style="background:#2b6cb0">1</div>
+  <div class="phase-card open">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Intake & Case Acceptance</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">Day 0 &bull; 2 biz hrs</span>
+        <span class="phase-owner badge-human" style="background:#ebf4ff;color:#2b6cb0">Intake + Attorney</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Qualify the lead, run conflicts, capture baseline data, get attorney accept/decline/hold.</p>
+      <table class="step-table">
+        <thead><tr><th style="width:5%">#</th><th style="width:30%">Task</th><th style="width:15%">Who</th><th style="width:15%">SLA</th><th style="width:25%">Done When</th><th style="width:10%">Status</th></tr></thead>
+        <tbody>
+          <tr><td>1.1</td><td>Capture client info (name, DOB, phone x2, email, contact pref)</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>All fields populated in Litify</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.2</td><td>Capture incident details (date, time, location, type, police #)</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>Incident record created</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.3</td><td>Capture injuries & current treatment status</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>Injury fields populated</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.4</td><td>Capture insurance info (auto/health/PIP/med-pay)</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>Insurance fields populated</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.5</td><td>SOL check — flag if &lt; 6 months remaining</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>SOL date calculated + entered</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.6</td><td>Conflict check — all parties, employers, insurers</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>Result documented</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.7</td><td>Referral source / marketing attribution</td><td><span class="badge badge-human">Intake</span></td><td>During call</td><td>Source field populated</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>1.8</td><td><strong>Attorney Decision: Accept / Decline / Hold</strong></td><td><span class="badge badge-attorney">Attorney</span></td><td>2 biz hrs</td><td>Accept → Engagement letter + HIPAA sent via DocuSign, team assigned<br>Decline → Decline letter sent, matter closed<br>Hold → Flag reason, set follow-up</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 2 -->
+<div class="phase" id="phase-2">
+  <div class="phase-marker" style="background:#2c7a7b">2</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Client Contact Pursuit Ladder</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">Day 1–20 &bull; 8 attempts</span>
+        <span class="phase-owner badge-human" style="background:#ebf4ff;color:#2b6cb0">Para → Attorney</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Reach the client and schedule the Orientation Appointment. Every attempt = Call + VM + SMS + Email.</p>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Action</th><th>Who</th><th>Timing</th><th>If No Contact</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Call Attempt 1</td><td><span class="badge badge-human">Para</span></td><td>24 biz hrs from assignment</td><td>VM + SMS 1 + Email 1</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>2</td><td>Call Attempt 2</td><td><span class="badge badge-human">Para</span></td><td>10am Day 2</td><td>VM + SMS 2 + Email 2</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>3</td><td>Call Attempt 3</td><td><span class="badge badge-human">Para</span></td><td>4pm Day 2</td><td>VM + SMS 3 + Email 3</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#f0fff4"><td>A</td><td>Intro/Contact Letter (auto)</td><td><span class="badge badge-auto">System</span></td><td>Day 5 if no contact</td><td>Letter sent automatically</td><td><span class="outcome outcome-required">Auto</span></td></tr>
+          <tr><td>4</td><td>Call Attempt 4</td><td><span class="badge badge-human">Para</span></td><td>10am Day 11</td><td>VM + SMS 4 + Email 4</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>5</td><td>Call Attempt 5</td><td><span class="badge badge-human">Para</span></td><td>12pm Day 12</td><td>VM + SMS 5 + Email 5</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>6</td><td>Call Attempt 6</td><td><span class="badge badge-human">Para</span></td><td>4pm Day 12</td><td>VM + SMS 6 + Email 6</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#f0fff4"><td>A</td><td>No Contact Letter 1 (auto)</td><td><span class="badge badge-auto">System</span></td><td>After Attempt 6 fails</td><td>Letter sent automatically</td><td><span class="outcome outcome-required">Auto</span></td></tr>
+          <tr style="background:#faf5ff"><td>7</td><td>Call Attempt 7 (Attorney Escalation)</td><td><span class="badge badge-attorney">Attorney</span></td><td>10am Day 19</td><td>VM + SMS 7 + Email 7</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#faf5ff"><td>8</td><td>Call Attempt 8 (Attorney Escalation)</td><td><span class="badge badge-attorney">Attorney</span></td><td>4pm Day 20</td><td>VM + SMS 8 + Email 8</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#f0fff4"><td>A</td><td>No Contact Letter 2 + Route to Intake as MIA</td><td><span class="badge badge-auto">System</span></td><td>End of Day 20</td><td>Case returned to Intake</td><td><span class="outcome outcome-required">Auto</span></td></tr>
+        </tbody>
+      </table>
+      <div class="gate-box" style="margin-top:12px; background:linear-gradient(135deg,#c6f6d5,#9ae6b4); border-color:#38a169;">
+        <h4 style="color:#276749">✓ EXIT: Client Reached at Any Attempt</h4>
+        <ul style="color:#22543d"><li>Mark "Connected" → schedule Orientation Appointment → proceed to Phase 3</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 3 -->
+<div class="phase" id="phase-3">
+  <div class="phase-marker" style="background:#6b46c1">3</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Pre-OA Preparation</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">Before OA</span>
+        <span class="phase-owner badge-human" style="background:#ebf4ff;color:#2b6cb0">Para</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Gather all available info so the OA call is productive and efficient.</p>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Task</th><th>Who</th><th>When</th><th>Done When</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>3.1</td><td>Meet with Case Manager — gather all info prior to OA</td><td><span class="badge badge-human">Para</span></td><td>Before OA</td><td>Notes documented</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>3.2</td><td>Review intake file for completeness</td><td><span class="badge badge-human">Para</span></td><td>Before OA</td><td>Gaps flagged</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>3.3</td><td>Prepare OA agenda items and flag gaps</td><td><span class="badge badge-human">Para</span></td><td>Before OA</td><td>Agenda ready</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 4 -->
+<div class="phase" id="phase-4">
+  <div class="phase-marker" style="background:#c05621">4</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Orientation Appointment (OA) — 14-Point Call</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">24 biz hrs from assignment</span>
+        <span class="phase-owner badge-attorney" style="background:#faf5ff;color:#6b46c1">Attorney + Para</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Welcome client into litigation. Confirm all facts. Identify risks. Position the team.</p>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Agenda Item</th><th>What to Cover</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Welcome & Team Intro</td><td>Introduce attorney, paralegal, support. Direct contacts. Roles.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>2</td><td>What Changes Now</td><td>Set expectations: longer timelines, formal procedures, defense active.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>3</td><td>Accident & Liability</td><td>Verify date, time, location, impact, police, statements. "Anything new?"</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>4</td><td>Injury & Treatment</td><td>All providers, all imaging, surgeries, future care. Gaps?</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>5</td><td>Prior Injuries / Claims</td><td>Prior accidents, workers comp, disability, prior lawyers. No surprises.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>6</td><td>Insurance & Benefits</td><td>Health, Medicaid, Medicare, VA, PIP, med-pay — at DOL and current.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>7</td><td>Evidence Collection</td><td>Photos, video, dash cam, vehicle damage, witnesses.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>8</td><td>Prior Counsel</td><td>Other attorneys? Statements given?</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>9</td><td>Employment & Wages</td><td>Employer, title, missed time, pay structure.</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>10</td><td>Client Readiness Check</td><td><em>Internal assessment:</em> responsiveness, credibility, commitment.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>11</td><td>Litigation Milestones</td><td>Explain: interrogatories, depositions, IMEs, surveillance.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>12</td><td>Communication Rules</td><td>Address changes, no defense contact, social media caution.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>13</td><td>Open Questions</td><td>"What concerns you most about moving into litigation?"</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>14</td><td>Close with Confidence</td><td>We are prepared. We believe in your case. Communication stays strong.</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+      <div class="gate-box">
+        <h4>⚠ OA Quality Gate — Cannot mark OA complete without:</h4>
+        <ul>
+          <li>Preferred contact method + best time window</li>
+          <li>Provider list (at least first treating provider or "none yet")</li>
+          <li>Medicare / Medicaid / ERISA / VA flags (Yes / No / Unknown)</li>
+          <li>Evidence inventory status (Complete or Pending)</li>
+          <li>Prior injuries flag — if YES: attorney notified within 24 hrs</li>
+          <li>Treatment gaps flag — if YES: attorney notified within 24 hrs</li>
+          <li>Defense contact flag — if YES: attorney notified within 24 hrs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 5 -->
+<div class="phase" id="phase-5">
+  <div class="phase-marker" style="background:#9b2c2c">5</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Post-OA Actions (Within 1 Hour)</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">OA + 1 hour</span>
+        <span class="phase-owner" style="background:#fff5f5;color:#9b2c2c">System + Para</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Three parallel tracks fire simultaneously: system automation, human tasks, and full case scoring.</p>
+
+      <h4 style="margin:12px 0 8px; color:#276749; font-size:13px;">5A: Automation Burst (System fires automatically)</h4>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Auto Task</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>A1</td><td>Send letters to all medical providers with PIP/health insurance info</td><td><span class="outcome outcome-required">Auto</span></td></tr>
+          <tr><td>A2</td><td>Send letters to prior counsel + prior providers for records/films</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>A3</td><td>Request ERISA / Medicaid / Medicare / MVA liens</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>A4</td><td>Request PIP No-Fault Ledger</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>A5</td><td>Request Medical Pay</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>A6</td><td>Request evidence: photos, shoes, out-of-pocket expenses</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:16px 0 8px; color:#2b6cb0; font-size:13px;">5B: Immediate Human Tasks</h4>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Task</th><th>Who</th><th>SLA</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>H1</td><td>OPRA request: supplemental police report, EMS report, body cam</td><td><span class="badge badge-human">Para</span></td><td>1 hr from OA</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>H2</td><td>Request missing medical records, films, bills</td><td><span class="badge badge-human">Para</span></td><td>1 hr from OA</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>H3</td><td>Verify all defendants listed in Litify role object</td><td><span class="badge badge-human">Para</span></td><td>1 hr from OA</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>H4</td><td>Update: provider list, prior history, liens, insurance, evidence, risk flags</td><td><span class="badge badge-human">Para</span></td><td>1 hr from OA</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:16px 0 8px; color:#9b2c2c; font-size:13px;">5C: Score ALL Scoring Systems (1 hour from OA)</h4>
+      <div class="score-grid">
+        <div class="score-card" style="border-left:3px solid #2b6cb0">
+          <h4>Client Profile</h4>
+          <p>Client behavior, cooperation, risk. 7 categories, 28 sub-metrics.</p>
+          <div class="scale">Each 1–5 → Category avg → Intervention flag</div>
+        </div>
+        <div class="score-card" style="border-left:3px solid #6b46c1">
+          <h4>Liability Profile</h4>
+          <p>Fault clarity + settlement leverage. 9 weighted factors.</p>
+          <div class="scale">Each 1–5 → LSI (fault) + SLI (leverage)</div>
+        </div>
+        <div class="score-card" style="border-left:3px solid #276749">
+          <h4>Policy & Collectability</h4>
+          <p>Coverage strength + recovery difficulty. 10 weighted factors.</p>
+          <div class="scale">Each 1–5 → CSI (coverage) + RDI (difficulty)</div>
+        </div>
+        <div class="score-card" style="border-left:3px solid #c05621">
+          <h4>Treatment Strength (TSI)</h4>
+          <p>Medical severity, consistency, proof. 5 weighted factors.</p>
+          <div class="scale">Each 1–5 → TSI composite (1.0–5.0)</div>
+        </div>
+        <div class="score-card" style="border-left:3px solid #9b2c2c">
+          <h4>Case Performance (CPI)</h4>
+          <p>Business viability, velocity, file quality. 7 pillars.</p>
+          <div class="scale">Each 1–5 → CPI composite (1.0–5.0)</div>
+        </div>
+      </div>
+      <p style="font-size:11px; color:#718096; margin-top:8px; font-style:italic;">All scores are PROVISIONAL until Data Hygiene Gate passes. Re-scored at every stage change or when new evidence arrives.</p>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 6 -->
+<div class="phase" id="phase-6">
+  <div class="phase-marker" style="background:#276749">6</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Complaint, Filing & Service</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">OA+3d → OA+77d</span>
+        <span class="phase-owner badge-human" style="background:#ebf4ff;color:#2b6cb0">Para + Attorney</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">Draft, file, and serve the complaint. Track service. Handle defaults.</p>
+
+      <h4 style="margin:12px 0 8px; font-size:13px; color:#276749;">6A: Complaint Pipeline</h4>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Step</th><th>Who</th><th>SLA</th><th>Done When</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>C1</td><td>Draft complaint</td><td><span class="badge badge-human">Para</span></td><td>OA + 3 days</td><td>Draft uploaded to Litify</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>C2</td><td>Attorney approves complaint</td><td><span class="badge badge-attorney">Attorney</span></td><td>OA + 6 days</td><td>Marked approved</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>C3</td><td>File complaint</td><td><span class="badge badge-human">Para</span></td><td>24 hrs after approval</td><td>Filed, court receipt uploaded</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>C4</td><td>Draft summons + request service</td><td><span class="badge badge-human">Para</span></td><td>OA + 15 days</td><td>Summons drafted, process server engaged</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>C5</td><td>Court initial filing notice</td><td><span class="badge badge-human">Para</span></td><td>1 hr from filed complaint</td><td>Notice entered in Litify</td><td><span class="outcome outcome-required">Required</span></td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin:16px 0 8px; font-size:13px; color:#276749;">6B: Service & Default Pipeline</h4>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Step</th><th>Who</th><th>SLA</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>S1</td><td>Follow up on non-service</td><td><span class="badge badge-human">Para</span></td><td>Day 35 from OA</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>S2</td><td>Resolve non-service (postal/skip trace/DMV)</td><td><span class="badge badge-human">Para</span></td><td>Day 36 from OA</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>S3</td><td>File affidavits of service</td><td><span class="badge badge-human">Para</span></td><td>Day 40 from OA</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>S4</td><td>Motion for substitute service</td><td><span class="badge badge-human">Para</span></td><td>Day 56 from OA</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>S5</td><td>Upload proof of service</td><td><span class="badge badge-human">Para</span></td><td>Day 77</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>S6</td><td>File request to enter default</td><td><span class="badge badge-human">Para</span></td><td>35d from service</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+          <tr><td>S7</td><td>Default notice to defendant + carrier (auto)</td><td><span class="badge badge-auto">System</span></td><td>On default request</td><td><span class="outcome outcome-required">Auto</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 7 -->
+<div class="phase" id="phase-7">
+  <div class="phase-marker" style="background:#744210">7</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Medical Records Chase Ladder</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">Day 20–107 from request</span>
+        <span class="phase-owner badge-human" style="background:#ebf4ff;color:#2b6cb0">Para → Mgmt</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">9-step escalation to obtain medical records. Days counted from initial records request. Exit the ladder when records are received.</p>
+      <table class="step-table">
+        <thead><tr><th>#</th><th>Action</th><th>Who</th><th>Day</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>R1</td><td>Follow-up request 1</td><td><span class="badge badge-human">Para</span></td><td>Day 20</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>R2</td><td>Follow-up request 2</td><td><span class="badge badge-human">Para</span></td><td>Day 27</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>R3</td><td>Follow-up request 3</td><td><span class="badge badge-human">Para</span></td><td>Day 34</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#fffaf0"><td>R4</td><td>Team Lead follow-up 1</td><td><span class="badge badge-mgmt">Team Lead</span></td><td>Day 42</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#fffaf0"><td>R5</td><td>Team Lead follow-up 2</td><td><span class="badge badge-mgmt">Team Lead</span></td><td>Day 52</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr style="background:#fffaf0"><td>R6</td><td>Team Lead follow-up 3</td><td><span class="badge badge-mgmt">Team Lead</span></td><td>Day 62</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>R7</td><td>Draft subpoena for records/bills/films</td><td><span class="badge badge-human">Para</span></td><td>Day 67</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>R8</td><td>Upload proof of service (subpoena)</td><td><span class="badge badge-human">Para</span></td><td>Day 77</td><td><span class="outcome outcome-required">Required</span></td></tr>
+          <tr><td>R9</td><td>File motion to enforce litigant rights</td><td><span class="badge badge-human">Para</span></td><td>Day 107</td><td><span class="outcome outcome-cna">C / NA / D</span></td></tr>
+        </tbody>
+      </table>
+      <div class="gate-box" style="background:linear-gradient(135deg,#c6f6d5,#9ae6b4); border-color:#38a169;">
+        <h4 style="color:#276749">✓ EXIT: Records Received at Any Step</h4>
+        <ul style="color:#22543d"><li>Mark "Medical Records Received" → exit ladder</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="connector">↓</div>
+
+<!-- PHASE 8 -->
+<div class="phase" id="phase-8">
+  <div class="phase-marker" style="background:#1e3a5f">8</div>
+  <div class="phase-card">
+    <div class="phase-header" onclick="toggle(this)">
+      <div>
+        <div class="phase-title">Case Opening Complete — Final Gate</div>
+      </div>
+      <div class="phase-meta">
+        <span class="phase-timing">Gate Check</span>
+        <span class="phase-owner" style="background:#ebf8ff;color:#1e3a5f">System Validation</span>
+        <span class="phase-chevron">▾</span>
+      </div>
+    </div>
+    <div class="phase-body">
+      <p class="phase-goal">All boxes checked = case status changes to Active. Eligible for demand prep when treatment completes.</p>
+      <div class="gate-box">
+        <h4>⚠ Case Opening is COMPLETE only when ALL are true:</h4>
+        <ul>
+          <li>Engagement letter signed (DocuSign)</li>
+          <li>All 5 scoring systems completed (all score fields populated)</li>
+          <li>Data Hygiene Gate passed (all required fields complete)</li>
+          <li>Complaint filed (court receipt on file)</li>
+          <li>Service initiated (summons + process server documented)</li>
+          <li>Medical records requested (all known providers have active requests)</li>
+          <li>Post-OA automation burst confirmed (all 6 auto tasks verified)</li>
+          <li>OPRA / evidence requests sent (tasks marked complete)</li>
+        </ul>
+      </div>
+      <div style="background:#ebf8ff; border-radius:8px; padding:14px; margin-top:12px; text-align:center;">
+        <strong style="font-size:15px; color:#1e3a5f;">✓ Case Status → Active</strong><br>
+        <span style="font-size:12px; color:#2c5282;">Now eligible for demand preparation when treatment completes.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /timeline -->
+
+<!-- Scoring Summary -->
+<div class="scoring-summary">
+  <h3>Scoring Systems — Quick Reference</h3>
+  <p style="font-size:12px; color:#718096; margin-bottom:12px;">All scales are 1–5. All composites are weighted averages producing 1.0–5.0. Scored within 1 hour of OA. Re-scored at every stage change.</p>
+  <table class="step-table" style="font-size:12px;">
+    <thead><tr><th>System</th><th>What It Measures</th><th>Inputs</th><th>Output</th><th>Action Bands</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Client Profile</strong></td><td>Client behavior & risk</td><td>28 sub-metrics across 7 categories (each 1-5)</td><td>Category averages + Intervention Flag</td><td>Any cat avg ≤ 2 → Intervention Required</td></tr>
+      <tr><td><strong>Liability Profile</strong></td><td>Fault + leverage</td><td>9 weighted factors (each 1-5)</td><td>LSI (fault) + SLI (leverage)</td><td>SLI &lt; 2.0 → Critical review</td></tr>
+      <tr><td><strong>Policy & Collectability</strong></td><td>Coverage + recovery difficulty</td><td>10 weighted factors (each 1-5)</td><td>CSI (coverage) + RDI (difficulty)</td><td>CSI/RDI matrix → 4 strategies</td></tr>
+      <tr><td><strong>Treatment Strength (TSI)</strong></td><td>Medical credibility</td><td>5 weighted factors (each 1-5)</td><td>TSI composite (1.0-5.0)</td><td>&lt; 2.0 → Treatment sprint</td></tr>
+      <tr><td><strong>Case Performance (CPI)</strong></td><td>Business viability</td><td>7 pillars (each 1-5)</td><td>CPI composite (1.0-5.0)</td><td>&lt; 2.0 → Leadership escalation</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  BJB Performance Infrastructure &bull; Case Opening Process Flow &bull; v4.0 &bull; February 2026
+</div>
+
+</div><!-- /container -->
+
+<script>
+function toggle(el) {
+  el.closest('.phase-card').classList.toggle('open');
+}
+function scrollToPhase(n) {
+  const el = document.getElementById('phase-' + n);
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const card = el.querySelector('.phase-card');
+    if (!card.classList.contains('open')) card.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>
