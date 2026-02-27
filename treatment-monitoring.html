@@ -921,28 +921,29 @@ td{position:relative}
 
 <div class="approval-section">
   <h3>Management Approval Checklist</h3>
+  <div id="sync-status" style="font-size:11px;color:var(--slate);margin-bottom:12px">⏳ Loading...</div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-overview"> Overview &amp; Parallel Track Design Approved</label>
+    <label><input type="checkbox" id="appr-overview" data-key="overview"> Overview &amp; Parallel Track Design Approved</label>
     <span class="approval-date" id="appr-overview-date"></span>
   </div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-cycle"> Monitoring Cycle Structure Approved</label>
+    <label><input type="checkbox" id="appr-cycle" data-key="cycle"> Monitoring Cycle Structure Approved</label>
     <span class="approval-date" id="appr-cycle-date"></span>
   </div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-triggers"> Cycle Triggers Approved</label>
+    <label><input type="checkbox" id="appr-triggers" data-key="triggers"> Cycle Triggers Approved</label>
     <span class="approval-date" id="appr-triggers-date"></span>
   </div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-staleness"> Scoring Staleness Rules Approved</label>
+    <label><input type="checkbox" id="appr-staleness" data-key="staleness"> Scoring Staleness Rules Approved</label>
     <span class="approval-date" id="appr-staleness-date"></span>
   </div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-actions"> Action Triggers Approved</label>
+    <label><input type="checkbox" id="appr-actions" data-key="actions"> Action Triggers Approved</label>
     <span class="approval-date" id="appr-actions-date"></span>
   </div>
   <div class="approval-row">
-    <label><input type="checkbox" id="appr-fields"> Related Litify Fields Approved</label>
+    <label><input type="checkbox" id="appr-fields" data-key="fields"> Related Litify Fields Approved</label>
     <span class="approval-date" id="appr-fields-date"></span>
   </div>
 
@@ -1044,17 +1045,105 @@ document.addEventListener('click',function(e){
   }
 });
 
-// Approval checkboxes - stamp date on check
-document.querySelectorAll('.approval-section input[type="checkbox"]').forEach(function(cb){
-  cb.addEventListener('change',function(){
-    var dateSpan=document.getElementById(cb.id+'-date');
-    if(cb.checked){
-      dateSpan.textContent='Approved: '+new Date().toLocaleString();
-    } else {
-      dateSpan.textContent='';
+</script>
+<script type="module">
+import { neon } from 'https://esm.sh/@neondatabase/serverless';
+
+const sql = neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2rpsg.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require');
+const PAGE_ID = 'treatment-monitoring';
+const statusEl = document.getElementById('sync-status');
+const notesEl = document.getElementById('mgmt-notes');
+const checkboxes = document.querySelectorAll('#approval input[type="checkbox"][data-key]');
+
+function setStatus(text, color) {
+  if (statusEl) { statusEl.textContent = text; statusEl.style.color = color || 'var(--slate)'; }
+}
+
+let saveTimer = null;
+function debounceSave(ms = 500) {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, ms);
+}
+
+async function ensureTable() {
+  await sql`CREATE TABLE IF NOT EXISTS spec_approvals (
+    page_id TEXT PRIMARY KEY,
+    checkboxes JSONB NOT NULL DEFAULT '{}',
+    notes TEXT DEFAULT '',
+    updated_at TIMESTAMPTZ DEFAULT now()
+  )`;
+}
+
+function gatherState() {
+  const cbState = {};
+  checkboxes.forEach(cb => {
+    const key = cb.dataset.key;
+    const dateSpan = document.getElementById(cb.id + '-date');
+    cbState[key] = {
+      checked: cb.checked,
+      date: dateSpan ? dateSpan.textContent : ''
+    };
+  });
+  return { checkboxes: cbState, notes: notesEl ? notesEl.value : '' };
+}
+
+async function saveState() {
+  try {
+    setStatus('Saving...', 'var(--slate)');
+    const state = gatherState();
+    await sql`INSERT INTO spec_approvals (page_id, checkboxes, notes, updated_at)
+      VALUES (${PAGE_ID}, ${JSON.stringify(state.checkboxes)}, ${state.notes}, now())
+      ON CONFLICT (page_id) DO UPDATE SET
+        checkboxes = ${JSON.stringify(state.checkboxes)},
+        notes = ${state.notes},
+        updated_at = now()`;
+    setStatus('✓ Saved', '#2e7d32');
+  } catch (e) {
+    console.error('Save failed:', e);
+    setStatus('⚠ Save failed', '#c62828');
+  }
+}
+
+async function loadState() {
+  try {
+    await ensureTable();
+    const rows = await sql`SELECT checkboxes, notes FROM spec_approvals WHERE page_id = ${PAGE_ID}`;
+    if (rows.length > 0) {
+      const { checkboxes: cbData, notes } = rows[0];
+      if (cbData) {
+        checkboxes.forEach(cb => {
+          const key = cb.dataset.key;
+          if (cbData[key]) {
+            cb.checked = cbData[key].checked || false;
+            const dateSpan = document.getElementById(cb.id + '-date');
+            if (dateSpan) dateSpan.textContent = cbData[key].date || '';
+          }
+        });
+      }
+      if (notesEl && notes) notesEl.value = notes;
     }
+    setStatus('✓ Synced', '#2e7d32');
+  } catch (e) {
+    console.error('Load failed:', e);
+    setStatus('⚠ Offline (local only)', '#c62828');
+  }
+}
+
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const dateSpan = document.getElementById(cb.id + '-date');
+    if (dateSpan) {
+      dateSpan.textContent = cb.checked ? 'Approved: ' + new Date().toLocaleString() : '';
+    }
+    debounceSave(300);
   });
 });
+
+if (notesEl) {
+  notesEl.addEventListener('input', () => debounceSave(500));
+}
+
+loadState();
 </script>
 </body>
 </html>

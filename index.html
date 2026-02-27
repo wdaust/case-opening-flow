@@ -1619,25 +1619,26 @@ td{position:relative}
 
 <div style="background:#fff;border:2px solid var(--border);border-radius:8px;padding:24px;margin:16px 0 0">
   <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--border)">Management Approval Checklist</h3>
+  <div id="sync-status" style="font-size:11px;color:var(--slate);margin-bottom:12px">⏳ Loading...</div>
   <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part A &mdash; Process Phases Approved</label>
-    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="idx-appr-a"></span>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" id="appr-a" data-key="partA" style="width:18px;height:18px;accent-color:var(--navy)"> <span></span> Part A &mdash; Process Phases Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="appr-a-date"></span>
   </div>
   <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part B &mdash; Scoring Systems Approved</label>
-    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" id="appr-b" data-key="partB" style="width:18px;height:18px;accent-color:var(--navy)"> <span></span> Part B &mdash; Scoring Systems Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="appr-b-date"></span>
   </div>
   <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part C &mdash; Dev Spec Approved</label>
-    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" id="appr-c" data-key="partC" style="width:18px;height:18px;accent-color:var(--navy)"> <span></span> Part C &mdash; Dev Spec Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="appr-c-date"></span>
   </div>
   <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-size:13px">
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Full Specification Approved</label>
-    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" id="appr-full" data-key="full" style="width:18px;height:18px;accent-color:var(--navy)"> <span></span> Full Specification Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="appr-full-date"></span>
   </div>
 
   <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border)">Notes</h3>
-  <textarea style="width:100%;min-height:100px;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:inherit;font-size:13px;resize:vertical" placeholder="Add management notes, feedback, or change requests here..."></textarea>
+  <textarea id="mgmt-notes" style="width:100%;min-height:100px;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:inherit;font-size:13px;resize:vertical" placeholder="Add management notes, feedback, or change requests here..."></textarea>
 </div>
 </section>
 
@@ -1747,6 +1748,108 @@ document.addEventListener('click',function(e){
     sidebar.classList.remove('open');
   }
 });
+</script>
+<script type="module">
+import { neon } from 'https://esm.sh/@neondatabase/serverless';
+
+const sql = neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2rpsg.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require');
+const PAGE_ID = 'case-opening';
+const statusEl = document.getElementById('sync-status');
+const notesEl = document.getElementById('mgmt-notes');
+const checkboxes = document.querySelectorAll('#approval input[type="checkbox"][data-key]');
+
+function setStatus(text, color) {
+  if (statusEl) { statusEl.textContent = text; statusEl.style.color = color || 'var(--slate)'; }
+}
+
+let saveTimer = null;
+function debounceSave(ms = 500) {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveState, ms);
+}
+
+async function ensureTable() {
+  await sql`CREATE TABLE IF NOT EXISTS spec_approvals (
+    page_id TEXT PRIMARY KEY,
+    checkboxes JSONB NOT NULL DEFAULT '{}',
+    notes TEXT DEFAULT '',
+    updated_at TIMESTAMPTZ DEFAULT now()
+  )`;
+}
+
+function gatherState() {
+  const cbState = {};
+  checkboxes.forEach(cb => {
+    const key = cb.dataset.key;
+    const dateSpan = document.getElementById(cb.id + '-date');
+    cbState[key] = {
+      checked: cb.checked,
+      date: dateSpan ? dateSpan.textContent : ''
+    };
+  });
+  return { checkboxes: cbState, notes: notesEl ? notesEl.value : '' };
+}
+
+async function saveState() {
+  try {
+    setStatus('Saving...', 'var(--slate)');
+    const state = gatherState();
+    await sql`INSERT INTO spec_approvals (page_id, checkboxes, notes, updated_at)
+      VALUES (${PAGE_ID}, ${JSON.stringify(state.checkboxes)}, ${state.notes}, now())
+      ON CONFLICT (page_id) DO UPDATE SET
+        checkboxes = ${JSON.stringify(state.checkboxes)},
+        notes = ${state.notes},
+        updated_at = now()`;
+    setStatus('✓ Saved', '#2e7d32');
+  } catch (e) {
+    console.error('Save failed:', e);
+    setStatus('⚠ Save failed', '#c62828');
+  }
+}
+
+async function loadState() {
+  try {
+    await ensureTable();
+    const rows = await sql`SELECT checkboxes, notes FROM spec_approvals WHERE page_id = ${PAGE_ID}`;
+    if (rows.length > 0) {
+      const { checkboxes: cbData, notes } = rows[0];
+      if (cbData) {
+        checkboxes.forEach(cb => {
+          const key = cb.dataset.key;
+          if (cbData[key]) {
+            cb.checked = cbData[key].checked || false;
+            const dateSpan = document.getElementById(cb.id + '-date');
+            if (dateSpan) dateSpan.textContent = cbData[key].date || '';
+          }
+        });
+      }
+      if (notesEl && notes) notesEl.value = notes;
+    }
+    setStatus('✓ Synced', '#2e7d32');
+  } catch (e) {
+    console.error('Load failed:', e);
+    setStatus('⚠ Offline (local only)', '#c62828');
+  }
+}
+
+// Checkbox change handlers
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    const dateSpan = document.getElementById(cb.id + '-date');
+    if (dateSpan) {
+      dateSpan.textContent = cb.checked ? 'Approved: ' + new Date().toLocaleString() : '';
+    }
+    debounceSave(300);
+  });
+});
+
+// Notes handler
+if (notesEl) {
+  notesEl.addEventListener('input', () => debounceSave(500));
+}
+
+// Load on page ready
+loadState();
 </script>
 </body>
 </html>
