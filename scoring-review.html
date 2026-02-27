@@ -371,6 +371,312 @@ tailwind.config = {
   </div>
 </div>
 
+<!-- Phase Scorecard Table — Per-Score Detail -->
+<h3 class="text-sm font-bold text-foreground mb-3">What Changes and Why &mdash; Every Score</h3>
+<div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-6">
+<table class="w-full text-sm">
+  <thead><tr class="border-b border-border bg-muted">
+    <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score / Factor</th>
+    <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Input</th>
+    <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Input</th>
+    <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Action</th>
+    <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Why</th>
+  </tr></thead>
+  <tbody>
+    <!-- ── CP: 28 sub-metrics → 7 category scores ── -->
+    <tr class="bg-indigo-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-800">Client Profile (CP) &mdash; 28 sub-metrics &rarr; 7 category scores</td></tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Reachability</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Contactability, Response Time, Follow-Through, Appt Reliability</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Reachability&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">4 sub-metrics are correlated; paralegals already think &ldquo;reachability is a problem,&rdquo; not &ldquo;contactability is 4 but response time is 2.&rdquo;</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Cooperation</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Engagement, Trust, Story Consistency, Transparency</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Cooperation&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Sub-metrics move together&mdash;low trust rarely coexists with high transparency. One score captures the dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Treatment Behavior</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Tx Consistency, Care Plan Compliance, Escalation Readiness, Doc Strength</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Treatment Behavior&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Client treatment behavior is one behavioral construct. Splitting it into 4 adds scoring burden without driving different decisions.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Risk &amp; Stability</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Life Stability, Behavioral Volatility, Social Media Risk, Prior Claims</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Risk &amp; Stability&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">All four measure client risk from different angles. A single risk rating drives the same workflow flags.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Settlement Posture</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Expectation Realism, Patience, Decision Readiness, Negotiation Temperament</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Settlement Posture&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">These describe one behavioral trait: how the client will behave at settlement. Splitting creates false precision.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Admin Readiness</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Doc Readiness, Signature Reliability, Comm Preference, Rules Adherence</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Admin Readiness&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Administrative compliance is one construct. A client who misses signatures also struggles with doc readiness.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Case-Strength Factors</td>
+      <td class="px-4 py-2 text-center text-muted-foreground">4 scores: Witness Cooperation, Damage Narrative, Wage Loss Cooperation, Medical Disclosure</td>
+      <td class="px-4 py-2 text-center">Single &ldquo;Case-Strength Factors&rdquo; 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">All four track how well the client supports building the case. Correlated in practice&mdash;one holistic score suffices.</td>
+    </tr>
+
+    <!-- ── LSI + SLI → LCI: 9 factors → 5 factors ── -->
+    <tr class="bg-blue-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-blue-800">LSI + SLI &rarr; LCI &mdash; 9 factors &rarr; 5 factors</td></tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Fault Clarity <span class="text-muted-foreground text-xs">(LSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Fault &amp; Evidence Strength (30%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Overlaps with Evidence Strength&mdash;fault clarity is meaningless without supporting evidence.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Evidence Strength <span class="text-muted-foreground text-xs">(LSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Fault &amp; Evidence Strength (30%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Fault Clarity into one liability dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Witness Profile <span class="text-muted-foreground text-xs">(LSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Witness &amp; Documentation (15%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Witness availability and police documentation jointly determine corroboration strength.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Police Docs <span class="text-muted-foreground text-xs">(LSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Witness &amp; Documentation (15%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Witness Profile&mdash;both measure third-party corroboration.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Comparative Negligence <span class="text-muted-foreground text-xs">(LSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Comparative Negligence (15%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">1:1 mapping&mdash;standalone dimension that carries over directly.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Coverage Adequacy <span class="text-muted-foreground text-xs">(SLI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Coverage &amp; Jury Dynamics (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Coverage limits and jury perception jointly determine recoverable value ceiling.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Jury Optics <span class="text-muted-foreground text-xs">(SLI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Coverage &amp; Jury Dynamics (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Coverage Adequacy into one strategic leverage dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Defense Escapes <span class="text-muted-foreground text-xs">(SLI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Defense Exposure &amp; Readiness (15%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Defense escape routes and documentation readiness are two sides of the same vulnerability assessment.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Documentation Readiness <span class="text-muted-foreground text-xs">(SLI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Defense Exposure &amp; Readiness (15%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Defense Escapes&mdash;both assess vulnerability to defense strategy.</td>
+    </tr>
+
+    <!-- ── CSI + RDI → CCI: 10 factors → 4 factors ── -->
+    <tr class="bg-blue-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-blue-800">CSI + RDI &rarr; CCI &mdash; 10 factors &rarr; 4 factors</td></tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Limits Adequacy <span class="text-muted-foreground text-xs">(CSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Policy Strength (30%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Policy limits and verification jointly determine policy viability.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Policy Verification <span class="text-muted-foreground text-xs">(CSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Policy Strength (30%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Limits Adequacy into one policy assessment.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Additional Policies <span class="text-muted-foreground text-xs">(CSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Additional Coverage &amp; Assets (20%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Umbrella/excess policies, carrier posture, and defendant assets all determine total recovery pool.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Carrier Behavior <span class="text-muted-foreground text-xs">(CSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Additional Coverage &amp; Assets (20%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Additional Policies and Defendant Assets.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Defendant Assets <span class="text-muted-foreground text-xs">(CSI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Additional Coverage &amp; Assets (20%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Additional Policies and Carrier Behavior.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Reservation of Rights <span class="text-muted-foreground text-xs">(RDI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; UM/UIM &amp; Reserves (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Reservation status and UM/UIM availability jointly determine fallback coverage position.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">UM/UIM <span class="text-muted-foreground text-xs">(RDI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; UM/UIM &amp; Reserves (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Reservation of Rights into one coverage-fallback dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Liens <span class="text-muted-foreground text-xs">(RDI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Recovery Complexity (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Liens, multi-party complexity, and doc readiness all determine how hard recovery will be.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Multi-Party Complexity <span class="text-muted-foreground text-xs">(RDI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Recovery Complexity (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Liens and Doc Readiness into one recovery-difficulty dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Doc Readiness <span class="text-muted-foreground text-xs">(RDI)</span></td>
+      <td class="px-4 py-2 text-center">1&ndash;5 manual</td>
+      <td class="px-4 py-2 text-center">&rarr; Recovery Complexity (25%)</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Merge</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Combined with Liens and Multi-Party Complexity.</td>
+    </tr>
+
+    <!-- ── TSI: No Change — 5 factors + 6 checkboxes ── -->
+    <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">TSI &mdash; 5 factors + 6 checkboxes &rarr; No Change</td></tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Treatment Consistency</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Measures adherence pattern over time; distinct from provider quality or gap analysis.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Provider Quality</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Evaluates credibility and specialization of treating providers; independent clinical dimension.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Gap Days</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Identifies treatment timeline breaks defense will exploit; uniquely time-based metric.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Diagnosis Strength</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Assesses objective medical evidence supporting claimed injuries; foundational to case value.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Surgical / Injection Status</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Tracks invasive procedure trajectory; directly impacts settlement multipliers.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">6 Treatment Checkboxes</td>
+      <td class="px-4 py-2 text-center">6 boolean flags</td>
+      <td class="px-4 py-2 text-center">6 boolean flags</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Binary markers (ER visit, surgery scheduled, pre-existing, etc.) each trigger distinct workflow branches.</td>
+    </tr>
+
+    <!-- ── CPI: 7 manual → 3 manual + 4 auto ── -->
+    <tr class="bg-amber-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-amber-800">CPI &mdash; 7 manual pillars &rarr; 3 manual + 4 auto-derived</td></tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Strategic Priority <span class="text-muted-foreground text-xs">(10%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Requires attorney&rsquo;s subjective assessment of firm-level case priority and resource allocation.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Defense Friction <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Attorney reads opposing counsel behavior and defense strategy nuances not captured in data.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Risk Exposure <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Holistic risk assessment combining legal, financial, and reputational factors.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Economic Efficiency <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Auto-derived</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800">Automate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Cost-to-recovery ratio calculable from Litify billing and settlement data.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Momentum <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Auto-derived</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800">Automate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Task completion velocity and milestone progression derivable from Litify timestamps.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">File Integrity <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Auto-derived</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800">Automate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Document completeness scores and missing-doc flags available from Litify doc management.</td>
+    </tr>
+    <tr class="border-b border-border">
+      <td class="px-4 py-2 font-medium">Negotiation Readiness <span class="text-muted-foreground text-xs">(15%)</span></td>
+      <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+      <td class="px-4 py-2 text-center">Auto-derived</td>
+      <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800">Automate</span></td>
+      <td class="px-4 py-2 text-muted-foreground">Demand package status, response timelines, and offer history all tracked in Litify.</td>
+    </tr>
+
+    <!-- ── Totals ── -->
+    <tr class="bg-muted font-bold"><td class="px-4 py-3" colspan="2">Total Manual Inputs</td><td class="px-4 py-3 text-center">59</td><td class="px-4 py-3 text-center" colspan="2">~20 manual (+ 4 auto-derived CPI)</td></tr>
+  </tbody>
+</table>
+</div>
+
 <!-- ============================================================ -->
 <!-- SUB-CARD A: Client Profile 28→7                              -->
 <!-- ============================================================ -->
@@ -926,6 +1232,108 @@ tailwind.config = {
     </div>
   </div>
 
+  <!-- Phase Scorecard Table — Per-Score Detail -->
+  <h3 class="text-sm font-bold text-foreground px-4 mb-3">What Changes and Why &mdash; Every Score</h3>
+  <div class="px-4 pb-2">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-4">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-border bg-muted">
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score / Factor</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Action</th>
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Why</th>
+    </tr></thead>
+    <tbody>
+      <!-- ── CP Partial Refresh: inherits Phase 1 consolidation ── -->
+      <tr class="bg-indigo-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-indigo-800">CP Partial Refresh &mdash; Inherits Phase 1 Consolidation</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Reachability (refreshed)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">4 sub-metrics re-scored</td>
+        <td class="px-4 py-2 text-center">1 category score</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Inherits Phase 1 CP consolidation. No separate implementation needed.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Cooperation (refreshed)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">4 sub-metrics re-scored</td>
+        <td class="px-4 py-2 text-center">1 category score</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Same consolidation as Phase 1. Paralegal refreshes one score instead of four.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Treatment Behavior (refreshed)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">4 sub-metrics re-scored</td>
+        <td class="px-4 py-2 text-center">1 category score</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-100 text-indigo-800">Consolidate</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Key refresh category during treatment. One holistic score captures ongoing treatment compliance.</td>
+      </tr>
+      <tr class="border-b border-border bg-muted/30">
+        <td class="px-4 py-2 text-muted-foreground italic" colspan="5">Remaining 4 CP categories (Risk &amp; Stability, Settlement Posture, Admin Readiness, Case-Strength) are not refreshed in Phase 2&mdash;only re-scored at Phase 3.</td>
+      </tr>
+
+      <!-- ── TSI Refresh: No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">TSI Refresh &mdash; No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Treatment Consistency</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Measures adherence pattern; distinct from provider quality. Independently actionable for treatment decisions.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Provider Quality</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Provider credibility assessment; independent clinical dimension from treatment consistency.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Gap Days</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Treatment timeline breaks; uniquely time-based metric that defense will target.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Diagnosis Strength</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Objective medical evidence quality; foundational to case value assessment.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Surgical / Injection Status</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Factor 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Invasive procedure trajectory; directly impacts settlement multipliers.</td>
+      </tr>
+
+      <!-- ── Treatment Gaps + CPI: Auto ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Treatment Gaps + CPI &mdash; Already Automated</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Treatment Gap Detection</td>
+        <td class="px-4 py-2 text-center">Auto-calculated</td>
+        <td class="px-4 py-2 text-center">Auto-calculated</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Calculated from Litify activity dates. Zero manual inputs.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">CPI Auto-Derived Components</td>
+        <td class="px-4 py-2 text-center">Auto-calculated</td>
+        <td class="px-4 py-2 text-center">Auto-calculated</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">CPI refresh components already automated from Litify data during treatment monitoring.</td>
+      </tr>
+
+      <!-- ── Totals ── -->
+      <tr class="bg-muted font-bold"><td class="px-4 py-3" colspan="2">Total Per Cycle</td><td class="px-4 py-3 text-center" colspan="3">9 &rarr; 6 manual inputs per cycle (33% reduction)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
   <!-- Card: CP Partial Refresh -->
   <div class="rounded-lg border border-border bg-card shadow-sm mb-2 overflow-hidden">
     <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
@@ -997,6 +1405,116 @@ tailwind.config = {
     <div class="rounded-lg border-2 border-[#6366f1] bg-indigo-50 p-4 mb-4">
       <p class="text-sm text-indigo-900 font-semibold">Written Discovery triggers a full re-score of all Case Opening systems. With Phase 1 optimizations, the re-score drops from <strong>~59 to ~20 inputs automatically</strong>. The 5 additional client scoring dimensions remain justified due to different context (attorney post-discovery vs. paralegal at intake).</p>
     </div>
+  </div>
+
+  <!-- Phase Scorecard Table — Per-Score Detail -->
+  <h3 class="text-sm font-bold text-foreground px-4 mb-3">What Changes and Why &mdash; Every Score</h3>
+  <div class="px-4 pb-2">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-4">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-border bg-muted">
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score / Factor</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Action</th>
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Why</th>
+    </tr></thead>
+    <tbody>
+      <!-- ── Full Re-Score — Inherits Phase 1 ── -->
+      <tr class="bg-slate-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-slate-800">Full Re-Score &mdash; Inherits Phase 1</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">CP (7 categories)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">28 sub-metrics</td>
+        <td class="px-4 py-2 text-center">7 category scores</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-800">Inherits</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Phase 1 CP consolidation flows through</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">LCI (was LSI+SLI)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">9 factors</td>
+        <td class="px-4 py-2 text-center">5 factors</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-800">Inherits</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Phase 1 merge flows through</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">CCI (was CSI+RDI)</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">10 factors</td>
+        <td class="px-4 py-2 text-center">4 factors</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-800">Inherits</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Phase 1 merge flows through</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">TSI</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">5 factors + 6 cb</td>
+        <td class="px-4 py-2 text-center">5 factors + 6 cb</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Each factor independently actionable</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">CPI</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">7 manual</td>
+        <td class="px-4 py-2 text-center">3 manual + 4 auto</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-800">Inherits</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Phase 1 automation flows through</td>
+      </tr>
+      <tr class="border-b border-border bg-muted/30">
+        <td class="px-4 py-2 text-muted-foreground italic" colspan="2">Re-Score Subtotal</td>
+        <td class="px-4 py-2 text-center font-semibold" colspan="3">59 &rarr; ~20</td>
+      </tr>
+
+      <!-- ── DHI (Discovery Health Index) — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">DHI (Discovery Health Index) &mdash; No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">DHI</td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Formula-derived (0 manual)</td>
+        <td class="px-4 py-2 text-center">Formula-derived (0 manual)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Entirely calculated from discovery response data and timelines</td>
+      </tr>
+
+      <!-- ── 5 Client Scoring Dimensions — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">5 Client Scoring Dimensions &mdash; No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Client Cooperation <span class="text-muted-foreground text-xs">(attorney)</span></td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Different scorer (attorney vs paralegal), different context (post-discovery vs intake)</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Client Credibility <span class="text-muted-foreground text-xs">(attorney)</span></td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Attorney assessment based on discovery responses, not intake behavior</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Client Engagement <span class="text-muted-foreground text-xs">(attorney)</span></td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Measures engagement during formal legal process, fundamentally different from CP intake</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Case Participation Quality <span class="text-muted-foreground text-xs">(attorney)</span></td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Evaluates client&rsquo;s contribution to building the case through discovery</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Settlement Readiness <span class="text-muted-foreground text-xs">(attorney)</span></td>
+        <td class="px-4 py-2 text-center text-muted-foreground">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Post-discovery settlement posture differs from intake assessment &mdash; new signal</td>
+      </tr>
+
+      <!-- ── Totals ── -->
+      <tr class="bg-muted font-bold"><td class="px-4 py-3" colspan="2">Total Manual Inputs</td><td class="px-4 py-3 text-center" colspan="3">~64 &rarr; ~25 manual inputs</td></tr>
+    </tbody>
+  </table>
+  </div>
   </div>
 
   <!-- Card: Full Re-Score Inherits -->
@@ -1083,6 +1601,161 @@ tailwind.config = {
     </div>
   </div>
 
+  <!-- Phase Scorecard Table -->
+  <h3 class="text-sm font-bold text-foreground px-4 mb-3">What Changes and Why &mdash; Every Score</h3>
+  <div class="px-4 pb-2">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-4">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-border bg-muted">
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score / Factor</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Action</th>
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Why</th>
+    </tr></thead>
+    <tbody>
+      <!-- ── EPI: Already Lean ── -->
+      <tr class="bg-emerald-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800">EPI (Expert Performance Index) &mdash; Already Lean</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Expert Credibility Assessment</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Only component requiring subjective attorney judgment about expert&rsquo;s overall persuasiveness.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Report Quality Score</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Calculated from expert report completeness and methodology documentation.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Citation Accuracy</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Derived from cross-referencing expert citations against case records.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Timeline Adherence</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Measured from expert milestone dates in Litify.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Rebuttal Preparedness</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Calculated from rebuttal documentation completeness.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Cross-Exam Vulnerability</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Derived from prior deposition performance data and report consistency.</td>
+      </tr>
+
+      <!-- ── DPI: Already Lean ── -->
+      <tr class="bg-emerald-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800">DPI (Deposition Performance Index) &mdash; Already Lean</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Witness Demeanor</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Requires in-person observation of witness body language, confidence, and composure.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Opposing Counsel Effectiveness</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5 (attorney)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Keep Manual</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Attorney&rsquo;s subjective assessment of opposing counsel&rsquo;s strategy and skill.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Deposition Duration</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Logged from deposition start/end times.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Objection Count &amp; Success Rate</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Tracked from deposition transcript metadata.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Key Admission Count</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Identified from transcript analysis.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Contradiction Detection</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Cross-referenced against prior statements.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Exhibit Effectiveness</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Measured from exhibit usage and impact markers.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Preparation Time Ratio</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Calculated from prep hours vs deposition hours.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Transcript Quality Score</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center">Auto-derived</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Derived from transcript completeness and clarity metrics.</td>
+      </tr>
+
+      <!-- ── ELI, TRI, Combined Strategic: Formula-Derived ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">ELI, TRI, Combined Strategic &mdash; Formula-Derived</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Expert Leverage Index (ELI)</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Roll-up from EPI and case data.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Trial Readiness Index (TRI)</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Roll-up from DPI and upstream indices.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Combined Strategic Score</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center">Formula (0 manual)</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Composite of ELI + TRI; functioning as designed.</td>
+      </tr>
+
+      <!-- ── Totals ── -->
+      <tr class="bg-muted font-bold"><td class="px-4 py-3" colspan="2">Total Manual Inputs</td><td class="px-4 py-3 text-center">~3 manual</td><td class="px-4 py-3 text-center" colspan="2">No changes recommended</td></tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+
   <!-- Card: EPI -->
   <div class="rounded-lg border border-border bg-card shadow-sm mb-2 overflow-hidden">
     <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
@@ -1153,20 +1826,285 @@ tailwind.config = {
     </div>
   </div>
 
-  <h3 class="text-sm font-bold text-foreground px-4 mb-3">8 Scoring Systems Overview</h3>
+  <h3 class="text-sm font-bold text-foreground px-4 mb-3">What Changes and Why &mdash; Every Score</h3>
   <div class="px-4 pb-2">
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-4">
-    <table class="w-full text-sm"><thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">System</th><th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Manual Inputs</th><th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Status</th></tr></thead><tbody>
-      <tr class="border-b border-border"><td class="px-4 py-3">Trial Positioning Index (TPI)</td><td class="px-4 py-3 text-center">5</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Witness Effectiveness Value (WEV)</td><td class="px-4 py-3 text-center">3</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border bg-purple-50/50"><td class="px-4 py-3 font-semibold">Trial Strategy Score (TSS)</td><td class="px-4 py-3 text-center font-semibold">8</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Review Opportunity</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Settlement Leverage Score (SLS)</td><td class="px-4 py-3 text-center">5</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Case Timeline Tracker (CTT)</td><td class="px-4 py-3 text-center">5</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Trial Readiness Score (TRS)</td><td class="px-4 py-3 text-center">5</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Emotional Readiness Index (ERI)</td><td class="px-4 py-3 text-center">2 manual</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="border-b border-border"><td class="px-4 py-3">Case Complexity Score (CCS)</td><td class="px-4 py-3 text-center">1</td><td class="px-4 py-3 text-center"><span class="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td></tr>
-      <tr class="bg-muted font-bold"><td class="px-4 py-3">Total</td><td class="px-4 py-3 text-center">34</td><td class="px-4 py-3 text-center"></td></tr>
-    </tbody></table></div>
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto mb-4">
+  <table class="w-full text-sm">
+    <thead><tr class="border-b border-border bg-muted">
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score / Factor</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Input</th>
+      <th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Action</th>
+      <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Why</th>
+    </tr></thead>
+    <tbody>
+      <!-- ── TPI: 5 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Trial Positioning Index (TPI) &mdash; 5 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Case Strength Position</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Attorney assessment of overall case strength for trial positioning.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Liability Clarity</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Distinct from case strength&mdash;focuses on clarity of liability argument.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Damages Presentation</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Measures quality of damages narrative for trial.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Jury Appeal</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Subjective assessment of how case resonates with potential jurors.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Precedent Alignment</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Whether case facts align with favorable precedent&mdash;independent legal dimension.</td>
+      </tr>
+
+      <!-- ── WEV: 3 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Witness Effectiveness Value (WEV) &mdash; 3 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Primary Witness Effectiveness</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Witness-specific assessment&mdash;can&rsquo;t consolidate across different witnesses.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Supporting Witness Strength</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Each witness assessed independently; quality varies by individual.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Expert Witness Impact</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Expert effectiveness at arb/med distinct from Phase 4 expert scoring.</td>
+      </tr>
+
+      <!-- ── TSS: 8 factors — Review Opportunity ── -->
+      <tr class="bg-purple-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-purple-800">Trial Strategy Score (TSS) &mdash; 8 Factors, Review Opportunity</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Opening Position</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">May merge &rarr; &ldquo;Negotiation Approach&rdquo;</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Review</span></td>
+        <td class="px-4 py-2 text-muted-foreground">May overlap with Concession Pattern&mdash;both describe negotiation style.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Concession Pattern</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">May merge &rarr; &ldquo;Negotiation Approach&rdquo;</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Review</span></td>
+        <td class="px-4 py-2 text-muted-foreground">May overlap with Opening Position&mdash;needs attorney validation.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Mediator Effectiveness</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Unique external factor&mdash;mediator quality is independent dimension.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Authority Level</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Whether decision-makers are present&mdash;standalone binary-ish assessment.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Time Pressure</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">May merge &rarr; &ldquo;Process Dynamics&rdquo;</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Review</span></td>
+        <td class="px-4 py-2 text-muted-foreground">May overlap with Emotional Leverage in driving urgency.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Emotional Leverage</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">May merge &rarr; &ldquo;Process Dynamics&rdquo;</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Review</span></td>
+        <td class="px-4 py-2 text-muted-foreground">May overlap with Time Pressure&mdash;both about negotiation pressure.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Bracketing Strategy</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Specific negotiation technique assessment&mdash;distinct tactical dimension.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Final Offer Dynamics</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">End-stage negotiation behavior&mdash;captures distinct decision moment.</td>
+      </tr>
+
+      <!-- ── SLS: 5 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Settlement Leverage Score (SLS) &mdash; 5 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Insurance Coverage Leverage</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Coverage-specific leverage drives distinct negotiation tactics.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Damages Evidence Strength</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Quality of damages proof at settlement stage.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Liability Leverage</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Strength of liability argument as settlement pressure.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Timing Leverage</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Case timeline position creates different settlement dynamics.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Alternative Resolution Leverage</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Availability of trial/arb alternatives as negotiation leverage.</td>
+      </tr>
+
+      <!-- ── CTT: 5 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Case Timeline Tracker (CTT) &mdash; 5 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Discovery Completion</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Milestone independently trackable from case management data.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Expert Deadlines</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Expert-related timeline milestones&mdash;distinct from discovery.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Motion Practice Status</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Tracks pending motions and their impact on timeline.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Trial Date Proximity</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Distance to trial date drives urgency assessment.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Settlement Window Status</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Whether optimal settlement window is open/closing.</td>
+      </tr>
+
+      <!-- ── TRS: 5 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Trial Readiness Score (TRS) &mdash; 5 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Witness Preparation</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Maps to distinct preparation area&mdash;witness prep.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Exhibit Preparation</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Document and exhibit readiness&mdash;separate workstream.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Legal Brief Readiness</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Trial brief and legal argument preparation status.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Jury Selection Strategy</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Voir dire preparation&mdash;independent planning dimension.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Logistics &amp; Scheduling</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Courtroom logistics, scheduling, and administrative readiness.</td>
+      </tr>
+
+      <!-- ── ERI: 2 factors — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Emotional Readiness Index (ERI) &mdash; 2 Factors, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Client Emotional Readiness</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Client&rsquo;s emotional preparedness for trial/arb proceedings&mdash;already minimal.</td>
+      </tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Attorney Confidence Level</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Attorney&rsquo;s subjective readiness assessment&mdash;2-dimensional, can&rsquo;t reduce further.</td>
+      </tr>
+
+      <!-- ── CCS: 1 factor — No Change ── -->
+      <tr class="bg-green-50/60 border-b border-border"><td colspan="5" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-green-800">Case Complexity Score (CCS) &mdash; 1 Factor, No Change</td></tr>
+      <tr class="border-b border-border">
+        <td class="px-4 py-2 font-medium">Overall Case Complexity</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center">Manual 1&ndash;5</td>
+        <td class="px-4 py-2 text-center"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">No Change</span></td>
+        <td class="px-4 py-2 text-muted-foreground">Single composite score&mdash;can&rsquo;t be reduced further.</td>
+      </tr>
+
+      <!-- ── Totals ── -->
+      <tr class="bg-muted font-bold"><td class="px-4 py-3" colspan="2">Total</td><td class="px-4 py-3 text-center" colspan="3">34 manual inputs total (31 if TSS consolidation approved)</td></tr>
+    </tbody>
+  </table>
+  </div>
   </div>
 
   <!-- Card: TSS Review Opportunity -->
@@ -1209,6 +2147,7 @@ tailwind.config = {
 
   <div class="rounded-lg border border-border bg-muted/50 p-4">
     <p class="text-sm text-foreground">This phase uses outcome KPIs (verdict amount, trial duration, juror feedback) and process metrics. No subjective scoring systems exist. No changes needed.</p>
+    <p class="text-sm text-muted-foreground mt-2">Trial phase has no subjective scoring systems. All metrics are objective outcomes captured post-trial. Nothing to optimize.</p>
   </div>
 
   <div class="mt-4 rounded-lg border border-green-200 bg-green-50 p-4">
