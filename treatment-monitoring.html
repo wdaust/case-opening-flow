@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJB Treatment Monitoring — Parallel Track</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1e3a5f;--navy-light:#2d5282;--slate:#64748b;--slate-light:#94a3b8;--bg:#f8fafc;--white:#ffffff;--border:#e2e8f0;--text:#1e293b;--text-light:#475569;--para:#3b82f6;--atty:#8b5cf6;--sys:#22c55e;--mgmt:#f97316;--req:#ef4444;--cna:#eab308;--auto:#22c55e;--row-alt:#f1f5f9;font-size:14px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--navy-light);text-decoration:none}
+a:hover{text-decoration:underline}
+code,pre{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:12px;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 4px}
+
+/* Layout */
+#wrapper{display:flex;min-height:100vh}
+#sidebar{width:260px;min-width:260px;background:var(--navy);color:#e2e8f0;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0;flex-shrink:0;z-index:100}
+#main{flex:1;padding:40px 48px;max-width:1200px;min-width:0;overflow-x:auto}
+#hamburger{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--navy);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-size:18px}
+
+/* Sidebar */
+.sidebar-header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.sidebar-header h2{font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px;text-transform:uppercase}
+.sidebar-header p{font-size:11px;color:#94a3b8;margin-top:2px}
+.sidebar-section{padding:12px 0}
+.sidebar-section-title{padding:6px 20px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#64748b}
+.sidebar-link{display:block;padding:6px 20px 6px 28px;font-size:12px;color:#cbd5e1;cursor:pointer;transition:all 0.15s}
+.sidebar-link:hover,.sidebar-link.active{background:rgba(255,255,255,0.08);color:#fff}
+.sidebar-link.top-level{padding-left:20px;font-weight:600;color:#e2e8f0}
+.sidebar-link.top-level.active{background:rgba(255,255,255,0.12);color:#fff}
+
+/* Header */
+.page-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;padding:40px 48px;margin:-40px -48px 40px;border-bottom:3px solid #f97316}
+.page-header h1{font-size:26px;font-weight:700;margin-bottom:6px}
+.page-header p{font-size:14px;color:#93c5fd;font-weight:400}
+.version-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:2px 10px;border-radius:20px;font-size:11px;margin-top:10px}
+
+/* Section headers */
+.part-header{background:var(--navy);color:#fff;padding:16px 24px;border-radius:8px 8px 0 0;margin-top:40px}
+.part-header h2{font-size:18px;font-weight:700}
+.part-header p{font-size:13px;color:#93c5fd;margin-top:2px}
+section.part{margin-bottom:48px}
+
+/* Cards */
+.phase-card{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px}
+.phase-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#fff;cursor:pointer;user-select:none;gap:12px}
+.phase-card-header:hover{background:#f8fafc}
+.phase-card-header h3{font-size:15px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px}
+.phase-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--navy);color:#fff;border-radius:50%;font-size:12px;font-weight:700;flex-shrink:0}
+.toggle-icon{font-size:18px;color:var(--slate-light);transition:transform 0.2s;flex-shrink:0}
+.phase-card-body{padding:20px 24px;background:#fff;border-top:1px solid var(--border);display:none}
+.phase-card.open .phase-card-body{display:block}
+.phase-card.open .toggle-icon{transform:rotate(180deg)}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--navy);color:#fff;padding:8px 12px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;white-space:nowrap}
+td{padding:7px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:nth-child(even) td{background:var(--row-alt)}
+tr:last-child td{border-bottom:none}
+td code{font-size:11px}
+
+/* Info boxes */
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13px}
+.info-box strong{color:var(--navy)}
+.warn-box{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13px}
+.gate-box{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13px}
+.formula-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:13px;font-family:monospace}
+
+/* Band tables */
+.band-green{background:#dcfce7;color:#166534}
+.band-yellow{background:#fef9c3;color:#854d0e}
+.band-red{background:#fee2e2;color:#991b1b}
+.band-orange{background:#ffedd5;color:#9a3412}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;white-space:nowrap}
+.badge-para{background:#dbeafe;color:#1d4ed8}
+.badge-atty{background:#ede9fe;color:#7c3aed}
+.badge-sys{background:#dcfce7;color:#15803d}
+.badge-mgmt{background:#ffedd5;color:#c2410c}
+.badge-req{background:#fee2e2;color:#b91c1c}
+
+/* Steps */
+.step-list{list-style:none;padding:0}
+.step-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.step-item:last-child{border-bottom:none}
+.step-num-circle{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;background:var(--navy-light);color:#fff;border-radius:50%;font-size:11px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-content{flex:1}
+.step-title{font-weight:600;font-size:13px;color:var(--navy)}
+.step-detail{font-size:12px;color:var(--text-light);margin-top:2px}
+
+/* Pillar cards */
+.pillar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin:12px 0}
+.pillar-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px}
+.pillar-card h4{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.pillar-card .pillar-api{font-size:11px;color:var(--slate);margin-bottom:8px}
+.pillar-card p{font-size:12px;color:var(--text-light);margin-bottom:8px}
+
+/* Ladder */
+.ladder{display:flex;flex-direction:column;gap:2px;margin:12px 0}
+.ladder-rung{display:flex;align-items:stretch;gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:12px}
+.rung-num{background:var(--navy);color:#fff;min-width:44px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.rung-body{flex:1;padding:8px 12px;background:#fff}
+.rung-title{font-weight:600;color:var(--navy);margin-bottom:2px}
+.rung-sla{font-size:11px;color:var(--slate);margin-bottom:2px}
+.rung-action{font-size:11px;color:var(--text-light)}
+
+/* Cycle visual */
+.cycle-track{display:flex;align-items:center;gap:0;margin:20px 0;flex-wrap:wrap}
+.cycle-node{background:var(--navy);color:#fff;padding:10px 16px;border-radius:8px;font-size:12px;font-weight:600;text-align:center;min-width:140px}
+.cycle-arrow{font-size:20px;color:var(--slate-light);padding:0 8px}
+.cycle-node.active-cycle{background:#f97316}
+.cycle-node.complete-cycle{background:#22c55e}
+
+/* Approval section */
+.approval-section{background:#fff;border:2px solid var(--border);border-radius:8px;padding:24px;margin:32px 0}
+.approval-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.approval-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.approval-row:last-child{border-bottom:none}
+.approval-row label{display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px}
+.approval-row input[type="checkbox"]{width:18px;height:18px;accent-color:var(--navy)}
+.approval-row .approval-date{font-size:11px;color:var(--slate);margin-left:auto}
+.notes-area{width:100%;min-height:100px;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:inherit;font-size:13px;resize:vertical;margin-top:12px}
+.notes-area:focus{outline:none;border-color:var(--navy-light);box-shadow:0 0 0 2px rgba(45,82,130,0.15)}
+
+/* Sub-section */
+.sub-section{margin:24px 0}
+.sub-section h3{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+.sub-section h4{font-size:13px;font-weight:700;color:var(--navy-light);margin:16px 0 8px}
+
+/* Back to top */
+#back-to-top{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:500}
+#back-to-top.visible{display:flex}
+
+/* Print */
+@media print{#sidebar,#hamburger,#back-to-top{display:none}#wrapper{display:block}#main{padding:20px}.phase-card-body{display:block!important}.page-header{background:#1e3a5f;color:#fff;-webkit-print-color-adjust:exact}}
+
+/* Mobile */
+@media(max-width:900px){#sidebar{position:fixed;left:-260px;transition:left 0.3s;height:100%}#sidebar.open{left:0}#hamburger{display:block}#main{padding:20px 16px}#wrapper{display:block}.page-header{margin:-20px -16px 24px;padding:28px 20px}.pillar-grid{grid-template-columns:1fr}.cycle-track{flex-direction:column}.cycle-arrow{transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+
+<button id="hamburger" onclick="document.getElementById('sidebar').classList.toggle('open')">&#9776;</button>
+
+<div id="wrapper">
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h2>Treatment Monitoring</h2>
+    <p>Parallel Track &bull; v4.0</p>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sections</div>
+    <a class="sidebar-link top-level" onclick="navTo('overview')">Overview</a>
+    <a class="sidebar-link" onclick="navTo('cycle')">Monitoring Cycle</a>
+    <a class="sidebar-link" onclick="navTo('triggers')">Cycle Triggers</a>
+    <a class="sidebar-link" onclick="navTo('staleness')">Scoring Staleness</a>
+    <a class="sidebar-link" onclick="navTo('actions')">Action Triggers</a>
+    <a class="sidebar-link" onclick="navTo('fields')">Related Fields</a>
+    <a class="sidebar-link" onclick="navTo('approval')">Approval &amp; Notes</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Navigation</div>
+    <a class="sidebar-link" href="index.html">&larr; Back to Case Opening</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main id="main">
+
+<!-- HEADER -->
+<div class="page-header">
+  <h1>BJB Treatment Monitoring &mdash; Parallel Track</h1>
+  <p>Background Heartbeat &nbsp;|&nbsp; Runs Alongside All Phases &nbsp;|&nbsp; v4.0</p>
+  <span class="version-badge">v4.0 &nbsp;&bull;&nbsp; February 2026</span>
+</div>
+
+<!-- ============================================================ OVERVIEW -->
+<section class="part" id="overview">
+<div class="part-header">
+  <h2>1. Overview</h2>
+  <p>What Treatment Monitoring Is and How It Operates</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#9679;</span> Parallel Track &mdash; Not a Stage</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+  <div class="info-box">
+    <strong>Key Concept:</strong> Treatment Monitoring is a <strong>parallel track</strong>, NOT a sequential stage.
+    It runs as its own recurring object with an independent clock and does not block any case phase from proceeding.
+  </div>
+
+  <div class="sub-section">
+    <h4>Core Characteristics</h4>
+    <ul class="step-list">
+      <li class="step-item">
+        <span class="step-num-circle">1</span>
+        <div class="step-content">
+          <div class="step-title">Independent Recurring Object</div>
+          <div class="step-detail">Own 30-day recurring clock. Changes to 45 days once treatment is marked complete.</div>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-num-circle">2</span>
+        <div class="step-content">
+          <div class="step-title">Non-Blocking</div>
+          <div class="step-detail">Discovery, Expert, Arb/Med, and Trial all proceed independently. Treatment monitoring never holds a phase gate.</div>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-num-circle">3</span>
+        <div class="step-content">
+          <div class="step-title">Background Heartbeat</div>
+          <div class="step-detail">Functions as a continuous health check on client treatment status, refreshing scores and flagging issues on a recurring basis.</div>
+        </div>
+      </li>
+      <li class="step-item">
+        <span class="step-num-circle">4</span>
+        <div class="step-content">
+          <div class="step-title">Triggers Per Cycle</div>
+          <div class="step-detail">Each cycle fires: client communication appointment, call attempt ladder (if unreachable), scoring refreshes, treatment gap checks.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ MONITORING CYCLE -->
+<section class="part" id="cycle">
+<div class="part-header">
+  <h2>2. Monitoring Cycle</h2>
+  <p>Recurring 30-Day Cycle &mdash; Visual Timeline</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#8635;</span> Cycle Timeline</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="info-box"><strong>Clock Rule:</strong> 30-day cycle while treatment is active. Once treatment is marked complete, clock extends to 45-day cycle for ongoing monitoring.</div>
+
+  <div class="cycle-track">
+    <div class="cycle-node active-cycle">Day 0<br><small>Cycle Start</small></div>
+    <div class="cycle-arrow">&rarr;</div>
+    <div class="cycle-node">Day 1&ndash;3<br><small>Client Outreach</small></div>
+    <div class="cycle-arrow">&rarr;</div>
+    <div class="cycle-node">Day 3&ndash;7<br><small>Call Ladder<br>(if unreachable)</small></div>
+    <div class="cycle-arrow">&rarr;</div>
+    <div class="cycle-node">Day 7&ndash;14<br><small>Score Refresh<br>&amp; Gap Check</small></div>
+    <div class="cycle-arrow">&rarr;</div>
+    <div class="cycle-node">Day 14&ndash;28<br><small>Action Triggers<br>Evaluated</small></div>
+    <div class="cycle-arrow">&rarr;</div>
+    <div class="cycle-node complete-cycle">Day 30<br><small>Cycle Reset</small></div>
+  </div>
+
+  <div class="sub-section">
+    <h4>What Happens at Each Check-In</h4>
+    <div class="ladder">
+      <div class="ladder-rung">
+        <div class="rung-num">1</div>
+        <div class="rung-body">
+          <div class="rung-title">Client Communication Appointment</div>
+          <div class="rung-sla">Day 1&ndash;3 of cycle</div>
+          <div class="rung-action">System creates client check-in task. Para/Legal Asst schedules communication appointment to assess treatment status.</div>
+        </div>
+      </div>
+      <div class="ladder-rung">
+        <div class="rung-num">2</div>
+        <div class="rung-body">
+          <div class="rung-title">Call Attempt Ladder (if unreachable)</div>
+          <div class="rung-sla">Day 3&ndash;7 of cycle</div>
+          <div class="rung-action">If client is unreachable during initial outreach, call attempt ladder triggers with escalating contact methods (call, SMS, email).</div>
+        </div>
+      </div>
+      <div class="ladder-rung">
+        <div class="rung-num">3</div>
+        <div class="rung-body">
+          <div class="rung-title">Scoring Refresh</div>
+          <div class="rung-sla">Day 7&ndash;14 of cycle</div>
+          <div class="rung-action">TSI scoring refresh (5 factors). Client Profile treatment behavior metrics refresh (4 sub-metrics). All scores get updated <code>last_reviewed</code> timestamps.</div>
+        </div>
+      </div>
+      <div class="ladder-rung">
+        <div class="rung-num">4</div>
+        <div class="rung-body">
+          <div class="rung-title">Treatment Gaps Check</div>
+          <div class="rung-sla">Day 7&ndash;14 of cycle</div>
+          <div class="rung-action">System evaluates <code>BJB__Treatment_Gaps_Flag__c</code>. Any gap &gt; 30 days is flagged. Attorney notified within 24 hours if gaps detected.</div>
+        </div>
+      </div>
+      <div class="ladder-rung">
+        <div class="rung-num">5</div>
+        <div class="rung-body">
+          <div class="rung-title">Action Trigger Evaluation</div>
+          <div class="rung-sla">Day 14&ndash;28 of cycle</div>
+          <div class="rung-action">System evaluates all action triggers (demand readiness, treatment gaps, liability scores, provisional status) and fires any applicable tasks.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Clock Change:</strong> When treatment is marked complete, the cycle length extends from <strong>30 days &rarr; 45 days</strong>. All the same checks still fire, but on a longer interval.
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ CYCLE TRIGGERS -->
+<section class="part" id="triggers">
+<div class="part-header">
+  <h2>3. What Each Cycle Triggers</h2>
+  <p>Tasks and Refreshes Fired Every Cycle</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#9889;</span> Cycle Trigger Matrix</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Trigger</th>
+          <th>Owner</th>
+          <th>Description</th>
+          <th>Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Client Communication Appointment</strong></td>
+          <td><span class="badge badge-para">Para</span></td>
+          <td>Scheduled check-in to assess current treatment status, upcoming appointments, and client compliance</td>
+          <td>Day 1&ndash;3</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Call Attempt Ladder</strong></td>
+          <td><span class="badge badge-para">Para</span> <span class="badge badge-sys">Auto</span></td>
+          <td>Escalating contact attempts if client is unreachable during initial outreach (call, SMS, email sequence)</td>
+          <td>Day 3&ndash;7</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>TSI Scoring Refresh</strong></td>
+          <td><span class="badge badge-para">Para</span></td>
+          <td>Re-score all 5 TSI factors: Medical Severity, Treatment Consistency, Provider Credibility, Objective Proof, Future Exposure</td>
+          <td>Day 7&ndash;14</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Client Profile Treatment Metrics Refresh</strong></td>
+          <td><span class="badge badge-para">Para</span></td>
+          <td>Re-score 4 treatment sub-metrics:
+            <br>&bull; Treatment Consistency (<code>BJB__CP_Tx_Consistency__c</code>)
+            <br>&bull; Compliance with Care Plan (<code>BJB__CP_Care_Plan_Compliance__c</code>)
+            <br>&bull; Escalation Readiness (<code>BJB__CP_Escalation_Readiness__c</code>)
+            <br>&bull; Treatment Documentation Strength (<code>BJB__CP_Tx_Doc_Strength__c</code>)
+          </td>
+          <td>Day 7&ndash;14</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Treatment Gaps Check</strong></td>
+          <td><span class="badge badge-sys">Auto</span></td>
+          <td>Evaluate <code>BJB__Treatment_Gaps_Flag__c</code>. Any gap &gt; 30 days flagged. Attorney notified within 24 hrs if Yes.</td>
+          <td>Day 7&ndash;14</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ SCORING STALENESS -->
+<section class="part" id="staleness">
+<div class="part-header">
+  <h2>4. Scoring Staleness Rules</h2>
+  <p>How Scores Stay Current &mdash; Stale Flags, Audit Trail, Data Trust Meter</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#128337;</span> Staleness Framework</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="sub-section">
+    <h4>Core Rules</h4>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rule</th>
+            <th>Detail</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Last Reviewed Date</strong></td>
+            <td>Every score gets a <code>last_reviewed</code> timestamp updated on each review</td>
+            <td>Enables staleness tracking</td>
+          </tr>
+          <tr>
+            <td><strong>90-Day Stale Flag</strong></td>
+            <td>If a score is not reviewed within 90 days, it is automatically flagged as Stale</td>
+            <td>Appears on team lead exception list for immediate attention</td>
+          </tr>
+          <tr>
+            <td><strong>&ldquo;No Change&rdquo; Checkbox</strong></td>
+            <td>If a reviewer confirms scores remain accurate, they must check a &ldquo;No Change&rdquo; confirmation box</td>
+            <td>Creates audit trail. Resets the 90-day clock. Cannot silently skip review.</td>
+          </tr>
+          <tr>
+            <td><strong>PROVISIONAL Flag</strong></td>
+            <td>All four scoring systems (Client Profile, Liability, Policy &amp; Collectability, TSI) start as PROVISIONAL</td>
+            <td>Remains PROVISIONAL until Data Hygiene Gates pass for each system</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h4>Data Trust Meter</h4>
+    <div class="info-box">
+      <strong>Purpose:</strong> The Data Trust Meter rolls up all scoring quality indicators into a single dashboard view per case.
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <h4>% Required Fields Filled</h4>
+        <p>Tracks how many required Litify fields across all scoring systems have been populated. Missing fields reduce the trust score.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>% Scores Current vs. Stale</h4>
+        <p>Ratio of scores reviewed within 90 days vs. those flagged as stale. Goal: 95%+ current across all cases.</p>
+      </div>
+      <div class="pillar-card">
+        <h4>Missing Items</h4>
+        <p>Itemized list of what is missing entirely: fields never filled, scores never initiated, hygiene gates incomplete.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gate-box">
+    <strong>PROVISIONAL Blocking:</strong> Until Data Hygiene Gates pass, all scores display a PROVISIONAL flag. This flag appears on the Data Trust Meter as incomplete and blocks certain downstream actions (e.g., demand preparation, settlement evaluation).
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ ACTION TRIGGERS -->
+<section class="part" id="actions">
+<div class="part-header">
+  <h2>5. Action Triggers</h2>
+  <p>&ldquo;What To Do&rdquo; &mdash; Automated Responses Based on Score Thresholds</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#9888;</span> Trigger &rarr; Action Matrix</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Condition</th>
+          <th>Threshold</th>
+          <th>System Action</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="band-yellow"><strong>Demand-Ready % &lt; Threshold</strong></td>
+          <td>Below configured demand-readiness percentage</td>
+          <td>System creates <strong>demand sprint task set</strong> &mdash; optional tasks become activated to accelerate case toward demand readiness</td>
+          <td><span class="badge badge-sys">Auto</span> <span class="badge badge-para">Para</span></td>
+        </tr>
+        <tr>
+          <td class="band-red"><strong>Treatment Gaps &gt; Threshold</strong></td>
+          <td>Gap exceeds configured days (e.g., 30+ days)</td>
+          <td>Treatment monitoring protocol triggers <strong>additional touchpoints</strong> &mdash; extra client outreach, provider follow-up, gap documentation</td>
+          <td><span class="badge badge-sys">Auto</span> <span class="badge badge-para">Para</span></td>
+        </tr>
+        <tr>
+          <td class="band-red"><strong>Liability Score &lt; 40</strong></td>
+          <td>Liability (SLI/LSI) score below 40</td>
+          <td>System creates <strong>early litigation evaluation task</strong> for attorney to assess case viability and strategy</td>
+          <td><span class="badge badge-sys">Auto</span> <span class="badge badge-atty">Attorney</span></td>
+        </tr>
+        <tr>
+          <td class="band-orange"><strong>Score is PROVISIONAL</strong></td>
+          <td>Data Hygiene Gates incomplete</td>
+          <td>Displayed on <strong>Data Trust Meter</strong> as incomplete. <strong>Blocks</strong> certain downstream actions (demand prep, settlement eval, final case assessment)</td>
+          <td><span class="badge badge-mgmt">Mgmt</span> <span class="badge badge-para">Para</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <strong>Note:</strong> Action triggers are evaluated during each monitoring cycle (Day 14&ndash;28). Multiple triggers can fire simultaneously if multiple thresholds are breached.
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ RELATED FIELDS -->
+<section class="part" id="fields">
+<div class="part-header">
+  <h2>6. Related Litify Fields</h2>
+  <p>Custom Fields Referenced by Treatment Monitoring</p>
+</div>
+
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#128451;</span> Field Reference</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="sub-section">
+    <h4>Treatment Gaps</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>API Name</th><th>Type</th><th>Values</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>BJB__Treatment_Gaps_Flag__c</code></td><td>Picklist</td><td>Yes / No</td><td>Flags whether client has treatment gaps. If Yes, attorney notified within 24 hrs.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h4>TSI Scoring Fields (5 Factors + Score + 6 Hygiene Checkboxes)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>API Name</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>BJB__TSI_Severity__c</code></td><td>Number (1&ndash;5)</td><td>Medical Severity factor (25% weight)</td></tr>
+          <tr><td><code>BJB__TSI_Consistency__c</code></td><td>Number (1&ndash;5)</td><td>Treatment Consistency factor (20% weight)</td></tr>
+          <tr><td><code>BJB__TSI_Provider_Cred__c</code></td><td>Number (1&ndash;5)</td><td>Provider Credibility factor (20% weight)</td></tr>
+          <tr><td><code>BJB__TSI_Objective_Proof__c</code></td><td>Number (1&ndash;5)</td><td>Objective Proof factor (20% weight)</td></tr>
+          <tr><td><code>BJB__TSI_Future_Exposure__c</code></td><td>Number (1&ndash;5)</td><td>Future Exposure factor (15% weight)</td></tr>
+          <tr><td><code>BJB__TSI_Score__c</code></td><td>Formula (Number)</td><td>Weighted composite: (Sev&times;0.25) + (Con&times;0.20) + (Cred&times;0.20) + (Proof&times;0.20) + (Fut&times;0.15)</td></tr>
+          <tr><td><code>BJB__TSI_Surgery_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: Surgery/injection status documented?</td></tr>
+          <tr><td><code>BJB__TSI_Injection_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: Injection status documented?</td></tr>
+          <tr><td><code>BJB__TSI_Gap_30_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: Gap &gt; 30 days analysis completed?</td></tr>
+          <tr><td><code>BJB__TSI_MRI_Confirmed_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: MRI/imaging results recorded?</td></tr>
+          <tr><td><code>BJB__TSI_Specialist_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: Specialist involvement documented?</td></tr>
+          <tr><td><code>BJB__TSI_Future_Care_YN__c</code></td><td>Checkbox</td><td>Data Hygiene: Future care status assessed?</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h4>Client Profile &mdash; Treatment Behavior (4 Sub-Metrics)</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>API Name</th><th>Type</th><th>Scores</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>BJB__CP_Tx_Consistency__c</code></td><td>Number (1&ndash;5)</td><td>5 = Steady care, no gaps &hellip; 1 = Abandoned treatment</td><td>Treatment Consistency</td></tr>
+          <tr><td><code>BJB__CP_Care_Plan_Compliance__c</code></td><td>Number (1&ndash;5)</td><td>5 = Completes PT, referrals &hellip; 1 = Refuses care</td><td>Compliance with Care Plan</td></tr>
+          <tr><td><code>BJB__CP_Escalation_Readiness__c</code></td><td>Number (1&ndash;5)</td><td>5 = Willing for procedures &hellip; 1 = Refuses all escalation</td><td>Escalation Readiness</td></tr>
+          <tr><td><code>BJB__CP_Tx_Doc_Strength__c</code></td><td>Number (1&ndash;5)</td><td>5 = Detailed provider notes &hellip; 1 = Poor/contradictory docs</td><td>Treatment Documentation Strength</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sub-section">
+    <h4>Staleness &amp; Status Fields</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>last_reviewed</code> (per score)</td><td>DateTime</td><td>Timestamp of most recent review. Updated on each score refresh or &ldquo;No Change&rdquo; confirmation.</td></tr>
+          <tr><td>Stale Flag (per score)</td><td>Boolean (Auto)</td><td>Set to TRUE if <code>last_reviewed</code> &gt; 90 days ago. Appears on team lead exception list.</td></tr>
+          <tr><td>&ldquo;No Change&rdquo; Confirmation</td><td>Checkbox</td><td>Reviewer must check to confirm score is still accurate without changes. Creates audit trail entry.</td></tr>
+          <tr><td><code>BJB__Score_Status__c</code></td><td>Picklist</td><td>Provisional / Verified / Validated. All scores start Provisional until Data Hygiene Gates pass.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- ============================================================ APPROVAL & NOTES -->
+<section class="part" id="approval">
+<div class="part-header">
+  <h2>7. Approval &amp; Notes</h2>
+  <p>Management Sign-Off and Session Notes</p>
+</div>
+
+<div class="approval-section">
+  <h3>Management Approval Checklist</h3>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-overview"> Overview &amp; Parallel Track Design Approved</label>
+    <span class="approval-date" id="appr-overview-date"></span>
+  </div>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-cycle"> Monitoring Cycle Structure Approved</label>
+    <span class="approval-date" id="appr-cycle-date"></span>
+  </div>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-triggers"> Cycle Triggers Approved</label>
+    <span class="approval-date" id="appr-triggers-date"></span>
+  </div>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-staleness"> Scoring Staleness Rules Approved</label>
+    <span class="approval-date" id="appr-staleness-date"></span>
+  </div>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-actions"> Action Triggers Approved</label>
+    <span class="approval-date" id="appr-actions-date"></span>
+  </div>
+  <div class="approval-row">
+    <label><input type="checkbox" id="appr-fields"> Related Litify Fields Approved</label>
+    <span class="approval-date" id="appr-fields-date"></span>
+  </div>
+
+  <h3 style="margin-top:24px">Notes</h3>
+  <textarea class="notes-area" id="mgmt-notes" placeholder="Add management notes, feedback, or change requests here..."></textarea>
+</div>
+
+</section>
+
+</main>
+</div>
+
+<button id="back-to-top" onclick="window.scrollTo(0,0)">&uarr;</button>
+
+<script>
+// Toggle cards
+function toggleCard(header){
+  header.parentElement.classList.toggle('open');
+}
+
+// Scroll to section
+function navTo(id){
+  var el=document.getElementById(id);
+  if(el){
+    var rect=el.getBoundingClientRect();
+    var top=rect.top+window.pageYOffset-10;
+    setTimeout(function(){window.scrollTo(0,top);},0);
+  }
+}
+
+// Back to top visibility
+window.addEventListener('scroll',function(){
+  var btn=document.getElementById('back-to-top');
+  if(window.scrollY>300){btn.classList.add('visible');}
+  else{btn.classList.remove('visible');}
+});
+
+// Scroll spy
+(function(){
+  var links=document.querySelectorAll('.sidebar-link');
+  var sections=['overview','cycle','triggers','staleness','actions','fields','approval'];
+  function onScroll(){
+    var y=window.scrollY+120;
+    var current='';
+    sections.forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&el.offsetTop<=y)current=id;
+    });
+    links.forEach(function(l){
+      l.classList.remove('active');
+      var oc=l.getAttribute('onclick')||'';
+      if(oc.indexOf("'"+current+"'")>-1)l.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll',onScroll);
+})();
+
+// Close sidebar on overlay click (mobile)
+document.addEventListener('click',function(e){
+  var sidebar=document.getElementById('sidebar');
+  var ham=document.getElementById('hamburger');
+  if(sidebar.classList.contains('open')&&!sidebar.contains(e.target)&&e.target!==ham){
+    sidebar.classList.remove('open');
+  }
+});
+
+// Approval checkboxes - stamp date on check
+document.querySelectorAll('.approval-section input[type="checkbox"]').forEach(function(cb){
+  cb.addEventListener('change',function(){
+    var dateSpan=document.getElementById(cb.id+'-date');
+    if(cb.checked){
+      dateSpan.textContent='Approved: '+new Date().toLocaleString();
+    } else {
+      dateSpan.textContent='';
+    }
+  });
+});
+</script>
+</body>
+</html>

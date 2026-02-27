@@ -218,6 +218,14 @@ td{position:relative}
     <a class="sidebar-link" onclick="navTo('partC');setTab('tab-perms')">Permissions</a>
     <a class="sidebar-link" onclick="navTo('partC');setTab('tab-build')">Build Sequence</a>
   </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Parallel Tracks</div>
+    <a class="sidebar-link top-level" href="treatment-monitoring.html">Treatment Monitoring &rarr;</a>
+  </div>
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Sign-Off</div>
+    <a class="sidebar-link" onclick="navTo('approval')">Approval &amp; Notes</a>
+  </div>
 </nav>
 
 <!-- MAIN -->
@@ -239,6 +247,7 @@ td{position:relative}
   <button class="phase-btn" onclick="navTo('ph5')">5 &mdash; Complaint &amp; Filing</button>
   <button class="phase-btn" onclick="navTo('ph6')">6 &mdash; Medical Records</button>
   <button class="phase-btn" onclick="navTo('ph7')">7 &mdash; Final Gate</button>
+  <button class="phase-btn" onclick="window.location.href='treatment-monitoring.html'" style="background:#ffedd5;border-color:#f97316;color:#9a3412">&#9679; Treatment Monitoring</button>
 </div>
 
 <!-- LEGEND -->
@@ -1578,6 +1587,37 @@ td{position:relative}
 </section>
 <!-- ============================================================ END PART C -->
 
+<!-- ============================================================ APPROVAL & NOTES -->
+<section class="part" id="approval">
+<div class="part-header">
+  <h2>Approval &amp; Notes</h2>
+  <p>Management Sign-Off and Session Notes</p>
+</div>
+
+<div style="background:#fff;border:2px solid var(--border);border-radius:8px;padding:24px;margin:16px 0 0">
+  <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--border)">Management Approval Checklist</h3>
+  <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part A &mdash; Process Phases Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto" id="idx-appr-a"></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part B &mdash; Scoring Systems Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Part C &mdash; Dev Spec Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-size:13px">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600;color:var(--navy);min-width:280px"><input type="checkbox" style="width:18px;height:18px;accent-color:var(--navy)" onchange="this.nextElementSibling.textContent=this.checked?'Approved: '+new Date().toLocaleString():''"> <span></span> Full Specification Approved</label>
+    <span style="font-size:11px;color:var(--slate);margin-left:auto"></span>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--border)">Notes</h3>
+  <textarea style="width:100%;min-height:100px;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:inherit;font-size:13px;resize:vertical" placeholder="Add management notes, feedback, or change requests here..."></textarea>
+</div>
+</section>
+
 </main><!-- end main -->
 </div><!-- end wrapper -->
 
@@ -1659,7 +1699,7 @@ window.addEventListener('scroll',function(){
 // Scroll spy
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['partA','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC'];
+  var sections=['partA','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC','approval'];
   function onScroll(){
     var y=window.scrollY+120;
     var current='';
