@@ -12,9 +12,18 @@ a{color:var(--navy-light);text-decoration:none}
 a:hover{text-decoration:underline}
 code,pre{font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:12px;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 4px}
 
+/* Top Nav */
+#topnav{background:#0f2440;border-bottom:2px solid #f97316;padding:0 24px;position:sticky;top:0;z-index:150}
+.topnav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1460px;margin:0 auto;height:42px}
+.topnav-brand{font-size:13px;font-weight:700;color:#94a3b8;letter-spacing:0.5px;text-transform:uppercase}
+.topnav-links{display:flex;gap:4px}
+.topnav-link{padding:8px 16px;font-size:13px;font-weight:600;color:#94a3b8;border-radius:6px 6px 0 0;transition:all 0.15s;text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-2px}
+.topnav-link:hover{color:#fff;background:rgba(255,255,255,0.06);text-decoration:none}
+.topnav-link.active{color:#fff;background:rgba(255,255,255,0.1);border-bottom-color:#f97316}
+
 /* Layout */
-#wrapper{display:flex;min-height:100vh}
-#sidebar{width:260px;min-width:260px;background:var(--navy);color:#e2e8f0;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0;flex-shrink:0;z-index:100}
+#wrapper{display:flex;min-height:calc(100vh - 44px)}
+#sidebar{width:260px;min-width:260px;background:var(--navy);color:#e2e8f0;position:sticky;top:44px;height:calc(100vh - 44px);overflow-y:auto;padding:0;flex-shrink:0;z-index:100}
 #main{flex:1;padding:40px 48px;max-width:1200px;min-width:0;overflow-x:auto}
 #hamburger{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--navy);color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer;font-size:18px}
 
@@ -138,10 +147,21 @@ td code{font-size:11px}
 @media print{#sidebar,#hamburger,#back-to-top{display:none}#wrapper{display:block}#main{padding:20px}.phase-card-body{display:block!important}.page-header{background:#1e3a5f;color:#fff;-webkit-print-color-adjust:exact}}
 
 /* Mobile */
-@media(max-width:900px){#sidebar{position:fixed;left:-260px;transition:left 0.3s;height:100%}#sidebar.open{left:0}#hamburger{display:block}#main{padding:20px 16px}#wrapper{display:block}.page-header{margin:-20px -16px 24px;padding:28px 20px}.pillar-grid{grid-template-columns:1fr}.cycle-track{flex-direction:column}.cycle-arrow{transform:rotate(90deg)}}
+@media(max-width:900px){#topnav{padding:0 12px}.topnav-brand{display:none}.topnav-inner{justify-content:center}#sidebar{position:fixed;left:-260px;transition:left 0.3s;height:100%;top:44px}#sidebar.open{left:0}#hamburger{display:block;top:54px}#main{padding:20px 16px}#wrapper{display:block}.page-header{margin:-20px -16px 24px;padding:28px 20px}.pillar-grid{grid-template-columns:1fr}.cycle-track{flex-direction:column}.cycle-arrow{transform:rotate(90deg)}}
 </style>
 </head>
 <body>
+
+<!-- TOP NAV BAR -->
+<nav id="topnav">
+  <div class="topnav-inner">
+    <span class="topnav-brand">BJB Litify Spec</span>
+    <div class="topnav-links">
+      <a href="index.html" class="topnav-link">Case Opening</a>
+      <a href="treatment-monitoring.html" class="topnav-link active">Treatment Monitoring</a>
+    </div>
+  </div>
+</nav>
 
 <button id="hamburger" onclick="document.getElementById('sidebar').classList.toggle('open')">&#9776;</button>
 
