@@ -94,16 +94,41 @@ tailwind.config = {
     <p class="text-xs text-muted-foreground mt-0.5">Litify Dev Spec v1.0</p>
   </div>
   <nav class="px-3 py-4 space-y-6">
-None
-  </nav>
+  <div>
+    <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
+    <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partA')">Overview</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph1')">Phase 1: Drafting &amp; Pursuit</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph2')">Phase 2: Discovery Appointment</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph3')">Phase 3: Post-Appt Scoring</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph4')">Phase 4: Attorney Review</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph5')">Phase 5: Service &amp; Enforcement</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph6')">Phase 6: Supportive Tasks</a>
+  </div>
+  <div>
+    <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part B — Metrics</div>
+    <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partB')">Overview</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('metrics')">12 Core Metrics</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('sla-map')">SLA Map</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('exceptions')">Exception Queues</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('dhi')">Discovery Health Index</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('scoring')">Client Scoring</a>
+  </div>
+  <div>
+    <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part C — Dev Spec</div>
+    <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partC')">Overview</a>
+  </div>
+  <div>
+    <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Sign-Off</div>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('approval')">Approval &amp; Notes</a>
+  </div>
+</nav>
 </aside>
 
 <!-- MAIN -->
 <main class="main-area flex-1 overflow-y-auto">
-<div class="max-w-5xl px-8 py-10">
+<div class="max-w-7xl px-6 lg:px-10 py-10 mx-auto">
 
 <!-- MAIN -->
-<main id="main">
 
 <!-- HEADER -->
 <div class="border-b-2 border-[#8b5cf6] pb-8 mb-8">
@@ -152,8 +177,8 @@ None
 <!-- Phase 1 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph1">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">1</span> Discovery Drafting &amp; Client Pursuit</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">1</span> Discovery Drafting &amp; Client Pursuit</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para / Legal Asst</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System Auto</span>
     <span class="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">30 days draft + pursuit ladder</span>
@@ -164,12 +189,12 @@ None
 
   <!-- Sub-section 1A -->
   <div class="mt-6">
-    <h3>1A: Draft Plaintiff's Discovery Responses</h3>
-    <div class="rounded-md border border-border overflow-hidden my-3">
+    <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">1A: Draft Plaintiff's Discovery Responses</h3>
+    <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
     <table class="w-full text-sm">
       <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
       <tbody>
-        <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td style="position:relative;padding-right:36px">Draft Plaintiff's Discovery Responses<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Discovery Draft</strong>Initial discovery response document. Must cover all standard interrogatories, requests for production, and requests for admission.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para / Legal Asst</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">30 days from complaint service</td></tr>
+        <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td >Draft Plaintiff's Discovery Responses<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Discovery Draft</strong>Initial discovery response document. Must cover all standard interrogatories, requests for production, and requests for admission.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para / Legal Asst</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">30 days from complaint service</td></tr>
       </tbody>
     </table>
     </div>
@@ -177,97 +202,97 @@ None
 
   <!-- Sub-section 1B -->
   <div class="mt-6">
-    <h3>1B: Client Discovery Appointment Pursuit Ladder</h3>
+    <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">1B: Client Discovery Appointment Pursuit Ladder</h3>
     <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Establish contact with client to schedule the Discovery Appointment. Ladder escalates from paralegal calls through auto letters to management escalation.</div>
 
     <div class="flex flex-col gap-0.5 my-3">
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">1</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 1 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 31 from OA, 10am</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule discovery appointment within 5 business days. If not connected: log attempt, move to Rung 2.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 1 Logic</strong>First outreach. If connected: schedule discovery appointment within 5 business days. If not connected: log attempt, move to Rung 2.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">2</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 2 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 32, 10am</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule appointment. If not: log, move to Rung 3.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 2 Logic</strong>Second attempt. If connected: schedule appointment. If not: log, move to Rung 3.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">3</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 3 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 33, 4pm</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule. If not: auto letter triggers.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 3 Logic</strong>Third attempt, afternoon timing. If connected: schedule. If not: auto letter triggers.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="rung-num" style="background:#15803d">A</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">AUTO: Send Contact Letter 1 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">Trigger: Day 16 (if no contact)</div>
           <div class="text-xs text-muted-foreground mt-0.5">System auto-generates and mails first contact letter if client unreachable after 3 attempts.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Contact Letter 1</strong>System auto-generates and mails first contact letter if client unreachable after 3 attempts.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">4</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 4 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 45, 10am</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule. If not: continue ladder.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 4 Logic</strong>Fourth attempt after letter delivery window. If connected: schedule. If not: continue ladder.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">5</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 5 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 46, 4pm</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule. If not: continue.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 5 Logic</strong>Fifth attempt. If connected: schedule. If not: continue.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="w-12 flex items-center justify-center bg-primary text-primary-foreground font-bold text-sm shrink-0">6</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">Call Attempt 6 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">SLA: Day 47, 10am</div>
           <div class="text-xs text-muted-foreground mt-0.5">If connected: schedule. If not: second letter triggers.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Attempt 6 Logic</strong>Sixth attempt. If connected: schedule. If not: second letter triggers.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="rung-num" style="background:#15803d">A</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">AUTO: Send Contact Letter 2 <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">Trigger: Day 47</div>
           <div class="text-xs text-muted-foreground mt-0.5">System auto-generates second contact letter. Warns client of potential case impact.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Contact Letter 2</strong>System auto-generates second contact letter. Warns client of potential case impact.</div>
         </div>
       </div>
       <div class="flex border border-border rounded-lg overflow-hidden text-sm mb-1 hover:bg-muted/50">
         <div class="rung-num" style="background:#f97316">A</div>
-        <div class="flex-1 p-3 relative pr-8">
+        <div class="flex-1 p-3">
           <div class="font-semibold text-foreground">AUTO: Management Escalation <span class="rung-who"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span> <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-orange-100 text-orange-700">Mgmt</span></span></div>
           <div class="text-xs text-muted-foreground mt-0.5">Trigger: Day 49</div>
           <div class="text-xs text-muted-foreground mt-0.5">If still unreachable after 6 attempts + 2 letters, case escalated to management for disposition decision.</div>
-          <button class="info-btn" title="More detail">&#9432;</button>
+          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button>
           <div class="info-popover hidden"><strong>Management Escalation</strong>If still unreachable after 6 attempts + 2 letters, case escalated to management for disposition decision.</div>
         </div>
       </div>
@@ -283,8 +308,8 @@ None
 <!-- Phase 2 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph2">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">2</span> Discovery Appointment &mdash; 11-Point Agenda</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">2</span> Discovery Appointment &mdash; 11-Point Agenda</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span>
     <span class="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">Within 5 days of connection</span>
@@ -296,17 +321,17 @@ None
 
   <h4 style="margin-bottom:10px">11-Point Agenda</h4>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-3">
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">1</span><span>Opening &amp; Expectations</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Opening &amp; Expectations</strong>Set expectations for the discovery process, explain what will be asked, and confirm client availability for depositions if needed.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">2</span><span>Accident Event Reconstruction</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Accident Event Reconstruction</strong>Walk through the accident in chronological detail. Capture timeline, sequence of events, and any discrepancies from prior statements.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">3</span><span>Liability Risk Scan</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Liability Risk Scan</strong>Assess any comparative fault, pre-existing conditions, or facts that may weaken liability. Document mitigation strategies.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">4</span><span>Injury &amp; Treatment Timeline</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Injury &amp; Treatment Timeline</strong>Map all injuries to treatment providers, dates, and current status. Identify any gaps or inconsistencies.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">5</span><span>Prior History &amp; Defense Discovery Preview</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Prior History &amp; Defense Discovery Preview</strong>Review prior accidents, claims, lawsuits, medical history. Prepare client for defense discovery requests.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">6</span><span>Damages Deep Dive (Economic + Life Impact)</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Damages Deep Dive</strong>Calculate economic damages (medical bills, lost wages, future care). Document non-economic impact on daily life.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">7</span><span>Insurance &amp; Coverage Capture</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Insurance &amp; Coverage Capture</strong>Confirm all applicable insurance policies: auto, UM/UIM, health, MedPay. Identify coverage limits and stacking.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">8</span><span>Evidence &amp; Documentation Intake</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Evidence &amp; Documentation Intake</strong>Collect photos, dashcam footage, witness info, police reports, medical records authorizations.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">9</span><span>Communication Norms &amp; Client Responsibilities</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Communication Norms</strong>Set communication expectations: response times, preferred contact method, document submission deadlines.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">10</span><span>Red Flags / Escalation Check</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Red Flags / Escalation Check</strong>Screen for credibility issues, social media risks, prior inconsistent statements, surveillance vulnerability.</div></div>
-    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">11</span><span>Confirm Next Steps &amp; Assignments</span><button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Next Steps &amp; Assignments</strong>Summarize action items for client and firm. Set follow-up dates. Confirm document submission deadlines.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">1</span><span>Opening &amp; Expectations</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Opening &amp; Expectations</strong>Set expectations for the discovery process, explain what will be asked, and confirm client availability for depositions if needed.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">2</span><span>Accident Event Reconstruction</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Accident Event Reconstruction</strong>Walk through the accident in chronological detail. Capture timeline, sequence of events, and any discrepancies from prior statements.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">3</span><span>Liability Risk Scan</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Liability Risk Scan</strong>Assess any comparative fault, pre-existing conditions, or facts that may weaken liability. Document mitigation strategies.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">4</span><span>Injury &amp; Treatment Timeline</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Injury &amp; Treatment Timeline</strong>Map all injuries to treatment providers, dates, and current status. Identify any gaps or inconsistencies.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">5</span><span>Prior History &amp; Defense Discovery Preview</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Prior History &amp; Defense Discovery Preview</strong>Review prior accidents, claims, lawsuits, medical history. Prepare client for defense discovery requests.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">6</span><span>Damages Deep Dive (Economic + Life Impact)</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Damages Deep Dive</strong>Calculate economic damages (medical bills, lost wages, future care). Document non-economic impact on daily life.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">7</span><span>Insurance &amp; Coverage Capture</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Insurance &amp; Coverage Capture</strong>Confirm all applicable insurance policies: auto, UM/UIM, health, MedPay. Identify coverage limits and stacking.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">8</span><span>Evidence &amp; Documentation Intake</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Evidence &amp; Documentation Intake</strong>Collect photos, dashcam footage, witness info, police reports, medical records authorizations.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">9</span><span>Communication Norms &amp; Client Responsibilities</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Communication Norms</strong>Set communication expectations: response times, preferred contact method, document submission deadlines.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">10</span><span>Red Flags / Escalation Check</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Red Flags / Escalation Check</strong>Screen for credibility issues, social media risks, prior inconsistent statements, surveillance vulnerability.</div></div>
+    <div class="flex gap-2 bg-muted/50 border border-border rounded-lg p-3 text-sm items-start relative pr-8"><span class="font-bold text-foreground min-w-[20px]">11</span><span>Confirm Next Steps &amp; Assignments</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Next Steps &amp; Assignments</strong>Summarize action items for client and firm. Set follow-up dates. Confirm document submission deadlines.</div></div>
   </div>
 
   <div class="info-box" style="margin-top:16px"><strong>Post-Appointment Note:</strong> After the discovery appointment, scores should be reassessed based on new information obtained. See Phase 3.</div>
@@ -316,8 +341,8 @@ None
 <!-- Phase 3 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph3">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">3</span> Post-Appointment Scoring</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">3</span> Post-Appointment Scoring</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span>
     <span class="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">1 hour per scoring system</span>
@@ -327,15 +352,15 @@ None
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Reassess all scoring systems based on new information obtained during the discovery appointment.</div>
 
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Scoring System</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
     <tbody>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td style="position:relative;padding-right:36px">Client Profile Reassessment<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Client Profile Reassessment</strong>Reassess reachability, compliance risk, credibility based on discovery appointment observations.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td style="position:relative;padding-right:36px">Liability Score Update<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Liability Score Update</strong>Update LSI/SLI based on new facts from accident reconstruction and liability risk scan.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td style="position:relative;padding-right:36px">Policy &amp; Collectability Refresh<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Policy &amp; Collectability Refresh</strong>Update coverage analysis based on insurance capture data from appointment.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td style="position:relative;padding-right:36px">TSI Reassessment<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>TSI Reassessment</strong>Reassess treatment severity based on updated injury/treatment timeline.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">5</td><td style="position:relative;padding-right:36px">CPI Recalculation<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>CPI Recalculation</strong>Recalculate Case Potential Index with updated scores from all systems.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td >Client Profile Reassessment<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Client Profile Reassessment</strong>Reassess reachability, compliance risk, credibility based on discovery appointment observations.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td >Liability Score Update<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Liability Score Update</strong>Update LSI/SLI based on new facts from accident reconstruction and liability risk scan.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td >Policy &amp; Collectability Refresh<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Policy &amp; Collectability Refresh</strong>Update coverage analysis based on insurance capture data from appointment.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td >TSI Reassessment<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>TSI Reassessment</strong>Reassess treatment severity based on updated injury/treatment timeline.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">5</td><td >CPI Recalculation<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>CPI Recalculation</strong>Recalculate Case Potential Index with updated scores from all systems.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">1 hour</td></tr>
     </tbody>
   </table>
   </div>
@@ -345,8 +370,8 @@ None
 <!-- Phase 4 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph4">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">4</span> Attorney Review &amp; Approval</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">4</span> Attorney Review &amp; Approval</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span>
     <span class="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">2 days finalization + 6 days approval</span>
@@ -356,12 +381,12 @@ None
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Attorney reviews, finalizes, and approves discovery responses before service on opposing counsel.</div>
 
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
     <tbody>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td style="position:relative;padding-right:36px">Finalize Discovery Responses<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Finalize Discovery Responses</strong>Attorney reviews all discovery responses, incorporates appointment findings, ensures accuracy and completeness.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">2 days from scoring</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td style="position:relative;padding-right:36px">Approve for Service<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Approve for Service</strong>Final attorney sign-off before discovery responses are served on opposing counsel.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">6 days from finalization</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td >Finalize Discovery Responses<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Finalize Discovery Responses</strong>Attorney reviews all discovery responses, incorporates appointment findings, ensures accuracy and completeness.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">2 days from scoring</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td >Approve for Service<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Approve for Service</strong>Final attorney sign-off before discovery responses are served on opposing counsel.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground">6 days from finalization</td></tr>
     </tbody>
   </table>
   </div>
@@ -373,8 +398,8 @@ None
 <!-- Phase 5 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph5">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">5</span> Service &amp; Enforcement</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">5</span> Service &amp; Enforcement</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
     <span class="text-xs text-muted-foreground bg-secondary px-2 py-0.5 rounded">10&ndash;70 days from defendant answer</span>
@@ -384,15 +409,15 @@ None
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Serve discovery responses, track compliance, and enforce through motion practice if necessary.</div>
 
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
     <tbody>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td style="position:relative;padding-right:36px">Serve Discovery Responses<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Serve Discovery Responses</strong>Serve plaintiff's discovery responses on defense counsel via approved service method.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">10 days from defendant answer</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td style="position:relative;padding-right:36px">Discovery Tracker Accuracy Review<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Tracker Accuracy Review</strong>Verify all discovery tracker fields are accurate and current. Cross-check deadlines.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">59 days from defendant answer</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td style="position:relative;padding-right:36px">Good Faith Letter<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Good Faith Letter</strong>Auto-generated if defendant fails to respond. Formal notice of deficiency before motion practice.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">Auto</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span></td><td class="px-4 py-3 text-sm text-foreground">60 days from defendant answer</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td style="position:relative;padding-right:36px">Motion to Compel<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Motion to Compel</strong>Filed if good faith letter does not produce responses. Conditional on attorney assessment.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">70 days from defendant answer</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">5</td><td style="position:relative;padding-right:36px">Motion Outcome Tracking<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Motion Outcome Tracking</strong>Track motion outcome and enforce any court orders. Update tracker accordingly.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">Post-ruling</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td >Serve Discovery Responses<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Serve Discovery Responses</strong>Serve plaintiff's discovery responses on defense counsel via approved service method.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">10 days from defendant answer</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td >Discovery Tracker Accuracy Review<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Tracker Accuracy Review</strong>Verify all discovery tracker fields are accurate and current. Cross-check deadlines.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">59 days from defendant answer</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td >Good Faith Letter<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Good Faith Letter</strong>Auto-generated if defendant fails to respond. Formal notice of deficiency before motion practice.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">Auto</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span></td><td class="px-4 py-3 text-sm text-foreground">60 days from defendant answer</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td >Motion to Compel<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Motion to Compel</strong>Filed if good faith letter does not produce responses. Conditional on attorney assessment.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground">70 days from defendant answer</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">5</td><td >Motion Outcome Tracking<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Motion Outcome Tracking</strong>Track motion outcome and enforce any court orders. Update tracker accordingly.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">Post-ruling</td></tr>
     </tbody>
   </table>
   </div>
@@ -402,8 +427,8 @@ None
 <!-- Phase 6 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph6">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">6</span> Supportive Tasks</h3>
-  <div style="display:flex;gap:8px;align-items:center">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">6</span> Supportive Tasks</h3>
+  <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System</span>
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span>
@@ -414,14 +439,14 @@ None
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Optional and conditional tasks that support the discovery process as needed.</div>
 
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
     <tbody>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td style="position:relative;padding-right:36px">Document Production Tier 1<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Doc Production Tier 1</strong>Initial document production: medical records, bills, authorizations.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td style="position:relative;padding-right:36px">Document Production Tier 2<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Doc Production Tier 2</strong>Supplemental production: employment records, tax returns, additional medical.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td style="position:relative;padding-right:36px">Document Production Tier 3<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>Doc Production Tier 3</strong>Final production: expert reports, supplemental responses, privilege logs.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
-      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td style="position:relative;padding-right:36px">Court Discovery End Date Reminder<button class="info-btn" title="More detail">&#9432;</button><div class="info-popover hidden"><strong>End Date Reminder</strong>System reminder when court-ordered discovery end date approaches.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System / Auto</span></td><td class="px-4 py-3 text-sm text-foreground">30 days before deadline</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">1</td><td >Document Production Tier 1<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Doc Production Tier 1</strong>Initial document production: medical records, bills, authorizations.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">2</td><td >Document Production Tier 2<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Doc Production Tier 2</strong>Supplemental production: employment records, tax returns, additional medical.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">3</td><td >Document Production Tier 3<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>Doc Production Tier 3</strong>Final production: expert reports, supplemental responses, privilege logs.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para</span></td><td class="px-4 py-3 text-sm text-foreground">As needed</td></tr>
+      <tr class="border-b border-border hover:bg-muted/50 relative"><td class="px-4 py-3 text-sm text-foreground">4</td><td >Court Discovery End Date Reminder<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 16v-4m0-4h.01"/></svg></button><div class="info-popover hidden"><strong>End Date Reminder</strong>System reminder when court-ordered discovery end date approaches.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-700">C/NA/D</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-700">System / Auto</span></td><td class="px-4 py-3 text-sm text-foreground">30 days before deadline</td></tr>
     </tbody>
   </table>
   </div>
@@ -441,11 +466,11 @@ None
 <!-- 12 Core Metrics -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="metrics">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">&#9733;</span> 12 Core Metrics</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span> 12 Core Metrics</h3>
   <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Metric</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Target</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Green</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Yellow</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Red</th></tr></thead>
     <tbody>
@@ -470,14 +495,14 @@ None
 <!-- SLA Map -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="sla-map">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">&#9200;</span> SLA Map</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9200;</span> SLA Map</h3>
   <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
 
   <div class="mt-6">
     <h4 class="text-sm font-semibold text-foreground mb-3">Drafting Phase</h4>
-    <div class="rounded-md border border-border overflow-hidden my-3">
+    <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
     <table class="w-full text-sm">
       <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
       <tbody>
@@ -491,7 +516,7 @@ None
 
   <div class="mt-6">
     <h4 class="text-sm font-semibold text-foreground mb-3">Attorney Phase</h4>
-    <div class="rounded-md border border-border overflow-hidden my-3">
+    <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
     <table class="w-full text-sm">
       <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
       <tbody>
@@ -505,7 +530,7 @@ None
 
   <div class="mt-6">
     <h4 class="text-sm font-semibold text-foreground mb-3">Enforcement Phase</h4>
-    <div class="rounded-md border border-border overflow-hidden my-3">
+    <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
     <table class="w-full text-sm">
       <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
       <tbody>
@@ -524,7 +549,7 @@ None
 <!-- Exception Queues -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="exceptions">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">&#9888;</span> Exception Queues</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9888;</span> Exception Queues</h3>
   <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
@@ -548,7 +573,7 @@ None
 <!-- Discovery Health Index -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="health-index">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">&#9829;</span> Discovery Health Index (DHI)</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9829;</span> Discovery Health Index (DHI)</h3>
   <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
@@ -557,7 +582,7 @@ None
 
   <div class="mt-6">
     <h4 class="text-sm font-semibold text-foreground mb-3">DHI Bands</h4>
-    <div class="rounded-md border border-border overflow-hidden my-3">
+    <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
     <table class="w-full text-sm">
       <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Score</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Band</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Status</th></tr></thead>
       <tbody>
@@ -618,7 +643,7 @@ None
 <!-- Client Scoring -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="client-scoring">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold flex items-center justify-center">&#9734;</span> Client Scoring</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9734;</span> Client Scoring</h3>
   <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
@@ -678,8 +703,8 @@ None
 <!-- Tab: Fields -->
 <div class="tab-pane" id="tab-fields">
 <div class="mt-6">
-  <h3>Discovery Process Fields</h3>
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">Discovery Process Fields</h3>
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Values / Formula</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Description</th></tr></thead>
     <tbody>
@@ -708,8 +733,8 @@ None
 </div>
 
 <div class="mt-6">
-  <h3>Discovery Client Scoring Fields</h3>
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">Discovery Client Scoring Fields</h3>
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Values / Formula</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Description</th></tr></thead>
     <tbody>
@@ -727,8 +752,8 @@ None
 <!-- Tab: Flows -->
 <div class="tab-pane hidden" id="tab-flows">
 <div class="mt-6">
-  <h3>Flows &amp; Automations</h3>
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">Flows &amp; Automations</h3>
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Flow Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Trigger</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Description</th></tr></thead>
     <tbody>
@@ -748,8 +773,8 @@ None
 <!-- Tab: Rules -->
 <div class="tab-pane hidden" id="tab-rules">
 <div class="mt-6">
-  <h3>Validation Rules</h3>
-  <div class="rounded-md border border-border overflow-hidden my-3">
+  <h3 class="text-sm font-semibold text-foreground mt-4 mb-2">Validation Rules</h3>
+  <div class="rounded-md border border-border overflow-hidden overflow-x-auto my-3">
   <table class="w-full text-sm">
     <th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider"ead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Rule Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Object</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Error Condition</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Message</th></tr></thead>
     <tbody>
@@ -799,7 +824,6 @@ None
 
 </section>
 
-</main><!-- end main -->
 </div><!-- end wrapper -->
 
 <button id="back-to-top" onclick="window.scrollTo(0,0)">&#8593;</button>
