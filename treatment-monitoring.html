@@ -123,6 +123,26 @@ td code{font-size:11px}
 .cycle-node.active-cycle{background:#f97316}
 .cycle-node.complete-cycle{background:#22c55e}
 
+/* Info button tooltip system */
+.task-row{position:relative}
+.task-row:hover,.ladder-rung:hover,.agenda-item:hover{background:#eff6ff!important;transition:background 0.15s}
+.info-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:help;font-size:14px;color:var(--slate-light);padding:2px 4px;line-height:1;z-index:10;flex-shrink:0;display:inline-flex;align-items:center}
+.info-btn:hover{color:var(--navy)}
+.rung-body{position:relative;padding-right:32px}
+.info-popover{display:none}
+#tooltip-overlay{position:absolute;z-index:9999;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.12);padding:12px 14px;min-width:260px;max-width:340px;font-size:12px;color:var(--text);line-height:1.5;pointer-events:none}
+#tooltip-overlay strong{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.4px;color:var(--navy);margin-bottom:6px}
+#tooltip-overlay ul{padding-left:14px;margin:4px 0 0}
+#tooltip-overlay li{margin-bottom:3px}
+td{position:relative}
+.badge-cna{background:#fef9c3;color:#854d0e}
+.badge-auto{background:#dcfce7;color:#15803d}
+.agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.agenda-item{display:flex;gap:8px;background:#f8fafc;border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-size:12px;align-items:flex-start;position:relative;padding-right:32px}
+.agenda-num{font-weight:700;color:var(--navy);min-width:20px}
+.exit-box{background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:10px 14px;margin-top:8px;font-size:12px}
+.phase-sla{font-size:11px;font-weight:600;color:var(--slate-light);background:#f1f5f9;padding:2px 8px;border-radius:4px}
+
 /* Approval section */
 .approval-section{background:#fff;border:2px solid var(--border);border-radius:8px;padding:24px;margin:32px 0}
 .approval-section h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
@@ -159,6 +179,7 @@ td code{font-size:11px}
     <div class="topnav-links">
       <a href="index.html" class="topnav-link">Case Opening</a>
       <a href="treatment-monitoring.html" class="topnav-link active">Treatment Monitoring</a>
+      <a href="written-discovery.html" class="topnav-link">Written Discovery</a>
     </div>
   </div>
 </nav>
@@ -176,7 +197,11 @@ td code{font-size:11px}
     <div class="sidebar-section-title">Sections</div>
     <a class="sidebar-link top-level" onclick="navTo('overview')">Overview</a>
     <a class="sidebar-link" onclick="navTo('cycle')">Monitoring Cycle</a>
+    <a class="sidebar-link" onclick="navTo('call-ladder')">Call Attempt Ladder</a>
+    <a class="sidebar-link" onclick="navTo('appointment')">Treatment Appointment</a>
+    <a class="sidebar-link" onclick="navTo('scoring')">Post-Appt Scoring</a>
     <a class="sidebar-link" onclick="navTo('triggers')">Cycle Triggers</a>
+    <a class="sidebar-link" onclick="navTo('recurring')">Recurring Tasks</a>
     <a class="sidebar-link" onclick="navTo('staleness')">Scoring Staleness</a>
     <a class="sidebar-link" onclick="navTo('actions')">Action Triggers</a>
     <a class="sidebar-link" onclick="navTo('fields')">Related Fields</a>
@@ -185,6 +210,7 @@ td code{font-size:11px}
   <div class="sidebar-section">
     <div class="sidebar-section-title">Navigation</div>
     <a class="sidebar-link" href="index.html">&larr; Back to Case Opening</a>
+    <a class="sidebar-link" href="written-discovery.html">Written Discovery &rarr;</a>
   </div>
 </nav>
 
@@ -337,6 +363,213 @@ td code{font-size:11px}
 </div>
 </section>
 
+<!-- ============================================================ CALL ATTEMPT LADDER -->
+<section class="part" id="call-ladder">
+<div class="part-header">
+  <h2>2B. Client Contact Ladder</h2>
+  <p>9-Attempt Call Sequence + Auto Letters + MIA Route</p>
+</div>
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#128222;</span> Contact Pursuit Ladder <span class="phase-sla">Starts Day 30 from OA</span></h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+  <div class="info-box"><strong>Purpose:</strong> Systematic escalating contact sequence to reach client for treatment monitoring check-in. Each cycle that requires client contact initiates this ladder.</div>
+
+  <div class="ladder">
+    <div class="ladder-rung">
+      <div class="rung-num">1</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 1 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 30 from OA</div>
+        <div class="rung-action">Morning call. If connected: proceed to Treatment Monitoring Appointment. If not: log attempt, advance.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 1</strong>First outreach of the monitoring cycle. Use primary phone number. If connected, schedule Treatment Monitoring Appointment within 3 business days. If voicemail, leave standardized message and log attempt in Litify.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">2</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 2 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 31</div>
+        <div class="rung-action">Morning call, alternate number if available. Log result.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 2</strong>Try alternate phone number if on file. If connected: schedule appointment. If not: log and advance to Attempt 3.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">3</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 3 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">4pm — Day 32</div>
+        <div class="rung-action">Afternoon timing shift. If not connected, Contact Letter 1 auto-triggers.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 3</strong>Afternoon call to try different availability window. If still unreachable after 3 attempts, system automatically queues Contact Letter 1.</div>
+      </div>
+    </div>
+    <div class="ladder-rung rung-auto">
+      <div class="rung-num" style="background:#22c55e">A</div>
+      <div class="rung-body">
+        <div class="rung-title">AUTO: Send Contact Letter 1 <span class="badge badge-sys">System</span> <span class="badge badge-auto">Auto</span></div>
+        <div class="rung-sla">Day 33</div>
+        <div class="rung-action">System auto-generates first contact letter. Mailed to client's address on file.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Contact Letter 1</strong>Automatically generated after 3 failed call attempts. Letter requests client contact the firm. Includes case reference and callback number. Mailed via standard delivery.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">4</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 4 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 37</div>
+        <div class="rung-action">Resume calls after letter delivery window.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 4</strong>Resumes after allowing time for Contact Letter 1 delivery. If connected: schedule appointment. If not: continue ladder.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">5</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 5 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">4pm — Day 37</div>
+        <div class="rung-action">Same day afternoon attempt.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 5</strong>Second call same day, afternoon timing. Try all available contact methods (phone, text, email).</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">6</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 6 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 38</div>
+        <div class="rung-action">If not connected, Contact Letter 2 auto-triggers.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 6</strong>Sixth attempt. If still unreachable, system triggers Contact Letter 2 with stronger language about case impact.</div>
+      </div>
+    </div>
+    <div class="ladder-rung rung-auto">
+      <div class="rung-num" style="background:#22c55e">A</div>
+      <div class="rung-body">
+        <div class="rung-title">AUTO: Send Contact Letter 2 <span class="badge badge-sys">System</span> <span class="badge badge-auto">Auto</span></div>
+        <div class="rung-sla">EOD — Day 38</div>
+        <div class="rung-action">Second contact letter with escalated language. Warns of potential case impact.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Contact Letter 2</strong>Stronger letter warning client that continued non-responsiveness may affect their case. Sent automatically after 6 failed attempts.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">7</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 7 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 42</div>
+        <div class="rung-action">Post-Letter 2 outreach resumes.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 7</strong>Resume contact after Letter 2 delivery window. Final series of attempts before MIA route.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">8</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 8 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">4pm — Day 42</div>
+        <div class="rung-action">Same day afternoon attempt.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 8</strong>Afternoon attempt same day. Use all available contact methods.</div>
+      </div>
+    </div>
+    <div class="ladder-rung">
+      <div class="rung-num">9</div>
+      <div class="rung-body">
+        <div class="rung-title">Call Attempt 9 <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span></div>
+        <div class="rung-sla">10am — Day 43</div>
+        <div class="rung-action">Final attempt. If not connected, MIA route triggers.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>Call Attempt 9</strong>Final call attempt in the ladder. If client is still unreachable, system automatically routes case back to Intake as MIA (Missing In Action).</div>
+      </div>
+    </div>
+    <div class="ladder-rung rung-auto">
+      <div class="rung-num" style="background:#ef4444">A</div>
+      <div class="rung-body">
+        <div class="rung-title">AUTO: Back to Intake as MIA <span class="badge badge-sys">System</span> <span class="badge badge-auto">Auto</span></div>
+        <div class="rung-sla">EOD — Day 43</div>
+        <div class="rung-action">Case routed back to Intake team with MIA status. Client flagged for re-engagement if they return contact.</div>
+        <button class="info-btn">&#9432;</button>
+        <div class="info-popover"><strong>MIA Route</strong>After 9 failed attempts and 2 contact letters, case is automatically returned to Intake with MIA designation. If client later makes contact, case can be re-activated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exit-box">
+    <strong>Success Path:</strong> Client connected at any rung → Schedule Treatment Monitoring Appointment → Proceed to treatment check-in agenda.
+  </div>
+  <div class="gate-box" style="margin-top:8px">
+    <strong>Failure Path:</strong> All 9 attempts + 2 letters exhausted → Auto MIA route → Case returns to Intake for disposition.
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ TREATMENT APPOINTMENT -->
+<section class="part" id="appointment">
+<div class="part-header">
+  <h2>2C. Treatment Monitoring Appointment</h2>
+  <p>Client Check-In Agenda &mdash; Para/Legal Asst Led</p>
+</div>
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#128203;</span> Appointment Agenda <span class="badge badge-para">Para</span> <span class="badge badge-req">Required</span> <span class="phase-sla">Within 3 days of connection</span></h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+  <div class="info-box"><strong>Purpose:</strong> Structured check-in to assess treatment status, identify gaps, update case information, and refresh scoring inputs.</div>
+
+  <div class="agenda-grid">
+    <div class="agenda-item"><span class="agenda-num">1.</span><div>Current Treatment Status — Active providers, frequency, next appointments<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Current Treatment Status</strong>Confirm which providers client is actively seeing, visit frequency, and upcoming scheduled appointments. Note any changes since last cycle.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">2.</span><div>Treatment Gaps Review — Any missed appointments or lapses &gt;14 days<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Treatment Gaps</strong>Identify any gaps in treatment exceeding 14 days. Document reasons for gaps. Flag gaps &gt;30 days for attorney notification.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">3.</span><div>Pain & Symptom Update — Current pain levels, new symptoms, improvements<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Pain & Symptoms</strong>Record current pain levels (1-10), any new symptoms since last check-in, and any improvements. Compare to prior cycle notes.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">4.</span><div>Provider Compliance — Following care plan, attending PT, taking medications<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Provider Compliance</strong>Assess whether client is following provider recommendations: attending PT sessions, taking prescribed medications, following activity restrictions.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">5.</span><div>New Medical Records — Any new imaging, specialist referrals, procedures<button class="info-btn">&#9432;</button><div class="info-popover"><strong>New Medical Records</strong>Check for new MRI/imaging results, specialist referrals, upcoming procedures (injections, surgery). Request authorizations if needed.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">6.</span><div>Work/Daily Life Impact — Employment status, activity limitations<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Life Impact</strong>Update employment status, document any changes in daily activities, and note ongoing limitations for damages documentation.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">7.</span><div>Insurance & Billing — New bills, lien updates, coverage changes<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Insurance & Billing</strong>Check for new medical bills, lien notices, or changes in insurance coverage. Ensure all bills are being tracked in the system.</div></div></div>
+    <div class="agenda-item"><span class="agenda-num">8.</span><div>Client Concerns & Questions — Address any client worries or case questions<button class="info-btn">&#9432;</button><div class="info-popover"><strong>Client Concerns</strong>Open floor for client questions about case status, timeline, or process. Address concerns and document any action items.</div></div></div>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ POST-APPOINTMENT SCORING -->
+<section class="part" id="scoring">
+<div class="part-header">
+  <h2>2D. Post-Appointment Scoring</h2>
+  <p>5 Scoring Systems Refreshed After Each Treatment Check-In</p>
+</div>
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#127919;</span> Scoring Refresh Matrix</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+  <div class="info-box"><strong>SLA:</strong> All scoring refreshes must be completed within <strong>1 hour</strong> of appointment completion.</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Scoring System</th><th>Status</th><th>Owner</th><th>SLA</th><th style="width:40px"></th></tr>
+      </thead>
+      <tbody>
+        <tr class="task-row"><td>1</td><td><strong>Client Profile Reassessment</strong></td><td><span class="badge badge-req">Required</span></td><td><span class="badge badge-para">Para</span></td><td>1 hour</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Client Profile</strong>Reassess treatment behavior metrics: consistency, care plan compliance, escalation readiness, documentation strength. Update all 4 sub-metrics based on appointment findings.</div></td></tr>
+        <tr class="task-row"><td>2</td><td><strong>TSI Scoring Refresh</strong></td><td><span class="badge badge-req">Required</span></td><td><span class="badge badge-para">Para</span></td><td>1 hour</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>TSI Refresh</strong>Re-score all 5 TSI factors based on updated treatment information: Medical Severity, Treatment Consistency, Provider Credibility, Objective Proof, Future Exposure.</div></td></tr>
+        <tr class="task-row"><td>3</td><td><strong>Treatment Gaps Flag Update</strong></td><td><span class="badge badge-req">Required</span></td><td><span class="badge badge-sys">System</span></td><td>Auto</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Gaps Flag</strong>System automatically re-evaluates BJB__Treatment_Gaps_Flag__c based on updated treatment dates. Flags any gap &gt;30 days and notifies attorney.</div></td></tr>
+        <tr class="task-row"><td>4</td><td><strong>Demand Readiness Check</strong></td><td><span class="badge badge-cna">C-NA-D</span></td><td><span class="badge badge-atty">Attorney</span></td><td>1 hour</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Demand Readiness</strong>Attorney evaluates whether treatment status supports demand preparation. Conditional — only scored if case is approaching demand-ready threshold.</div></td></tr>
+        <tr class="task-row"><td>5</td><td><strong>CPI Recalculation</strong></td><td><span class="badge badge-req">Required</span></td><td><span class="badge badge-sys">System</span></td><td>Auto</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>CPI Recalculation</strong>System automatically recalculates Case Potential Index using updated scores from Client Profile, TSI, and other scoring systems.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</section>
+
 <!-- ============================================================ CYCLE TRIGGERS -->
 <section class="part" id="triggers">
 <div class="part-header">
@@ -360,31 +593,35 @@ td code{font-size:11px}
           <th>Owner</th>
           <th>Description</th>
           <th>Timing</th>
+          <th style="width:40px"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="task-row">
           <td>1</td>
           <td><strong>Client Communication Appointment</strong></td>
           <td><span class="badge badge-para">Para</span></td>
           <td>Scheduled check-in to assess current treatment status, upcoming appointments, and client compliance</td>
           <td>Day 1&ndash;3</td>
+          <td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Client Communication</strong>System creates client check-in task at cycle start. Para/Legal Asst schedules and conducts treatment monitoring appointment to assess current treatment status.</div></td>
         </tr>
-        <tr>
+        <tr class="task-row">
           <td>2</td>
           <td><strong>Call Attempt Ladder</strong></td>
           <td><span class="badge badge-para">Para</span> <span class="badge badge-sys">Auto</span></td>
           <td>Escalating contact attempts if client is unreachable during initial outreach (call, SMS, email sequence)</td>
           <td>Day 3&ndash;7</td>
+          <td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Call Attempt Ladder</strong>9-attempt escalating contact sequence with 2 auto-generated letters. If all attempts exhausted, case routes back to Intake as MIA.</div></td>
         </tr>
-        <tr>
+        <tr class="task-row">
           <td>3</td>
           <td><strong>TSI Scoring Refresh</strong></td>
           <td><span class="badge badge-para">Para</span></td>
           <td>Re-score all 5 TSI factors: Medical Severity, Treatment Consistency, Provider Credibility, Objective Proof, Future Exposure</td>
           <td>Day 7&ndash;14</td>
+          <td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>TSI Refresh</strong>All 5 TSI factors must be re-scored based on latest treatment information gathered during the monitoring appointment. 1-hour SLA after appointment.</div></td>
         </tr>
-        <tr>
+        <tr class="task-row">
           <td>4</td>
           <td><strong>Client Profile Treatment Metrics Refresh</strong></td>
           <td><span class="badge badge-para">Para</span></td>
@@ -395,18 +632,58 @@ td code{font-size:11px}
             <br>&bull; Treatment Documentation Strength (<code>BJB__CP_Tx_Doc_Strength__c</code>)
           </td>
           <td>Day 7&ndash;14</td>
+          <td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Client Profile Metrics</strong>All 4 treatment behavior sub-metrics updated based on appointment findings. Feeds into overall Client Profile score and CPI calculation.</div></td>
         </tr>
-        <tr>
+        <tr class="task-row">
           <td>5</td>
           <td><strong>Treatment Gaps Check</strong></td>
           <td><span class="badge badge-sys">Auto</span></td>
           <td>Evaluate <code>BJB__Treatment_Gaps_Flag__c</code>. Any gap &gt; 30 days flagged. Attorney notified within 24 hrs if Yes.</td>
           <td>Day 7&ndash;14</td>
+          <td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Treatment Gaps</strong>System automatically evaluates treatment dates for gaps exceeding 30 days. If flagged, attorney is notified within 24 hours for case impact assessment.</div></td>
         </tr>
       </tbody>
     </table>
   </div>
 
+</div>
+</div>
+</section>
+
+<!-- ============================================================ RECURRING TASKS -->
+<section class="part" id="recurring">
+<div class="part-header">
+  <h2>4B. Recurring Administrative Tasks</h2>
+  <p>Liens, Medical Bills, Discovery Amendments &mdash; Ongoing Throughout Case</p>
+</div>
+<div class="phase-card open">
+<div class="phase-card-header" onclick="toggleCard(this)">
+  <h3><span class="phase-num">&#128260;</span> Recurring Task Matrix</h3>
+  <span class="toggle-icon">&#8964;</span>
+</div>
+<div class="phase-card-body">
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Task</th><th>Status</th><th>Owner</th><th>Frequency</th><th style="width:40px"></th></tr>
+      </thead>
+      <tbody>
+        <tr class="task-row"><td>1</td><td><strong>Liens Audit Letters (Medicare)</strong></td><td><span class="badge badge-auto">Auto</span></td><td><span class="badge badge-sys">System</span></td><td>Every 60 days</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Medicare Liens</strong>System auto-generates Medicare lien audit letters every 60 days to check for updated lien amounts. Letters sent to CMS/Medicare contractor. Responses tracked in lien management fields.</div></td></tr>
+        <tr class="task-row"><td>2</td><td><strong>Liens Audit Letters (VA/CHAMPVA)</strong></td><td><span class="badge badge-auto">Auto</span></td><td><span class="badge badge-sys">System</span></td><td>Every 60 days</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>VA/CHAMPVA Liens</strong>System auto-generates VA lien audit letters every 60 days. Applicable only if client has VA/military benefits. Responses tracked in lien management fields.</div></td></tr>
+        <tr class="task-row"><td>3</td><td><strong>Liens Audit Letters (ERISA/Health Plan)</strong></td><td><span class="badge badge-auto">Auto</span></td><td><span class="badge badge-sys">System</span></td><td>Every 60 days</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>ERISA Liens</strong>System auto-generates ERISA/health plan lien audit letters every 60 days. Applicable if client has employer-sponsored health plan with subrogation rights.</div></td></tr>
+        <tr class="task-row"><td>4</td><td><strong>Updated Medical Bills Letters</strong></td><td><span class="badge badge-auto">Auto</span></td><td><span class="badge badge-sys">System</span></td><td>Every 90 days (active) / 120 days (complete)</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Medical Bills</strong>System auto-sends updated billing requests to all treatment providers. Frequency: every 90 days while treatment is active, every 120 days after treatment is marked complete. Ensures bill totals are current for demand preparation.</div></td></tr>
+        <tr class="task-row"><td>5</td><td><strong>Amending Discovery Responses</strong></td><td><span class="badge badge-cna">C-NA-D</span></td><td><span class="badge badge-para">Para</span></td><td>As needed (30 min SLA)</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Discovery Amendments</strong>When new treatment information materially changes prior discovery responses, amendments must be drafted and served. Conditional on whether new information impacts existing answers. 30-minute SLA once identified.</div></td></tr>
+        <tr class="task-row"><td>6</td><td><strong>Supportive Admin — Document Production (Tier 1)</strong></td><td><span class="badge badge-cna">C-NA-D</span></td><td><span class="badge badge-para">Para</span></td><td>As needed</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Doc Production Tier 1</strong>Initial document production: updated medical records, new bills, treatment authorizations. Triggered when new records are received or requested by opposing counsel.</div></td></tr>
+        <tr class="task-row"><td>7</td><td><strong>Supportive Admin — Document Production (Tier 2)</strong></td><td><span class="badge badge-cna">C-NA-D</span></td><td><span class="badge badge-para">Para</span></td><td>As needed</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Doc Production Tier 2</strong>Supplemental production: employment records, tax documentation, additional specialist records. Triggered by defense discovery requests or case development needs.</div></td></tr>
+        <tr class="task-row"><td>8</td><td><strong>Supportive Admin — Document Production (Tier 3)</strong></td><td><span class="badge badge-cna">C-NA-D</span></td><td><span class="badge badge-para">Para</span></td><td>As needed</td><td><button class="info-btn">&#9432;</button><div class="info-popover"><strong>Doc Production Tier 3</strong>Final production tier: expert reports, supplemental interrogatory responses, privilege logs. Typically triggered in later litigation stages.</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warn-box">
+    <strong>Note:</strong> Lien audit and medical bill letters run on independent system timers. They do not depend on the 30-day monitoring cycle — they operate on their own 60/90/120-day schedules.
+  </div>
 </div>
 </div>
 </section>
@@ -686,6 +963,41 @@ function toggleCard(header){
   header.parentElement.classList.toggle('open');
 }
 
+// Tooltip system
+(function(){
+  var tip=document.createElement('div');
+  tip.id='tooltip-overlay';
+  tip.style.display='none';
+  document.body.appendChild(tip);
+  var hideTimer=null;
+  function show(btn){
+    clearTimeout(hideTimer);
+    var pop=btn.nextElementSibling;
+    if(!pop||!pop.classList.contains('info-popover'))return;
+    tip.innerHTML=pop.innerHTML;
+    tip.style.display='block';
+    var r=btn.getBoundingClientRect();
+    var tw=340;
+    var left=r.right-tw;
+    if(left<8)left=8;
+    if(left+tw>window.innerWidth-8)left=window.innerWidth-tw-8;
+    var topPos=r.bottom+window.pageYOffset+6;
+    tip.style.left=left+'px';
+    tip.style.top=topPos+'px';
+  }
+  function hide(){
+    hideTimer=setTimeout(function(){tip.style.display='none';},120);
+  }
+  document.addEventListener('mouseover',function(e){
+    var btn=e.target.closest('.info-btn');
+    if(btn)show(btn);
+  });
+  document.addEventListener('mouseout',function(e){
+    var btn=e.target.closest('.info-btn');
+    if(btn)hide();
+  });
+})();
+
 // Scroll to section
 function navTo(id){
   var el=document.getElementById(id);
@@ -706,7 +1018,7 @@ window.addEventListener('scroll',function(){
 // Scroll spy
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['overview','cycle','triggers','staleness','actions','fields','approval'];
+  var sections=['overview','cycle','call-ladder','appointment','scoring','triggers','recurring','staleness','actions','fields','approval'];
   function onScroll(){
     var y=window.scrollY+120;
     var current='';
