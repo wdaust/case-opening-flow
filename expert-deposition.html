@@ -10,6 +10,9 @@
 #tooltip-overlay ul{padding-left:14px;margin:4px 0 0}
 #tooltip-overlay li{margin-bottom:3px}
 .info-popover{display:none}
+[data-card-body]{display:none;}
+.open>[data-card-body]{display:block;}
+.open>button [data-chevron]{transform:rotate(180deg);}
 @media print{aside,nav{display:none!important}main{padding:20px!important}[data-card-body]{display:block!important}.tab-pane{display:block!important}.bg-primary{background:#171717!important;color:#fafafa!important;-webkit-print-color-adjust:exact}}
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -166,7 +169,7 @@ tailwind.config = {
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
     <div class="space-y-2">
       <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
         <input type="checkbox" data-key="ed-wd-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
@@ -210,7 +213,7 @@ tailwind.config = {
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
     <div class="space-y-2">
       <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
         <input type="checkbox" data-key="ed-dd-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
@@ -251,7 +254,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Secure approval, prepare deposition notices, and coordinate court reporters for non-party witness depositions.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
   <table class="w-full text-sm">
@@ -278,7 +281,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Prepare and serve deposition notices/cross-notices for defendant witnesses, coordinate reporters and interpreters, and manage rescheduling.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
   <table class="w-full text-sm">
@@ -306,7 +309,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Receive attorney expert directive, score expert difficulty, execute retention attempts, and manage replacements. This phase drives the Expert Performance Index.</div>
 
   <div class="my-6">
@@ -389,7 +392,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Track expert report delivery through a structured follow-up ladder, upload completed reports, and route for attorney review.</div>
 
   <div class="my-6">
@@ -455,7 +458,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> When attorney review identifies needed amendments, manage the amended report request, follow-up, upload, and re-review cycle.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
   <table class="w-full text-sm">
@@ -486,7 +489,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Track client deposition completion, score case strength post-deposition, and execute administrative follow-up tasks.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
   <table class="w-full text-sm">
@@ -514,7 +517,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Manage Independent Medical Examination (IME) scheduling, client notifications, and automated reminder sequences.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
   <table class="w-full text-sm">
@@ -545,7 +548,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Track expert report delivery, escalate delays through pursuit ladder, review report quality, and ensure compliance with disclosure deadlines.</div>
 
   <div class="my-6">
@@ -638,7 +641,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Manage amended or supplemental expert reports when new evidence, additional treatment, or changed circumstances require updated expert opinions.</div>
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
@@ -668,7 +671,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Prepare client for deposition by defense counsel, attend and defend the deposition, and score client performance for case strategy adjustment.</div>
 
   <div class="my-6">
@@ -717,7 +720,7 @@ tailwind.config = {
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Manage defense-requested Independent Medical Examinations (IMEs). Coordinate client attendance, monitor for abuse, obtain and rebut adverse IME reports.</div>
 
   <div class="my-6">
@@ -1365,11 +1368,12 @@ tailwind.config = {
 <script>
 function toggleCard(header){
   var card=header.parentElement;
-  var body=card.querySelector('[data-card-body]');
-  var chevron=card.querySelector('[data-chevron]');
-  if(body)body.classList.toggle('hidden');
-  if(chevron)chevron.classList.toggle('rotate-180');
+  card.classList.toggle('open');
 }
+// Open all cards by default
+document.querySelectorAll('[data-card-body]').forEach(function(body){
+  body.parentElement.classList.add('open');
+});
 
 (function(){
   var tip=document.createElement('div');tip.id='tooltip-overlay';tip.style.display='none';document.body.appendChild(tip);
@@ -1419,9 +1423,6 @@ function updateProgress(containerId, progressId) {
 
 document.addEventListener('click',function(e){var mn=document.getElementById('mobile-nav');var nb=document.getElementById('nav-hamburger');if(mn&&!mn.classList.contains('hidden')&&!mn.contains(e.target)&&e.target!==nb&&!nb.contains(e.target))mn.classList.add('hidden');});
 
-document.addEventListener('DOMContentLoaded',function(){
-  ['ph1','exec-scorecard'].forEach(function(id){var card=document.getElementById(id);if(card){var body=card.querySelector('[data-card-body]');if(body)body.classList.remove('hidden');var chev=card.querySelector('[data-chevron]');if(chev)chev.classList.add('rotate-180');}});
-});
 </script>
 <script type="module">
 import { neon } from 'https://esm.sh/@neondatabase/serverless';

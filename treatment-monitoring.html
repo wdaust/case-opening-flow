@@ -10,6 +10,9 @@
 #tooltip-overlay ul{padding-left:14px;margin:4px 0 0}
 #tooltip-overlay li{margin-bottom:3px}
 .info-popover{display:none}
+[data-card-body]{display:none;}
+.open>[data-card-body]{display:block;}
+.open>button [data-chevron]{transform:rotate(180deg);}
 @media print{aside,nav{display:none!important}main{padding:20px!important}[data-card-body]{display:block!important}.bg-primary{background:#171717!important;color:#fafafa!important;-webkit-print-color-adjust:exact}}
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -106,7 +109,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#9679;</span> Parallel Track &mdash; Not a Stage</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
     <strong>Key Concept:</strong> Treatment Monitoring is a <strong>parallel track</strong>, NOT a sequential stage.
     It runs as its own recurring object with an independent clock and does not block any case phase from proceeding.
@@ -161,7 +164,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#8635;</span> Cycle Timeline</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Clock Rule:</strong> 30-day cycle while treatment is active. Once treatment is marked complete, clock extends to 45-day cycle for ongoing monitoring.</div>
 
@@ -244,7 +247,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#128222;</span> Contact Pursuit Ladder <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">Starts Day 30 from OA</span></h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Purpose:</strong> Systematic escalating contact sequence to reach client for treatment monitoring check-in. Each cycle that requires client contact initiates this ladder.</div>
 
   <div class="ladder">
@@ -391,7 +394,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#128203;</span> Appointment Agenda <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span> <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span> <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">Within 3 days of connection</span></h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Purpose:</strong> Structured check-in to assess treatment status, identify gaps, update case information, and refresh scoring inputs.</div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2 my-3">
@@ -419,7 +422,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#127919;</span> Scoring Refresh Matrix</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
   <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>SLA:</strong> All scoring refreshes must be completed within <strong>1 hour</strong> of appointment completion.</div>
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
@@ -452,7 +455,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#9889;</span> Cycle Trigger Matrix</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table>
@@ -527,7 +530,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#128260;</span> Recurring Task Matrix</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table>
@@ -566,7 +569,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#128337;</span> Staleness Framework</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="my-6">
     <h4>Core Rules</h4>
@@ -643,7 +646,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#9888;</span> Trigger &rarr; Action Matrix</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table>
@@ -701,7 +704,7 @@ tailwind.config = {
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#f97316] text-white rounded-full text-xs font-bold shrink-0">&#128451;</span> Field Reference</h3>
   <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
 </button>
-<div data-card-body class="px-6 py-5 border-t border-border hidden">
+<div data-card-body class="px-6 py-5 border-t border-border">
 
   <div class="my-6">
     <h4>Treatment Gaps</h4>
@@ -825,11 +828,12 @@ tailwind.config = {
 <script>
 function toggleCard(header){
   var card=header.parentElement;
-  var body=card.querySelector('[data-card-body]');
-  var chevron=card.querySelector('[data-chevron]');
-  if(body)body.classList.toggle('hidden');
-  if(chevron)chevron.classList.toggle('rotate-180');
+  card.classList.toggle('open');
 }
+// Open all cards by default
+document.querySelectorAll('[data-card-body]').forEach(function(body){
+  body.parentElement.classList.add('open');
+});
 
 (function(){
   var tip=document.createElement('div');tip.id='tooltip-overlay';tip.style.display='none';document.body.appendChild(tip);

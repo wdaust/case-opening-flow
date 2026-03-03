@@ -45,6 +45,9 @@ tailwind.config = {
 #tooltip-overlay ul{padding-left:14px;margin:4px 0 0}
 #tooltip-overlay li{margin-bottom:3px}
 .info-popover{display:none}
+[data-card-body]{display:none;}
+.open>[data-card-body]{display:block;}
+.open>button [data-chevron]{transform:rotate(180deg);}
 @media print{aside,.phase-bar,nav{display:none!important}main{padding:20px!important}[data-card-body]{display:block!important}.tab-pane{display:block!important}.bg-primary{background:#171717!important;color:#fafafa!important;-webkit-print-color-adjust:exact}}
 </style>
 </head>
@@ -187,7 +190,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Assign a complexity tier to this case. The selected tier determines which checklist sections and optional items are required throughout subsequent phases.</div>
   <div class="flex flex-col gap-3">
     <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
@@ -226,7 +229,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Establish contact with client to schedule the Orientation Appointment. All attempts are mandatory. System automations fire at defined checkpoints. Exit condition: connected &rarr; schedule OA. Failure after Attempt 8 &rarr; MIA route.</div>
 
   <div class="flex flex-col gap-0.5 my-3">
@@ -357,7 +360,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Ensure the paralegal has full case information from the case manager before conducting the Orientation Appointment. Quality review before client-facing call.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
   <table class="w-full text-sm">
@@ -382,7 +385,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Conduct the full Orientation Appointment covering all 14 agenda points. Gate: all OA Quality Gate fields must be populated before status can advance to OA Completed.</div>
 
   <h4 class="text-xs font-bold text-foreground mb-2 mt-4">14-Point Agenda</h4>
@@ -441,7 +444,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">4A &mdash; Automation Burst (6 Auto Tasks)</h3>
@@ -507,7 +510,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">5A &mdash; Complaint Pipeline</h3>
@@ -559,7 +562,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Obtain all medical records, diagnostic films, and bills from every provider within filing timeline. Escalating ladder with automatic step creation via BJB_Records_Chase scheduled flow (runs daily 9am). Records status tracked in <code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Records_Chase_Step__c</code>.</div>
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
@@ -594,7 +597,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Case is fully opened only when ALL 8 requirements are verified. Once confirmed, case status changes to Active and becomes eligible for demand preparation when treatment completes.</div>
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
   <table class="w-full text-sm">
@@ -634,7 +637,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Scores the CLIENT, not the case. Measures behavior, cooperation, and risk factors. Each sub-metric scored 1&ndash;5. Displayed as dials on a dashboard at top of every matter panel. Re-scored at every case stage progression.<br><strong>Who scores:</strong> Legal Asst / Paralegal &nbsp;|&nbsp; <strong>When:</strong> Within 1 hour of OA completion</div>
 
   <!-- Cat 1 -->
@@ -772,7 +775,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Produces two scores:</strong> LSI (Liability Strength Index) = pure fault + proof &nbsp;|&nbsp; SLI (Settlement Leverage Index) = LSI + coverage + venue + defense exposure.<br><strong>Re-scored at:</strong> Stage changes and new evidence events.</div>
 
   <div class="mt-6">
@@ -853,7 +856,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Produces two scores:</strong> CSI (Coverage Strength Index) = how big the money bucket is &nbsp;|&nbsp; RDI (Recovery Difficulty Index) = how hard to extract payment.<br><strong>Re-scored at:</strong> Account opening, pre-demand, discovery.</div>
 
   <div class="mt-6">
@@ -919,7 +922,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures quality, seriousness, credibility, and profitability of medical treatment. Includes defense perspective column on each anchor to show how defense will view the case.</div>
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
@@ -1027,7 +1030,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures "How strong is this file as a BUSINESS asset?" NOT about liability, treatment, or client behavior. Measures operational efficiency, file quality, and strategic value.<br>7 pillars, each scored 1&ndash;5. CPI Total = weighted average producing a 1.0&ndash;5.0 composite. Each pillar field: Number(2,1), range 1.0&ndash;5.0.</div>
 
   <div class="mt-6">
@@ -1134,7 +1137,7 @@ tailwind.config = {
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
-<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+<div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Single composite score combining all 5 scoring systems. Displayed on every matter panel. Scores trend over time. Leadership sees portfolio distribution.</div>
 
   <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm font-mono">
@@ -1550,11 +1553,12 @@ tailwind.config = {
 <script>
 function toggleCard(header){
   var card=header.parentElement;
-  var body=card.querySelector('[data-card-body]');
-  var chevron=card.querySelector('[data-chevron]');
-  if(body)body.classList.toggle('hidden');
-  if(chevron)chevron.classList.toggle('rotate-180');
+  card.classList.toggle('open');
 }
+// Open all cards by default
+document.querySelectorAll('[data-card-body]').forEach(function(body){
+  body.parentElement.classList.add('open');
+});
 
 (function(){
   var tip=document.createElement('div');tip.id='tooltip-overlay';tip.style.display='none';document.body.appendChild(tip);
@@ -1592,9 +1596,6 @@ if(mainScroll){mainScroll.addEventListener('scroll',function(){var btn=document.
 
 document.addEventListener('click',function(e){var mn=document.getElementById('mobile-nav');var nb=document.getElementById('nav-hamburger');if(mn&&!mn.classList.contains('hidden')&&!mn.contains(e.target)&&e.target!==nb&&!nb.contains(e.target))mn.classList.add('hidden');});
 
-document.addEventListener('DOMContentLoaded',function(){
-  ['ph0','ph1','b1'].forEach(function(id){var card=document.getElementById(id);if(card){var body=card.querySelector('[data-card-body]');if(body)body.classList.remove('hidden');var chev=card.querySelector('[data-chevron]');if(chev)chev.classList.add('rotate-180');}});
-});
 </script>
 <script type="module">
 import{neon}from'https://esm.sh/@neondatabase/serverless';

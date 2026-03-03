@@ -6,6 +6,9 @@
 <title>BJB Scoring Optimization &mdash; All-Phase Management Recommendation</title>
 <style>
 #tooltip-overlay{position:absolute;z-index:9999;background:#fff;border:1px solid #e5e5e5;border-radius:0.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.12);padding:12px 14px;min-width:260px;max-width:340px;font-size:12px;color:#0a0a0a;line-height:1.5;pointer-events:none}
+[data-card-body]{display:none;}
+.open>[data-card-body]{display:block;}
+.open>button [data-chevron]{transform:rotate(180deg);}
 @media print{aside,nav{display:none!important}main{padding:20px!important}[data-card-body]{display:block!important}.bg-primary{background:#171717!important;color:#fafafa!important;-webkit-print-color-adjust:exact}}
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -689,7 +692,7 @@ tailwind.config = {
     </h3>
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
 
     <!-- Current vs Proposed -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -777,7 +780,7 @@ tailwind.config = {
     </h3>
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
 
     <!-- Current vs Proposed -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -917,7 +920,7 @@ tailwind.config = {
     </h3>
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
 
     <!-- Current vs Proposed -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1058,7 +1061,7 @@ tailwind.config = {
     </h3>
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
 
     <!-- Green rationale box -->
     <div class="rounded-lg border-2 border-green-300 bg-green-50 p-4 mb-6">
@@ -1124,7 +1127,7 @@ tailwind.config = {
     </h3>
     <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </button>
-  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+  <div data-card-body class="px-6 py-5 border-t border-border">
 
     <!-- Current vs Proposed -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1344,7 +1347,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-3">During treatment monitoring, paralegals refresh select CP categories (e.g., Reachability, Cooperation, Treatment Behavior) based on ongoing client interactions. Currently this involves re-scoring 4 sub-metrics per category.</p>
       <p class="text-sm text-foreground mb-2"><strong>Current:</strong> 4 sub-metrics per refreshed category (e.g., Contactability, Response Time, Follow-Through, Appt Reliability for Reachability alone).</p>
       <p class="text-sm text-foreground"><strong>Proposed:</strong> 1 holistic category score per refresh. The consolidation from Phase 1 carries forward automatically &mdash; no additional implementation needed.</p>
@@ -1362,7 +1365,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2">All 5 TSI factors (Treatment Gap Duration, Provider Consistency, Treatment Compliance, Diagnostic Alignment, Treatment Progression) remain independently actionable and distinct. Each factor drives different operational decisions during treatment monitoring.</p>
       <p class="text-sm text-foreground"><strong>Rationale:</strong> Unlike CP sub-metrics, a paralegal <em>does</em> distinguish between &ldquo;Treatment Gap Duration&rdquo; and &ldquo;Provider Consistency&rdquo; to make different clinical management decisions. No consolidation warranted.</p>
       <div class="mt-3 text-xs text-muted-foreground">5 factors remain unchanged.</div>
@@ -1379,7 +1382,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2">Treatment gap detection and CPI auto-derived components are already calculated from Litify activity data during treatment monitoring. No manual input is required for these systems in Phase 2.</p>
       <div class="mt-3 text-xs text-muted-foreground">0 additional manual inputs &mdash; already automated.</div>
     </div>
@@ -1527,7 +1530,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-3">The Written Discovery re-score uses the same scoring systems as Case Opening. All Phase 1 consolidations (CP 28&rarr;7, LSI+SLI&rarr;LCI 9&rarr;5, CSI+RDI&rarr;CCI 10&rarr;4, CPI 7&rarr;3 manual) automatically apply.</p>
       <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
       <table class="w-full text-sm"><thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">System</th><th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Current Re-Score</th><th class="px-4 py-3 text-center text-xs font-medium text-muted-foreground uppercase tracking-wider">Proposed Re-Score</th></tr></thead><tbody>
@@ -1552,7 +1555,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground">The Discovery Health Index (DHI) is entirely formula-derived from discovery response data and timelines. Zero manual inputs required. No changes needed.</p>
     </div>
   </div>
@@ -1567,7 +1570,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2">Written Discovery includes 5 client scoring dimensions that may overlap with CP categories but are scored in a fundamentally different context:</p>
       <ul class="text-sm text-foreground list-disc list-inside space-y-1 mb-3">
         <li><strong>Scorer:</strong> Attorney (post-discovery) vs. paralegal (at intake)</li>
@@ -1766,7 +1769,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2">The Expert Performance Index (EPI) has 6 components, of which 5 are auto-derived from expert report data, deposition transcripts, and case timelines. Only 1 component requires a manual attorney rating (overall expert credibility assessment).</p>
       <div class="mt-3 text-xs text-muted-foreground">1 manual input &mdash; no change recommended.</div>
     </div>
@@ -1782,7 +1785,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2">The Deposition Performance Index (DPI) has 9 components. 7 are auto-derived from deposition metadata (duration, objection counts, transcript analysis). 2 require manual attorney subjective ratings (witness demeanor, opposing counsel effectiveness).</p>
       <div class="mt-3 text-xs text-muted-foreground">2 manual inputs &mdash; no change recommended.</div>
     </div>
@@ -1798,7 +1801,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground">The Expert Leverage Index (ELI), Trial Readiness Index (TRI), and Combined Strategic scores are entirely formula-derived from EPI, DPI, and upstream case data. Zero manual inputs. These roll-up indices function correctly as designed.</p>
       <div class="mt-3 text-xs text-muted-foreground">0 manual inputs &mdash; fully automated.</div>
     </div>
@@ -2117,7 +2120,7 @@ tailwind.config = {
       </h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-3">The Trial Strategy Score has 8 factors, some of which may overlap conceptually. A review could consolidate to ~5 factors, reducing TSS inputs by 3.</p>
       <p class="text-sm text-foreground mb-2"><strong>Priority:</strong> Low. Unlike Case Opening (scored repeatedly by paralegals), Arb &amp; Med systems are scored <strong>once per case</strong> by the attorney in a focused 5&ndash;8 minute session. The fatigue argument is significantly weaker here.</p>
       <p class="text-sm text-foreground"><strong>Recommendation:</strong> Flag for future review but do not prioritize over Phase 1 optimizations. If pursued, net savings would be 34 &rarr; 31 (8.8% reduction).</p>
@@ -2362,7 +2365,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">1</span> Lost CP Granularity</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> Collapsing 4 sub-metrics to 1 loses detail.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> Each category score includes an optional free-text notes field (e.g., &ldquo;Reachability is low primarily because of Response Time&rdquo;). If any sub-metric ever proves independently actionable, it can be promoted back to a standalone field with zero formula impact.</p>
     </div>
@@ -2373,7 +2376,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">2</span> Auto-Derived CPI Scores Wrong</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> Litify data may not accurately reflect the true score.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> Every auto-derived field includes a manual override with a required reason field. 60-day shadow-mode validation runs both auto and manual scores side-by-side to measure agreement before going live.</p>
     </div>
@@ -2384,7 +2387,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">3</span> Merged Liability/Coverage Loses Nuance</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> Combining LSI+SLI and CSI+RDI may lose important distinctions.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> Every single factor maps to the new system (see Section 11). The MCHS formula already averaged CSI+RDI into a single slot &mdash; we&rsquo;re formalizing what the math already did. Factor weights within LCI and CCI preserve the relative importance of each original input.</p>
     </div>
@@ -2395,7 +2398,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">4</span> Litify Data Not Available</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> Required Litify data sources may not exist or be reliable.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> Worst case: 4 CPI auto-derived fields revert to manual, making the total ~24 manual instead of ~20. The CP consolidation (28&rarr;7), liability merge (9&rarr;5), and coverage merge (10&rarr;4) still deliver the majority of the benefit independently of CPI automation.</p>
     </div>
@@ -2406,7 +2409,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">5</span> Treatment Monitoring CP Refresh Mismatch</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> If Case Opening CP is consolidated but Treatment Monitoring CP refresh still uses the old 4 sub-metric structure, scores will be inconsistent across phases.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> Treatment Monitoring CP refresh automatically inherits the consolidated structure. The refresh form will show the same 7 category-level scores, not the old 28 sub-metrics. The system enforces structural consistency across phases.</p>
     </div>
@@ -2417,7 +2420,7 @@ tailwind.config = {
       <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#6366f1] text-white rounded-full text-xs font-bold shrink-0">6</span> Arb &amp; Med TSS Consolidation Rejected by Attorneys</h3>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </button>
-    <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div data-card-body class="px-6 py-5 border-t border-border">
       <p class="text-sm text-foreground mb-2"><strong>Concern:</strong> Attorneys may resist consolidating TSS from 8 to 5 factors, arguing each factor captures distinct negotiation dynamics.</p>
       <p class="text-sm text-foreground"><strong>Mitigation:</strong> TSS consolidation is marked as optional &ldquo;Review Opportunity&rdquo; &mdash; not a requirement. If attorneys prefer all 8 factors, total impact is only 3 extra inputs on a one-time scoring event. The recommendation stands as-is with no forced change.</p>
     </div>
@@ -2496,11 +2499,12 @@ tailwind.config = {
 <script>
 function toggleCard(header){
   var card=header.parentElement;
-  var body=card.querySelector('[data-card-body]');
-  var chevron=card.querySelector('[data-chevron]');
-  if(body)body.classList.toggle('hidden');
-  if(chevron)chevron.classList.toggle('rotate-180');
+  card.classList.toggle('open');
 }
+// Open all cards by default
+document.querySelectorAll('[data-card-body]').forEach(function(body){
+  body.parentElement.classList.add('open');
+});
 
 function navTo(id){
   var el=document.getElementById(id);var main=document.getElementById('main-scroll');
