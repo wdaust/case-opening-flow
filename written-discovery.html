@@ -26,6 +26,9 @@
 #tooltip-overlay ul { padding-left: 14px; margin: 4px 0 0; }
 #tooltip-overlay li { margin-bottom: 3px; }
 .info-popover { display: none; }
+[data-card-body] { display: none; }
+.open > [data-card-body] { display: block; }
+.open > button [data-chevron] { transform: rotate(180deg); }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -936,6 +939,10 @@ function toggleCard(header){
   var card=header.parentElement;
   card.classList.toggle('open');
 }
+// Open all cards by default
+document.querySelectorAll('[data-card-body]').forEach(function(body){
+  body.parentElement.classList.add('open');
+});
 
 // Tooltip system
 (function(){
