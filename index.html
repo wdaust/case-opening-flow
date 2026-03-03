@@ -87,6 +87,7 @@ tailwind.config = {
   <div class="py-3">
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
     <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partA')">Overview</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0')">Phase 0: Tier Grading</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph1')">Phase 1: Contact Pursuit</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph2')">Phase 2: Pre-OA Prep</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph3')">Phase 3: OA 14-Point Call</a>
@@ -173,8 +174,45 @@ tailwind.config = {
 <!-- ============================================================ PART A -->
 <section id="partA">
 <div class="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg mt-10">
-  <h2 class="text-lg font-bold">Part A &mdash; Process Phases (1&ndash;7)</h2>
-  <p class="text-sm text-primary-foreground/70 mt-0.5">Litigation Transfer Through File-Ready &mdash; Intake phase excluded; phases renumbered 1&ndash;7</p>
+  <h2 class="text-lg font-bold">Part A &mdash; Process Phases (0&ndash;7)</h2>
+  <p class="text-sm text-primary-foreground/70 mt-0.5">Litigation Transfer Through File-Ready &mdash; Intake phase excluded; phases renumbered 0&ndash;7</p>
+</div>
+
+<!-- Phase 0 -->
+<div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph0">
+<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#f59e0b] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">0</span> Phase 0: Tier Grading</h3>
+  <div class="flex items-center gap-2 shrink-0">
+    <span id="tier-badge" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-100 text-amber-700">Tier 1</span>
+    <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</button>
+<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Assign a complexity tier to this case. The selected tier determines which checklist sections and optional items are required throughout subsequent phases.</div>
+  <div class="flex flex-col gap-3">
+    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
+      <input type="radio" name="tier-grade" value="1" checked class="mt-0.5 accent-[#f59e0b]">
+      <div>
+        <div class="font-semibold text-foreground text-sm">Tier 1: Standard</div>
+        <div class="text-xs text-muted-foreground">Baseline checklist requirements</div>
+      </div>
+    </label>
+    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
+      <input type="radio" name="tier-grade" value="2" class="mt-0.5 accent-[#f59e0b]">
+      <div>
+        <div class="font-semibold text-foreground text-sm">Tier 2: Complex</div>
+        <div class="text-xs text-muted-foreground">Additional discovery and deposition review questions</div>
+      </div>
+    </label>
+    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
+      <input type="radio" name="tier-grade" value="3" class="mt-0.5 accent-[#f59e0b]">
+      <div>
+        <div class="font-semibold text-foreground text-sm">Tier 3: High-Stakes</div>
+        <div class="text-xs text-muted-foreground">Full checklist with all optional sections required</div>
+      </div>
+    </label>
+  </div>
+</div>
 </div>
 
 <!-- Phase 1 -->
@@ -1545,7 +1583,7 @@ if(mainScroll){mainScroll.addEventListener('scroll',function(){var btn=document.
 
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['partA','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC','approval'];
+  var sections=['partA','ph0','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC','approval'];
   var main=document.getElementById('main-scroll');if(!main)return;
   function spy(){var current='';sections.forEach(function(id){var el=document.getElementById(id);if(el){var r=el.getBoundingClientRect();var mR=main.getBoundingClientRect();if(r.top-mR.top<=120)current=id;}});
   links.forEach(function(l){l.classList.remove('bg-accent','text-accent-foreground');var oc=l.getAttribute('onclick')||'';if(oc.indexOf("'"+current+"'")>-1)l.classList.add('bg-accent','text-accent-foreground');});}
@@ -1555,13 +1593,13 @@ if(mainScroll){mainScroll.addEventListener('scroll',function(){var btn=document.
 document.addEventListener('click',function(e){var mn=document.getElementById('mobile-nav');var nb=document.getElementById('nav-hamburger');if(mn&&!mn.classList.contains('hidden')&&!mn.contains(e.target)&&e.target!==nb&&!nb.contains(e.target))mn.classList.add('hidden');});
 
 document.addEventListener('DOMContentLoaded',function(){
-  ['ph1','b1'].forEach(function(id){var card=document.getElementById(id);if(card){var body=card.querySelector('[data-card-body]');if(body)body.classList.remove('hidden');var chev=card.querySelector('[data-chevron]');if(chev)chev.classList.add('rotate-180');}});
+  ['ph0','ph1','b1'].forEach(function(id){var card=document.getElementById(id);if(card){var body=card.querySelector('[data-card-body]');if(body)body.classList.remove('hidden');var chev=card.querySelector('[data-chevron]');if(chev)chev.classList.add('rotate-180');}});
 });
 </script>
 <script type="module">
 import{neon}from'https://esm.sh/@neondatabase/serverless';
 const sql=neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2rpsg.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require');
-const PAGE_ID='case-opening',statusEl=document.getElementById('sync-status'),notesEl=document.getElementById('mgmt-notes'),checkboxes=document.querySelectorAll('#approval input[type="checkbox"][data-key]');
+const PAGE_ID='case-opening',statusEl=document.getElementById('sync-status'),notesEl=document.getElementById('mgmt-notes'),checkboxes=document.querySelectorAll('input[type="checkbox"][data-key]');
 function setStatus(t,c){if(statusEl){statusEl.textContent=t;statusEl.style.color=c||'#737373';}}
 let saveTimer=null;function debounceSave(ms=500){clearTimeout(saveTimer);saveTimer=setTimeout(saveState,ms);}
 async function ensureTable(){await sql`CREATE TABLE IF NOT EXISTS spec_approvals(page_id TEXT PRIMARY KEY,checkboxes JSONB NOT NULL DEFAULT '{}',notes TEXT DEFAULT '',updated_at TIMESTAMPTZ DEFAULT now())`;}
@@ -1570,6 +1608,8 @@ async function saveState(){try{setStatus('Saving...','#737373');const s=gatherSt
 async function loadState(){try{await ensureTable();const rows=await sql`SELECT checkboxes,notes FROM spec_approvals WHERE page_id=${PAGE_ID}`;if(rows.length>0){const{checkboxes:cb,notes}=rows[0];if(cb)checkboxes.forEach(c=>{const k=c.dataset.key;if(cb[k]){c.checked=cb[k].checked||false;const d=document.getElementById(c.id+'-date');if(d)d.textContent=cb[k].date||'';}});if(notesEl&&notes)notesEl.value=notes;}setStatus('Synced','#2e7d32');}catch(e){console.error(e);setStatus('Offline','#c62828');}}
 checkboxes.forEach(cb=>{cb.addEventListener('change',()=>{const d=document.getElementById(cb.id+'-date');if(d)d.textContent=cb.checked?'Approved: '+new Date().toLocaleString():'';debounceSave(300);});});
 if(notesEl)notesEl.addEventListener('input',()=>debounceSave(500));
+document.querySelectorAll('input[name="tier-grade"]').forEach(r=>{r.addEventListener('change',()=>{localStorage.setItem('bjb-case-tier',r.value);const badge=document.getElementById('tier-badge');if(badge)badge.textContent='Tier '+r.value;debounceSave(300);});});
+(function(){const saved=localStorage.getItem('bjb-case-tier');if(saved){const rb=document.querySelector('input[name="tier-grade"][value="'+saved+'"]');if(rb){rb.checked=true;const badge=document.getElementById('tier-badge');if(badge)badge.textContent='Tier '+saved;}}})();
 loadState();
 </script>
 </body>

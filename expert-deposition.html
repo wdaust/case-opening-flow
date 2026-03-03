@@ -152,6 +152,95 @@ tailwind.config = {
   <p class="text-sm text-primary-foreground/70 mt-0.5">Non-Party Depositions Through IME Management</p>
 </div>
 
+
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDiscQuestions" data-tier-required="2">
+  <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+    <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
+      <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
+      Questions Before Written Discovery
+    </h3>
+    <div class="flex items-center gap-2 shrink-0">
+      <span class="badge">Attorney</span>
+      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="text-xs text-muted-foreground" id="preDiscProgress">0 / 5</span>
+      <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </button>
+  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div class="space-y-2">
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-wd-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">1.</span>
+        <span class="flex-1">What specific element of liability or damages are you trying to prove or disprove with this discovery set?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-wd-q2" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">2.</span>
+        <span class="flex-1">What defense theory are you anticipating, and how does this discovery box them in?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-wd-q3" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">3.</span>
+        <span class="flex-1">If the opposing party responds evasively or incompletely, what is your follow-up plan?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-wd-q4" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">4.</span>
+        <span class="flex-1">How will these discovery responses shape your deposition outline or trial strategy?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-wd-q5" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">5.</span>
+        <span class="flex-1">What settlement leverage will this discovery create if answered favorably?</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDepoQuestions" data-tier-required="2">
+  <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+    <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
+      <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
+      Questions Before Deposition Decisions
+    </h3>
+    <div class="flex items-center gap-2 shrink-0">
+      <span class="badge">Attorney</span>
+      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="text-xs text-muted-foreground" id="preDepoProgress">0 / 5</span>
+      <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </button>
+  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div class="space-y-2">
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-dd-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">1.</span>
+        <span class="flex-1">What key facts or admissions are you hoping to lock in from this witness that we can’t get otherwise?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-dd-q2" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">2.</span>
+        <span class="flex-1">What risk or downside exists if we don’t depose this person before trial or settlement discussions?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-dd-q3" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">3.</span>
+        <span class="flex-1">How does this deposition align with our overall case strategy—for example, will it impact settlement leverage or trial prep?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-dd-q4" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">4.</span>
+        <span class="flex-1">Have you identified any alternative means of getting the same information—like documents or interrogatories—without the deposition?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="ed-dd-q5" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">5.</span>
+        <span class="flex-1">How does the cost—both time and resources—of this deposition compare to the value it’s expected to deliver for the case outcome?</span>
+      </label>
+    </div>
+  </div>
+</div>
+
 <!-- Phase 1: Non-Party Depositions -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4 overflow-hidden" id="ph1">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
@@ -1306,12 +1395,27 @@ document.querySelectorAll('.tab-pane').forEach(function(p){if(!p.classList.conta
 
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['partA','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','exec-scorecard','core-metrics','kpi-library','sla-ladders','epi','dpi','eli','settlement-engine','tri','partC','approval'];
+  var sections=['partA','preDiscQuestions','preDepoQuestions','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','exec-scorecard','core-metrics','kpi-library','sla-ladders','epi','dpi','eli','settlement-engine','tri','partC','approval'];
   var main=document.getElementById('main-scroll');if(!main)return;
   function spy(){var current='';sections.forEach(function(id){var el=document.getElementById(id);if(el){var r=el.getBoundingClientRect();var mR=main.getBoundingClientRect();if(r.top-mR.top<=120)current=id;}});
   links.forEach(function(l){l.classList.remove('bg-accent','text-accent-foreground');var oc=l.getAttribute('onclick')||'';if(oc.indexOf("'"+current+"'")>-1)l.classList.add('bg-accent','text-accent-foreground');});}
   main.addEventListener('scroll',spy);
 })();
+
+
+function getCaseTier() {
+  return parseInt(localStorage.getItem('bjb-case-tier') || '1');
+}
+
+function updateProgress(containerId, progressId) {
+  var container = document.getElementById(containerId);
+  var progress = document.getElementById(progressId);
+  if (!container || !progress) return;
+  var cbs = container.querySelectorAll('input[type="checkbox"][data-key]');
+  var checked = 0;
+  cbs.forEach(function(cb) { if (cb.checked) checked++; });
+  progress.textContent = checked + ' / ' + cbs.length;
+}
 
 document.addEventListener('click',function(e){var mn=document.getElementById('mobile-nav');var nb=document.getElementById('nav-hamburger');if(mn&&!mn.classList.contains('hidden')&&!mn.contains(e.target)&&e.target!==nb&&!nb.contains(e.target))mn.classList.add('hidden');});
 
@@ -1326,7 +1430,7 @@ const sql = neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2r
 const PAGE_ID = 'expert-deposition';
 const statusEl = document.getElementById('sync-status');
 const notesEl = document.getElementById('mgmt-notes');
-const checkboxes = document.querySelectorAll('#approval input[type="checkbox"][data-key]');
+const checkboxes = document.querySelectorAll('input[type="checkbox"][data-key]');
 
 function setStatus(text, color) {
   if (statusEl) { statusEl.textContent = text; statusEl.style.color = color || '#737373'; }

@@ -110,6 +110,8 @@ tailwind.config = {
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph3')">Phase 3: Post-Appt Scoring</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph4')">Phase 4: Attorney Review</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph5')">Phase 5: Service &amp; Enforcement</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('motionPractice')">Motion Practice</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('settlementNeg')">Settlement Negotiations</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph6')">Phase 6: Supportive Tasks</a>
   </div>
   <div>
@@ -432,6 +434,96 @@ tailwind.config = {
   </table>
   </div>
 </div>
+</div>
+
+<!-- Motion Practice -->
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="motionPractice">
+  <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+    <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
+      <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
+      Motion Practice
+    </h3>
+    <div class="flex items-center gap-2 shrink-0">
+      <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
+      <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span>
+      <span class="text-xs text-muted-foreground" id="mpProgress">0 / 5</span>
+      <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </button>
+  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div class="space-y-2">
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="mp-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">1.</span>
+        <span class="flex-1">In this case, what unique legal argument or precedent are you bringing to a motion that could shift the outcome?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="mp-q2" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">2.</span>
+        <span class="flex-1">How did you assess the strategic timing and necessity of the last motion you filed or chose not to file?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="mp-q3" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">3.</span>
+        <span class="flex-1">For this motion, how are you anticipating and preparing for the strongest counter-arguments?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="mp-q4" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">4.</span>
+        <span class="flex-1">In this case, how has a past motion you filed altered the opposing side's approach or case direction?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="mp-q5" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">5.</span>
+        <span class="flex-1">How do you measure the complexity and resource cost of each motion relative to its anticipated impact on the case?</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- Settlement Negotiations -->
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="settlementNeg">
+  <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+    <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
+      <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
+      Settlement Negotiations
+    </h3>
+    <div class="flex items-center gap-2 shrink-0">
+      <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
+      <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-700">Required</span>
+      <span class="text-xs text-muted-foreground" id="snProgress">0 / 5</span>
+      <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </button>
+  <div data-card-body class="px-6 py-5 border-t border-border hidden">
+    <div class="space-y-2">
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="sn-q1" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">1.</span>
+        <span class="flex-1">In this case, what leverage points have you identified that will guide your negotiation approach?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="sn-q2" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">2.</span>
+        <span class="flex-1">How did you set the acceptable settlement range for this specific matter, and what's your threshold for walking away?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="sn-q3" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">3.</span>
+        <span class="flex-1">How are you adjusting your negotiation tactics based on this opposing counsel's behavior and your client's evolving needs?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="sn-q4" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">4.</span>
+        <span class="flex-1">Midway through this negotiation, what shift in strategy did you implement, and why?</span>
+      </label>
+      <label class="flex gap-3 bg-muted border border-border rounded-md p-3 text-xs items-start cursor-pointer hover:bg-accent/30 transition-colors">
+        <input type="checkbox" data-key="sn-q5" class="w-4 h-4 accent-primary mt-0.5 shrink-0">
+        <span class="font-bold text-foreground min-w-[18px]">5.</span>
+        <span class="flex-1">After each offer or counter, how do you quantify the changing risk-to-reward ratio in this case?</span>
+      </label>
+    </div>
+  </div>
 </div>
 
 <!-- Phase 6 -->
@@ -911,7 +1003,7 @@ function setTab(id,btn){
 // Scroll spy
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['partA','ph1','ph2','ph3','ph4','ph5','ph6','partB','metrics','sla-map','exceptions','health-index','client-scoring','partC','approval'];
+  var sections=['partA','ph1','ph2','ph3','ph4','ph5','motionPractice','settlementNeg','ph6','partB','metrics','sla-map','exceptions','health-index','client-scoring','partC','approval'];
   var mainArea2=document.querySelector('.main-area');
   function onScroll(){
     if(!mainArea2)return;
@@ -933,8 +1025,30 @@ function setTab(id,btn){
   if(ma) ma.addEventListener('scroll',onScroll);
 })();
 
+// Progress counters for question cards
+function updateProgress(sectionId, progressId, total) {
+  var section = document.getElementById(sectionId);
+  if (!section) return;
+  var checked = section.querySelectorAll('input[type="checkbox"]:checked').length;
+  var el = document.getElementById(progressId);
+  if (el) el.textContent = checked + ' / ' + total;
+}
 
+// Wire up change listeners for Motion Practice
+document.querySelectorAll('#motionPractice input[type="checkbox"]').forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    updateProgress('motionPractice', 'mpProgress', 5);
+    if (typeof debouncedSave === 'function') debouncedSave();
+  });
+});
 
+// Wire up change listeners for Settlement Negotiations
+document.querySelectorAll('#settlementNeg input[type="checkbox"]').forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    updateProgress('settlementNeg', 'snProgress', 5);
+    if (typeof debouncedSave === 'function') debouncedSave();
+  });
+});
 
 </script>
 <script type="module">
@@ -944,7 +1058,7 @@ const sql = neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2r
 const PAGE_ID = 'written-discovery';
 const statusEl = document.getElementById('sync-status');
 const notesEl = document.getElementById('mgmt-notes');
-const checkboxes = document.querySelectorAll('#approval input[type="checkbox"][data-key]');
+const checkboxes = document.querySelectorAll('input[type="checkbox"][data-key]');
 
 function setStatus(text, color) {
   if (statusEl) { statusEl.textContent = text; statusEl.style.color = color || '#737373'; }
