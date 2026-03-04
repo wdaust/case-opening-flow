@@ -143,73 +143,42 @@ tailwind.config = {
     <span class="text-purple-600">&#9733;</span> Attorney Phase Decisions
     <span class="ml-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-200 text-purple-800">Attorney</span>
   </h3>
-  <p class="text-xs text-purple-700 mt-1">Determine which phases are needed for this case. Selecting "No" marks the phase(s) as N/A.</p>
+  <p class="text-xs text-purple-700 mt-1">Attorney determines which phases are needed. If "No," the phase(s) are marked N/A with a required reason from the dropdown.</p>
 </div>
 <div class="px-6 py-5 space-y-5">
 
   <!-- Q1: Arbitration/Mediation -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
-    <p class="text-sm font-semibold text-foreground mb-3">1. Is arbitration/mediation needed?</p>
-    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 1 (Court Notice)</strong>, <strong>Phase 2 (Case Prep)</strong>, and <strong>Phase 3 (De Novo)</strong> marked N/A. Also disables the mediation question below.</p>
-    <div class="flex items-center gap-4 mb-2">
-      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="yes" class="accent-purple-600" onchange="applyGating('q1', this.value)"> Yes</label>
-      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="no" class="accent-purple-600" onchange="applyGating('q1', this.value)"> No</label>
-    </div>
-    <div id="gate-q1-reason" class="hidden mt-2">
-      <select id="gate-q1-select" class="w-full border border-border rounded-md px-3 py-2 text-xs bg-white" onchange="updateGateReason('q1')">
-        <option value="">— Select reason —</option>
-        <option>Direct settlement negotiation successful — agreement reached bilaterally</option>
-        <option>Clear liability and damages — no factual disputes requiring ADR</option>
-        <option>Insurance adjuster has full settlement authority without ADR</option>
-        <option>Summary judgment available — court can decide on law alone</option>
-        <option>Defendant default — judgment entered without dispute resolution</option>
-        <option>ADR costs not justified relative to case value</option>
-        <option>All material facts agreed — no disputed issues for neutral</option>
-      </select>
-      <div class="mt-3 rounded-md bg-muted/50 border border-border p-3">
-        <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Available Reasons</p>
-        <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
-          <li>Direct settlement negotiation successful — agreement reached bilaterally</li>
-          <li>Clear liability and damages — no factual disputes requiring ADR</li>
-          <li>Insurance adjuster has full settlement authority without ADR</li>
-          <li>Summary judgment available — court can decide on law alone</li>
-          <li>Defendant default — judgment entered without dispute resolution</li>
-          <li>ADR costs not justified relative to case value</li>
-          <li>All material facts agreed — no disputed issues for neutral</li>
-        </ul>
-      </div>
+    <p class="text-sm font-semibold text-foreground mb-2">1. Is arbitration/mediation needed? <span class="text-xs font-normal text-muted-foreground">(Yes / No)</span></p>
+    <p class="text-[11px] text-muted-foreground mb-3">If No &rarr; <strong>Phase 1 (Court Notice)</strong>, <strong>Phase 2 (Case Prep)</strong>, and <strong>Phase 3 (De Novo)</strong> marked N/A. Q2 also forced to N/A.</p>
+    <div class="rounded-md bg-muted/50 border border-border p-3">
+      <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">"Not Needed" Reasons (dropdown)</p>
+      <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
+        <li>Direct settlement negotiation successful &mdash; agreement reached bilaterally</li>
+        <li>Clear liability and damages &mdash; no factual disputes requiring ADR</li>
+        <li>Insurance adjuster has full settlement authority without ADR</li>
+        <li>Summary judgment available &mdash; court can decide on law alone</li>
+        <li>Defendant default &mdash; judgment entered without dispute resolution</li>
+        <li>ADR costs not justified relative to case value</li>
+        <li>All material facts agreed &mdash; no disputed issues for neutral</li>
+      </ul>
     </div>
   </div>
 
   <!-- Q2: Mediation specifically -->
-  <div class="rounded-md border border-purple-200 bg-white p-4" id="gate-q2-container">
-    <p class="text-sm font-semibold text-foreground mb-3">2. Is mediation specifically needed?</p>
-    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 4 (Mediation Track)</strong> marked N/A.</p>
-    <div class="flex items-center gap-4 mb-2">
-      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="yes" class="accent-purple-600" onchange="applyGating('q2', this.value)"> Yes</label>
-      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="no" class="accent-purple-600" onchange="applyGating('q2', this.value)"> No</label>
-    </div>
-    <div id="gate-q2-reason" class="hidden mt-2">
-      <select id="gate-q2-select" class="w-full border border-border rounded-md px-3 py-2 text-xs bg-white" onchange="updateGateReason('q2')">
-        <option value="">— Select reason —</option>
-        <option>Settlement reached through direct negotiation before mediation</option>
-        <option>Binding arbitration already resolved the dispute</option>
-        <option>Parties prefer judicial determination over mediated compromise</option>
-        <option>Court-ordered mediation waived by agreement of all parties</option>
-        <option>Case resolved at arbitration — no further ADR needed</option>
-        <option>Damages stipulated — only ministerial items remain</option>
-      </select>
-      <div class="mt-3 rounded-md bg-muted/50 border border-border p-3">
-        <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Available Reasons</p>
-        <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
-          <li>Settlement reached through direct negotiation before mediation</li>
-          <li>Binding arbitration already resolved the dispute</li>
-          <li>Parties prefer judicial determination over mediated compromise</li>
-          <li>Court-ordered mediation waived by agreement of all parties</li>
-          <li>Case resolved at arbitration — no further ADR needed</li>
-          <li>Damages stipulated — only ministerial items remain</li>
-        </ul>
-      </div>
+  <div class="rounded-md border border-purple-200 bg-white p-4">
+    <p class="text-sm font-semibold text-foreground mb-2">2. Is mediation specifically needed? <span class="text-xs font-normal text-muted-foreground">(Yes / No)</span></p>
+    <p class="text-[11px] text-muted-foreground mb-3">If No &rarr; <strong>Phase 4 (Mediation Track)</strong> marked N/A.</p>
+    <div class="rounded-md bg-muted/50 border border-border p-3">
+      <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">"Not Needed" Reasons (dropdown)</p>
+      <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
+        <li>Settlement reached through direct negotiation before mediation</li>
+        <li>Binding arbitration already resolved the dispute</li>
+        <li>Parties prefer judicial determination over mediated compromise</li>
+        <li>Court-ordered mediation waived by agreement of all parties</li>
+        <li>Case resolved at arbitration &mdash; no further ADR needed</li>
+        <li>Damages stipulated &mdash; only ministerial items remain</li>
+      </ul>
     </div>
   </div>
 
@@ -742,79 +711,6 @@ if (notesEl) {
 }
 
 loadState();
-</script>
-
-<script>
-/* Attorney Gating Logic */
-const gateMap = {
-  q1: ['ph1','ph2','ph3'],
-  q2: ['ph4']
-};
-
-function applyGating(qId, value) {
-  var reasonDiv = document.getElementById('gate-' + qId + '-reason');
-  var phaseIds = gateMap[qId];
-  if (value === 'no') {
-    reasonDiv.classList.remove('hidden');
-    phaseIds.forEach(function(pid) {
-      var el = document.getElementById(pid);
-      if (!el) return;
-      el.classList.add('phase-gated');
-      el.style.opacity = '0.5';
-      el.style.pointerEvents = 'none';
-      if (!el.querySelector('.na-banner')) {
-        var banner = document.createElement('div');
-        banner.className = 'na-banner';
-        banner.style.cssText = 'background:linear-gradient(135deg,#c084fc,#06b6d4);color:white;padding:10px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;';
-        banner.innerHTML = '<span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:9999px;font-size:11px;font-weight:700;">N/A</span> <span class="na-reason-text">Select a reason below</span>';
-        el.insertBefore(banner, el.firstChild);
-      }
-      el.classList.remove('open');
-    });
-    updateGateReason(qId);
-    // If Q1=No, force Q2 to N/A as well
-    if (qId === 'q1') {
-      var q2Container = document.getElementById('gate-q2-container');
-      q2Container.style.opacity = '0.5';
-      q2Container.style.pointerEvents = 'none';
-      // Auto-select No for Q2
-      var q2No = document.querySelector('input[name="gate-q2"][value="no"]');
-      if (q2No && !q2No.checked) {
-        q2No.checked = true;
-        applyGating('q2', 'no');
-      }
-    }
-  } else {
-    reasonDiv.classList.add('hidden');
-    phaseIds.forEach(function(pid) {
-      var el = document.getElementById(pid);
-      if (!el) return;
-      el.classList.remove('phase-gated');
-      el.style.opacity = '';
-      el.style.pointerEvents = '';
-      var banner = el.querySelector('.na-banner');
-      if (banner) banner.remove();
-    });
-    // If Q1=Yes, re-enable Q2 container
-    if (qId === 'q1') {
-      var q2Container = document.getElementById('gate-q2-container');
-      q2Container.style.opacity = '';
-      q2Container.style.pointerEvents = '';
-    }
-  }
-}
-
-function updateGateReason(qId) {
-  var sel = document.getElementById('gate-' + qId + '-select');
-  var reason = sel.value || 'Select a reason below';
-  var phaseIds = gateMap[qId];
-  phaseIds.forEach(function(pid) {
-    var el = document.getElementById(pid);
-    if (!el) return;
-    var txt = el.querySelector('.na-reason-text');
-    if (txt) txt.textContent = reason;
-  });
-}
 </script>
 
 </body>
