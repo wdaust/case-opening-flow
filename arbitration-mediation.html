@@ -150,7 +150,7 @@ tailwind.config = {
   <!-- Q1: Arbitration/Mediation -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
     <p class="text-sm font-semibold text-foreground mb-3">1. Is arbitration/mediation needed?</p>
-    <p class="text-[11px] text-muted-foreground mb-2">Selecting "No" marks Phases 1–3 as N/A and also disables the mediation question below.</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 1 (Court Notice)</strong>, <strong>Phase 2 (Case Prep)</strong>, and <strong>Phase 3 (De Novo)</strong> marked N/A. Also disables the mediation question below.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="yes" class="accent-purple-600" onchange="applyGating('q1', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="no" class="accent-purple-600" onchange="applyGating('q1', this.value)"> No</label>
@@ -183,7 +183,8 @@ tailwind.config = {
 
   <!-- Q2: Mediation specifically -->
   <div class="rounded-md border border-purple-200 bg-white p-4" id="gate-q2-container">
-    <p class="text-sm font-semibold text-foreground mb-3">2. Is mediation specifically needed? (Phase 4)</p>
+    <p class="text-sm font-semibold text-foreground mb-3">2. Is mediation specifically needed?</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 4 (Mediation Track)</strong> marked N/A.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="yes" class="accent-purple-600" onchange="applyGating('q2', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="no" class="accent-purple-600" onchange="applyGating('q2', this.value)"> No</label>

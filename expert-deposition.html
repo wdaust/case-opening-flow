@@ -258,6 +258,7 @@ tailwind.config = {
   <!-- Q1: Non-Party Depositions -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
     <p class="text-sm font-semibold text-foreground mb-3">1. Are non-party depositions needed?</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 1 (Non-Party Depositions)</strong> marked N/A.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="yes" class="accent-purple-600" onchange="applyGating('q1', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="no" class="accent-purple-600" onchange="applyGating('q1', this.value)"> No</label>
@@ -289,6 +290,7 @@ tailwind.config = {
   <!-- Q2: Defendant Depositions -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
     <p class="text-sm font-semibold text-foreground mb-3">2. Are defendant depositions needed?</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 2 (Defendant Depositions)</strong> marked N/A.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="yes" class="accent-purple-600" onchange="applyGating('q2', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="no" class="accent-purple-600" onchange="applyGating('q2', this.value)"> No</label>
@@ -320,7 +322,7 @@ tailwind.config = {
   <!-- Q3: Expert Retention -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
     <p class="text-sm font-semibold text-foreground mb-3">3. Is expert retention needed?</p>
-    <p class="text-[11px] text-muted-foreground mb-2">Selecting "No" also marks Phases 4–6 (Report Follow-Up, Amended Reports, Client Depo &amp; Scoring) as N/A.</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 3 (Expert Retention)</strong>, <strong>Phase 4 (Report Follow-Up)</strong>, <strong>Phase 5 (Amended Reports)</strong>, and <strong>Phase 6 (Client Depo &amp; Scoring)</strong> all marked N/A.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q3" value="yes" class="accent-purple-600" onchange="applyGating('q3', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q3" value="no" class="accent-purple-600" onchange="applyGating('q3', this.value)"> No</label>

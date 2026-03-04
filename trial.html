@@ -156,7 +156,7 @@ tailwind.config = {
   <!-- Q1: Trial needed? -->
   <div class="rounded-md border border-purple-200 bg-white p-4">
     <p class="text-sm font-semibold text-foreground mb-3">1. Is trial needed?</p>
-    <p class="text-[11px] text-muted-foreground mb-2">Selecting "No" marks all trial phases as N/A.</p>
+    <p class="text-[11px] text-muted-foreground mb-2">If No → <strong>Phase 1 (Court Notice)</strong>, <strong>Phase 2 (Notifications)</strong>, <strong>Phase 3 (Trial Prep)</strong>, and <strong>Phase 4 (Pre-Trial Questions)</strong> all marked N/A.</p>
     <div class="flex items-center gap-4 mb-2">
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="yes" class="accent-purple-600" onchange="applyGating('q1', this.value)"> Yes</label>
       <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="no" class="accent-purple-600" onchange="applyGating('q1', this.value)"> No</label>
