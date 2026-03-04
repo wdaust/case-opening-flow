@@ -37,7 +37,7 @@ tailwind.config = {
 <!-- TOP NAV -->
 <nav class="sticky top-0 z-50 h-14 border-b border-border bg-card">
   <div class="max-w-[1460px] mx-auto h-full flex items-center justify-between px-6">
-    <span class="text-sm font-semibold text-muted-foreground tracking-wide">BJB Litify Spec</span>
+    <span class="text-sm font-semibold text-muted-foreground tracking-wide">BJB Performance Plan</span>
     <div class="hidden md:flex items-center gap-1">
       <a href="index.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Case Opening</a>
       <a href="treatment-monitoring.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Treatment Monitoring</a>
@@ -242,6 +242,81 @@ tailwind.config = {
       </label>
     </div>
   </div>
+</div>
+
+<!-- ATTORNEY PHASE DECISIONS -->
+<div class="rounded-lg border-2 border-purple-300 bg-purple-50/30 shadow-sm mb-6 overflow-hidden" id="attorney-decisions">
+<div class="px-5 py-4 bg-purple-100/50 border-b border-purple-200">
+  <h3 class="text-sm font-semibold text-purple-900 flex items-center gap-2">
+    <span class="text-purple-600">&#9733;</span> Attorney Phase Decisions
+    <span class="ml-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-200 text-purple-800">Attorney</span>
+  </h3>
+  <p class="text-xs text-purple-700 mt-1">Determine which phases are needed for this case. Selecting "No" marks the phase(s) as N/A.</p>
+</div>
+<div class="px-6 py-5 space-y-5">
+
+  <!-- Q1: Non-Party Depositions -->
+  <div class="rounded-md border border-purple-200 bg-white p-4">
+    <p class="text-sm font-semibold text-foreground mb-3">1. Are non-party depositions needed?</p>
+    <div class="flex items-center gap-4 mb-2">
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="yes" class="accent-purple-600" onchange="applyGating('q1', this.value)"> Yes</label>
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q1" value="no" class="accent-purple-600" onchange="applyGating('q1', this.value)"> No</label>
+    </div>
+    <div id="gate-q1-reason" class="hidden mt-2">
+      <select id="gate-q1-select" class="w-full border border-border rounded-md px-3 py-2 text-xs bg-white" onchange="updateGateReason('q1')">
+        <option value="">— Select reason —</option>
+        <option>Liability clearly established — no disputed witness testimony needed</option>
+        <option>Documentary evidence sufficient to prove all contested facts</option>
+        <option>Witness statements already obtained through informal investigation</option>
+        <option>Early settlement negotiations make depositions unnecessary</option>
+        <option>Cost of depositions outweighs evidentiary value for case posture</option>
+        <option>Non-party witnesses corroborated by other admissible evidence</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Q2: Defendant Depositions -->
+  <div class="rounded-md border border-purple-200 bg-white p-4">
+    <p class="text-sm font-semibold text-foreground mb-3">2. Are defendant depositions needed?</p>
+    <div class="flex items-center gap-4 mb-2">
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="yes" class="accent-purple-600" onchange="applyGating('q2', this.value)"> Yes</label>
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q2" value="no" class="accent-purple-600" onchange="applyGating('q2', this.value)"> No</label>
+    </div>
+    <div id="gate-q2-reason" class="hidden mt-2">
+      <select id="gate-q2-select" class="w-full border border-border rounded-md px-3 py-2 text-xs bg-white" onchange="updateGateReason('q2')">
+        <option value="">— Select reason —</option>
+        <option>Defendant admitted liability in pleadings or discovery responses</option>
+        <option>Summary judgment anticipated — no material fact disputes</option>
+        <option>Clear negligence established by objective evidence (citations, reports)</option>
+        <option>Insurance carrier authorized to settle without defendant testimony</option>
+        <option>Key facts stipulated by agreement between parties</option>
+        <option>Default judgment entered or anticipated</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Q3: Expert Retention -->
+  <div class="rounded-md border border-purple-200 bg-white p-4">
+    <p class="text-sm font-semibold text-foreground mb-3">3. Is expert retention needed?</p>
+    <p class="text-[11px] text-muted-foreground mb-2">Selecting "No" also marks Phases 4–6 (Report Follow-Up, Amended Reports, Client Depo &amp; Scoring) as N/A.</p>
+    <div class="flex items-center gap-4 mb-2">
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q3" value="yes" class="accent-purple-600" onchange="applyGating('q3', this.value)"> Yes</label>
+      <label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="radio" name="gate-q3" value="no" class="accent-purple-600" onchange="applyGating('q3', this.value)"> No</label>
+    </div>
+    <div id="gate-q3-reason" class="hidden mt-2">
+      <select id="gate-q3-select" class="w-full border border-border rounded-md px-3 py-2 text-xs bg-white" onchange="updateGateReason('q3')">
+        <option value="">— Select reason —</option>
+        <option>Straightforward liability with no disputed causation</option>
+        <option>Simple injuries with obvious and undisputed causation</option>
+        <option>Medical records sufficient to establish injury without expert opinion</option>
+        <option>Defendant not challenging extent or nature of injuries</option>
+        <option>Cost of expert fees exceeds proportional case value</option>
+        <option>No technical disputes requiring specialized testimony</option>
+      </select>
+    </div>
+  </div>
+
+</div>
 </div>
 
 <!-- Phase 1: Non-Party Depositions -->
@@ -1524,5 +1599,63 @@ if (notesEl) {
 loadState();
 </script>
 
+<script>
+/* Attorney Gating Logic */
+const gateMap = {
+  q1: ['ph1'],
+  q2: ['ph2'],
+  q3: ['ph3','ph4','ph5','ph6']
+};
+
+function applyGating(qId, value) {
+  const reasonDiv = document.getElementById('gate-' + qId + '-reason');
+  const phaseIds = gateMap[qId];
+  if (value === 'no') {
+    reasonDiv.classList.remove('hidden');
+    phaseIds.forEach(function(pid) {
+      // Get only the FIRST element with this id (Part A phases)
+      var el = document.querySelector('#' + pid);
+      if (!el) return;
+      el.classList.add('phase-gated');
+      el.style.opacity = '0.5';
+      el.style.pointerEvents = 'none';
+      // Add N/A banner if not present
+      if (!el.querySelector('.na-banner')) {
+        var banner = document.createElement('div');
+        banner.className = 'na-banner';
+        banner.style.cssText = 'background:linear-gradient(135deg,#c084fc,#06b6d4);color:white;padding:10px 20px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;';
+        banner.innerHTML = '<span style="background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:9999px;font-size:11px;font-weight:700;">N/A</span> <span class="na-reason-text">Select a reason below</span>';
+        el.insertBefore(banner, el.firstChild);
+      }
+      // Collapse card
+      el.classList.remove('open');
+    });
+    updateGateReason(qId);
+  } else {
+    reasonDiv.classList.add('hidden');
+    phaseIds.forEach(function(pid) {
+      var el = document.querySelector('#' + pid);
+      if (!el) return;
+      el.classList.remove('phase-gated');
+      el.style.opacity = '';
+      el.style.pointerEvents = '';
+      var banner = el.querySelector('.na-banner');
+      if (banner) banner.remove();
+    });
+  }
+}
+
+function updateGateReason(qId) {
+  var sel = document.getElementById('gate-' + qId + '-select');
+  var reason = sel.value || 'Select a reason below';
+  var phaseIds = gateMap[qId];
+  phaseIds.forEach(function(pid) {
+    var el = document.querySelector('#' + pid);
+    if (!el) return;
+    var txt = el.querySelector('.na-reason-text');
+    if (txt) txt.textContent = reason;
+  });
+}
+</script>
 </body>
 </html>
