@@ -90,7 +90,8 @@ tailwind.config = {
   <div class="py-3">
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
     <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partA')">Overview</a>
-    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0')">Phase 0: Tier Grading</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0')">Phase 0: Case Grading</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0b')">Phase 0B: Attorney Assignment</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph1')">Phase 1: Contact Pursuit</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph2')">Phase 2: Pre-OA Prep</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph3')">Phase 3: OA 14-Point Call</a>
@@ -184,36 +185,150 @@ tailwind.config = {
 <!-- Phase 0 -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph0">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#f59e0b] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">0</span> Phase 0: Tier Grading</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#f59e0b] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">0</span> Phase 0: Case Grading</h3>
   <div class="flex items-center gap-2 shrink-0">
-    <span id="tier-badge" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-100 text-amber-700">Tier 1</span>
+    <span id="grade-badge" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-amber-100 text-amber-700">Grade 1</span>
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
-  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Assign a complexity tier to this case. The selected tier determines which checklist sections and optional items are required throughout subsequent phases.</div>
-  <div class="flex flex-col gap-3">
-    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
-      <input type="radio" name="tier-grade" value="1" checked class="mt-0.5 accent-[#f59e0b]">
-      <div>
-        <div class="font-semibold text-foreground text-sm">Tier 1: Standard</div>
-        <div class="text-xs text-muted-foreground">Baseline checklist requirements</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Score each dimension below (1–5) to determine the Case Grade. The calculated grade determines which checklist sections and optional items are required throughout subsequent phases.</div>
+
+  <!-- Sticky Score Summary -->
+  <div id="grade-summary-bar" class="sticky top-0 z-10 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 mb-5 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-3">
+      <span class="text-sm font-semibold text-foreground">Total Score:</span>
+      <span id="grade-total" class="text-lg font-bold text-amber-700">6 / 30</span>
+    </div>
+    <span id="grade-calc-badge" class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold bg-green-100 text-green-700 border border-green-300">Grade 1 — Standard</span>
+  </div>
+
+  <div class="flex flex-col gap-5" id="grade-dimensions">
+    <!-- Dimension 1: Injury Severity -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">1</span>
+        <span class="font-semibold text-foreground text-sm">Injury Severity</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="1">Score: 1/5</span>
       </div>
-    </label>
-    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
-      <input type="radio" name="tier-grade" value="2" class="mt-0.5 accent-[#f59e0b]">
-      <div>
-        <div class="font-semibold text-foreground text-sm">Tier 2: Complex</div>
-        <div class="text-xs text-muted-foreground">Additional discovery and deposition review questions</div>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Minor soft tissue</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Moderate soft tissue / minor fracture</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Significant fracture / herniation / surgery</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Severe / permanent disability</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Catastrophic / TBI / death</label>
       </div>
-    </label>
-    <label class="flex items-start gap-3 p-3 rounded-md border border-border hover:bg-accent/50 transition-colors cursor-pointer">
-      <input type="radio" name="tier-grade" value="3" class="mt-0.5 accent-[#f59e0b]">
-      <div>
-        <div class="font-semibold text-foreground text-sm">Tier 3: High-Stakes</div>
-        <div class="text-xs text-muted-foreground">Full checklist with all optional sections required</div>
+    </div>
+    <!-- Dimension 2: Liability Clarity -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">2</span>
+        <span class="font-semibold text-foreground text-sm">Liability Clarity</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="2">Score: 1/5</span>
       </div>
-    </label>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Disputed / comparative fault</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Moderate dispute / some favorable evidence</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Likely favorable / police report supports</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Strong liability / independent witnesses</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Clear-cut defendant liability</label>
+      </div>
+    </div>
+    <!-- Dimension 3: Case Value Potential -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">3</span>
+        <span class="font-semibold text-foreground text-sm">Case Value Potential</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="3">Score: 1/5</span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Under $25k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> $25k – $100k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> $100k – $500k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> $500k – $1M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> $1M+</label>
+      </div>
+    </div>
+    <!-- Dimension 4: Medical Complexity -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">4</span>
+        <span class="font-semibold text-foreground text-sm">Medical Complexity</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="4">Score: 1/5</span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Single provider, resolved</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> 2–3 providers, mostly resolved</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Multiple providers, ongoing treatment</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Specialists + surgery, extended care</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Multi-specialist, ongoing, multiple surgeries</label>
+      </div>
+    </div>
+    <!-- Dimension 5: Defendant Type -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">5</span>
+        <span class="font-semibold text-foreground text-sm">Defendant Type</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="5">Score: 1/5</span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Individual / small business</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Mid-size company / insured individual</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Large company / commercial insurer</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Multi-defendant / large fleet</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government entity / large corporation</label>
+      </div>
+    </div>
+    <!-- Dimension 6: Documentation Quality -->
+    <div class="rounded-md border border-border p-4">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">6</span>
+        <span class="font-semibold text-foreground text-sm">Documentation Quality</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="6">Score: 1/5</span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Minimal / gaps in records</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Some records, key gaps</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Adequate records, minor gaps</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Strong records, well-organized</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Comprehensive records</label>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Phase 0B: Attorney Assignment -->
+<div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph0b">
+<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">0B</span> Phase 0B: Attorney Assignment</h3>
+  <div class="flex items-center gap-2 shrink-0">
+    <span id="attorney-badge" class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-600">Unassigned</span>
+    <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</button>
+<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+  <div class="rounded-md border border-purple-200 bg-purple-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Assign the best-matched attorney based on Case Grade, specialties, current workload, and performance metrics.</div>
+
+  <!-- Current Grade Display -->
+  <div class="flex items-center gap-3 mb-5">
+    <span class="text-sm font-medium text-foreground">Current Case Grade:</span>
+    <span id="ph0b-grade-badge" class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold bg-green-100 text-green-700 border border-green-300">Grade 1 — Standard</span>
+  </div>
+
+  <!-- Attorney Roster -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="attorney-roster">
+  </div>
+
+  <!-- Assignment Confirmation -->
+  <div id="assignment-confirm" class="hidden mt-4 rounded-md border border-purple-300 bg-purple-50 p-4 flex items-center justify-between">
+    <div>
+      <span class="text-sm font-semibold text-foreground">Assign <span id="confirm-attorney-name"></span> to this case?</span>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="cancelAssignment()" class="px-3 py-1.5 text-xs font-medium rounded-md border border-border bg-card hover:bg-accent transition-colors">Cancel</button>
+      <button onclick="confirmAssignment()" class="px-3 py-1.5 text-xs font-medium rounded-md bg-purple-600 text-white hover:bg-purple-700 transition-colors">Confirm Assignment</button>
+    </div>
   </div>
 </div>
 </div>
@@ -1587,7 +1702,7 @@ if(mainScroll){mainScroll.addEventListener('scroll',function(){var btn=document.
 
 (function(){
   var links=document.querySelectorAll('.sidebar-link');
-  var sections=['partA','ph0','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC','approval'];
+  var sections=['partA','ph0','ph0b','ph1','ph2','ph3','ph4','ph5','ph6','ph7','partB','b1','b2','b3','b4','b5','b6','partC','approval'];
   var main=document.getElementById('main-scroll');if(!main)return;
   function spy(){var current='';sections.forEach(function(id){var el=document.getElementById(id);if(el){var r=el.getBoundingClientRect();var mR=main.getBoundingClientRect();if(r.top-mR.top<=120)current=id;}});
   links.forEach(function(l){l.classList.remove('bg-accent','text-accent-foreground');var oc=l.getAttribute('onclick')||'';if(oc.indexOf("'"+current+"'")>-1)l.classList.add('bg-accent','text-accent-foreground');});}
@@ -1609,8 +1724,130 @@ async function saveState(){try{setStatus('Saving...','#737373');const s=gatherSt
 async function loadState(){try{await ensureTable();const rows=await sql`SELECT checkboxes,notes FROM spec_approvals WHERE page_id=${PAGE_ID}`;if(rows.length>0){const{checkboxes:cb,notes}=rows[0];if(cb)checkboxes.forEach(c=>{const k=c.dataset.key;if(cb[k]){c.checked=cb[k].checked||false;const d=document.getElementById(c.id+'-date');if(d)d.textContent=cb[k].date||'';}});if(notesEl&&notes)notesEl.value=notes;}setStatus('Synced','#2e7d32');}catch(e){console.error(e);setStatus('Offline','#c62828');}}
 checkboxes.forEach(cb=>{cb.addEventListener('change',()=>{const d=document.getElementById(cb.id+'-date');if(d)d.textContent=cb.checked?'Approved: '+new Date().toLocaleString():'';debounceSave(300);});});
 if(notesEl)notesEl.addEventListener('input',()=>debounceSave(500));
-document.querySelectorAll('input[name="tier-grade"]').forEach(r=>{r.addEventListener('change',()=>{localStorage.setItem('bjb-case-tier',r.value);const badge=document.getElementById('tier-badge');if(badge)badge.textContent='Tier '+r.value;debounceSave(300);});});
-(function(){const saved=localStorage.getItem('bjb-case-tier');if(saved){const rb=document.querySelector('input[name="tier-grade"][value="'+saved+'"]');if(rb){rb.checked=true;const badge=document.getElementById('tier-badge');if(badge)badge.textContent='Tier '+saved;}}})();
+/* ========== Case Grade Scoring System ========== */
+function calcCaseGrade(){
+  let total=0;const details={};
+  for(let i=1;i<=6;i++){
+    const sel=document.querySelector('input[name="dim-'+i+'"]:checked');
+    const v=sel?parseInt(sel.value):1;total+=v;details['dim'+i]=v;
+    const ds=document.querySelector('[data-dim-score="'+i+'"]');
+    if(ds)ds.textContent='Score: '+v+'/5';
+  }
+  let grade,label,badgeClass;
+  if(total<=12){grade=1;label='Grade 1 — Standard';badgeClass='bg-green-100 text-green-700 border-green-300';}
+  else if(total<=22){grade=2;label='Grade 2 — Complex';badgeClass='bg-amber-100 text-amber-700 border-amber-300';}
+  else{grade=3;label='Grade 3 — High-Stakes';badgeClass='bg-red-100 text-red-700 border-red-300';}
+  document.getElementById('grade-total').textContent=total+' / 30';
+  const cb=document.getElementById('grade-calc-badge');
+  cb.textContent=label;cb.className='inline-flex items-center rounded-full px-3 py-1 text-xs font-bold border '+badgeClass;
+  const hb=document.getElementById('grade-badge');
+  if(hb){hb.textContent='Grade '+grade;hb.className='inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border '+badgeClass;}
+  const pb=document.getElementById('ph0b-grade-badge');
+  if(pb){pb.textContent=label;pb.className='inline-flex items-center rounded-full px-3 py-1 text-xs font-bold border '+badgeClass;}
+  localStorage.setItem('bjb-case-grade',String(grade));
+  localStorage.setItem('bjb-case-grade-details',JSON.stringify(details));
+  document.dispatchEvent(new CustomEvent('caseGradeChanged',{detail:{grade,total,details}}));
+  debounceSave(300);
+}
+for(let i=1;i<=6;i++){document.querySelectorAll('input[name="dim-'+i+'"]').forEach(r=>{r.addEventListener('change',calcCaseGrade);});}
+(function restoreGradeDetails(){
+  const saved=localStorage.getItem('bjb-case-grade-details');
+  if(saved){try{const d=JSON.parse(saved);for(let i=1;i<=6;i++){const v=d['dim'+i];if(v){const rb=document.querySelector('input[name="dim-'+i+'"][value="'+v+'"]');if(rb)rb.checked=true;}}}catch(e){}}
+  else{const oldTier=localStorage.getItem('bjb-case-tier')||localStorage.getItem('bjb-case-grade');if(oldTier)localStorage.setItem('bjb-case-grade',oldTier);}
+  calcCaseGrade();
+})();
+
+/* ========== Attorney Assignment Dashboard ========== */
+const ATTORNEYS=[
+  {id:'martinez',name:'Sarah Martinez',specialties:['TBI','Auto','Wrongful Death'],capacity:18,maxCapacity:25,gradeAffinity:[2,3],
+   conflicts:{depositions:2,trials:0,hearings:1},perf:{avgSettlement:'$485k',winRate:87,avgResolution:'14 mo'},
+   g1:5,g2:8,g3:5},
+  {id:'chen',name:'David Chen',specialties:['Slip & Fall','Auto','Premises'],capacity:22,maxCapacity:25,gradeAffinity:[1,2],
+   conflicts:{depositions:1,trials:0,hearings:0},perf:{avgSettlement:'$210k',winRate:82,avgResolution:'10 mo'},
+   g1:12,g2:8,g3:2},
+  {id:'oconnor',name:"Megan O'Connor",specialties:['Med Mal','TBI','Product Liability'],capacity:12,maxCapacity:20,gradeAffinity:[3],
+   conflicts:{depositions:3,trials:1,hearings:2},perf:{avgSettlement:'$920k',winRate:91,avgResolution:'22 mo'},
+   g1:1,g2:3,g3:8},
+  {id:'ramirez',name:'Carlos Ramirez',specialties:['Auto','Trucking','Wrongful Death'],capacity:15,maxCapacity:25,gradeAffinity:[2,3],
+   conflicts:{depositions:1,trials:0,hearings:1},perf:{avgSettlement:'$390k',winRate:85,avgResolution:'16 mo'},
+   g1:3,g2:7,g3:5},
+  {id:'patel',name:'Anita Patel',specialties:['Slip & Fall','Dog Bite','Auto'],capacity:20,maxCapacity:25,gradeAffinity:[1],
+   conflicts:{depositions:0,trials:0,hearings:1},perf:{avgSettlement:'$145k',winRate:79,avgResolution:'8 mo'},
+   g1:14,g2:5,g3:1},
+  {id:'wright',name:'James Wright',specialties:['Wrongful Death','TBI','Construction'],capacity:8,maxCapacity:15,gradeAffinity:[3],
+   conflicts:{depositions:2,trials:1,hearings:3},perf:{avgSettlement:'$1.2M',winRate:93,avgResolution:'26 mo'},
+   g1:0,g2:2,g3:6}
+];
+let selectedAttorneyId=null;
+
+function calcMatchScore(att){
+  const grade=parseInt(localStorage.getItem('bjb-case-grade')||'1');
+  let score=0;
+  // Specialty affinity (0-40): grade match
+  if(att.gradeAffinity.includes(grade))score+=40;
+  else{const dist=Math.min(...att.gradeAffinity.map(g=>Math.abs(g-grade)));score+=Math.max(0,40-dist*15);}
+  // Availability (0-30): inverse of load %
+  const loadPct=att.capacity/att.maxCapacity;score+=Math.round((1-loadPct)*30);
+  // Low conflicts (0-20): penalize 3pts per conflict
+  const totalConflicts=att.conflicts.depositions+att.conflicts.trials+att.conflicts.hearings;
+  score+=Math.max(0,20-totalConflicts*3);
+  // Win rate (0-10)
+  score+=Math.round((att.perf.winRate/100)*10);
+  return Math.min(100,Math.max(0,score));
+}
+
+function capacityColor(pct){return pct>=0.85?'bg-red-400':pct>=0.65?'bg-amber-400':'bg-green-400';}
+
+function renderAttorneyRoster(){
+  const roster=document.getElementById('attorney-roster');if(!roster)return;
+  const sorted=[...ATTORNEYS].map(a=>({...a,matchScore:calcMatchScore(a)})).sort((a,b)=>b.matchScore-a.matchScore);
+  roster.innerHTML=sorted.map(att=>{
+    const loadPct=att.capacity/att.maxCapacity;
+    const isSelected=selectedAttorneyId===att.id;
+    const totalConflicts=att.conflicts.depositions+att.conflicts.trials+att.conflicts.hearings;
+    return `<div class="rounded-lg border-2 ${isSelected?'border-purple-500 bg-purple-50':'border-border bg-card'} p-4 cursor-pointer hover:border-purple-300 transition-colors" onclick="selectAttorney('${att.id}')">
+      <div class="flex items-center justify-between mb-2">
+        <div><div class="font-semibold text-foreground text-sm">${att.name}</div>
+        <div class="text-xs text-muted-foreground mt-0.5">${att.specialties.join(' · ')}</div></div>
+        <div class="text-right"><div class="text-lg font-bold ${att.matchScore>=70?'text-green-600':att.matchScore>=40?'text-amber-600':'text-red-600'}">${att.matchScore}</div>
+        <div class="text-[10px] text-muted-foreground uppercase">Match</div></div>
+      </div>
+      <div class="mb-2"><div class="flex items-center justify-between text-[11px] text-muted-foreground mb-1"><span>Capacity ${att.capacity}/${att.maxCapacity}</span><span>${Math.round(loadPct*100)}%</span></div>
+      <div class="w-full h-2 bg-muted rounded-full overflow-hidden"><div class="${capacityColor(loadPct)} h-full rounded-full" style="width:${Math.round(loadPct*100)}%"></div></div>
+      <div class="flex gap-2 mt-1 text-[10px] text-muted-foreground"><span class="text-green-600">G1:${att.g1}</span><span class="text-amber-600">G2:${att.g2}</span><span class="text-red-600">G3:${att.g3}</span></div></div>
+      <div class="flex items-center justify-between text-[11px] mb-1"><span class="text-muted-foreground">Conflicts (30/60/90d):</span><span class="${totalConflicts>3?'text-red-600':'text-muted-foreground'}">${att.conflicts.depositions} dep · ${att.conflicts.trials} trial · ${att.conflicts.hearings} hear</span></div>
+      <div class="flex items-center justify-between text-[11px]"><span class="text-muted-foreground">Performance:</span><span class="text-foreground">${att.perf.avgSettlement} avg · ${att.perf.winRate}% win · ${att.perf.avgResolution}</span></div>
+    </div>`;
+  }).join('');
+}
+
+function selectAttorney(id){
+  selectedAttorneyId=id;
+  renderAttorneyRoster();
+  const att=ATTORNEYS.find(a=>a.id===id);
+  const confirm=document.getElementById('assignment-confirm');
+  const nameEl=document.getElementById('confirm-attorney-name');
+  if(confirm&&att){nameEl.textContent=att.name;confirm.classList.remove('hidden');}
+}
+function cancelAssignment(){selectedAttorneyId=null;renderAttorneyRoster();document.getElementById('assignment-confirm').classList.add('hidden');}
+function confirmAssignment(){
+  if(!selectedAttorneyId)return;
+  const att=ATTORNEYS.find(a=>a.id===selectedAttorneyId);if(!att)return;
+  localStorage.setItem('bjb-assigned-attorney',JSON.stringify({id:att.id,name:att.name}));
+  const badge=document.getElementById('attorney-badge');
+  if(badge){badge.textContent=att.name;badge.className='inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700';}
+  document.getElementById('assignment-confirm').classList.add('hidden');
+  debounceSave(300);
+}
+document.addEventListener('caseGradeChanged',()=>{renderAttorneyRoster();});
+(function restoreAttorney(){
+  const saved=localStorage.getItem('bjb-assigned-attorney');
+  if(saved){try{const d=JSON.parse(saved);selectedAttorneyId=d.id;
+    const badge=document.getElementById('attorney-badge');
+    if(badge){badge.textContent=d.name;badge.className='inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700';}
+  }catch(e){}}
+  renderAttorneyRoster();
+})();
 loadState();
 </script>
 </body>

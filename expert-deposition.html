@@ -156,7 +156,7 @@ tailwind.config = {
 </div>
 
 
-<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDiscQuestions" data-tier-required="2">
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDiscQuestions" data-grade-required="2">
   <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
     <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
       <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
@@ -164,7 +164,7 @@ tailwind.config = {
     </h3>
     <div class="flex items-center gap-2 shrink-0">
       <span class="badge">Attorney</span>
-      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="badge grade-badge">Required (Grade 2+)</span>
       <span class="text-xs text-muted-foreground" id="preDiscProgress">0 / 5</span>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
@@ -200,7 +200,7 @@ tailwind.config = {
   </div>
 </div>
 
-<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDepoQuestions" data-tier-required="2">
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDepoQuestions" data-grade-required="2">
   <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
     <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
       <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
@@ -208,7 +208,7 @@ tailwind.config = {
     </h3>
     <div class="flex items-center gap-2 shrink-0">
       <span class="badge">Attorney</span>
-      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="badge grade-badge">Required (Grade 2+)</span>
       <span class="text-xs text-muted-foreground" id="preDepoProgress">0 / 5</span>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
@@ -1407,8 +1407,8 @@ document.querySelectorAll('.tab-pane').forEach(function(p){if(!p.classList.conta
 })();
 
 
-function getCaseTier() {
-  return parseInt(localStorage.getItem('bjb-case-tier') || '1');
+function getCaseGrade() {
+  return parseInt(localStorage.getItem('bjb-case-grade') || localStorage.getItem('bjb-case-tier') || '1');
 }
 
 function updateProgress(containerId, progressId) {

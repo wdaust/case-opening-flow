@@ -560,8 +560,8 @@ if(mainScroll){mainScroll.addEventListener('scroll',function(){var btn=document.
 
 document.addEventListener('click',function(e){var mn=document.getElementById('mobile-nav');var nb=document.getElementById('nav-hamburger');if(mn&&!mn.classList.contains('hidden')&&!mn.contains(e.target)&&e.target!==nb&&!nb.contains(e.target))mn.classList.add('hidden');});
 
-function getCaseTier() {
-  return parseInt(localStorage.getItem('bjb-case-tier') || '1');
+function getCaseGrade() {
+  return parseInt(localStorage.getItem('bjb-case-grade') || localStorage.getItem('bjb-case-tier') || '1');
 }
 
 function updateProgress(containerId, progressId) {
@@ -577,11 +577,11 @@ function updateProgress(containerId, progressId) {
 document.addEventListener('DOMContentLoaded',function(){
   ['ph1','scorecard'].forEach(function(id){var card=document.getElementById(id);if(card){var body=card.querySelector('[data-card-body]');if(body)body.classList.remove('hidden');var chev=card.querySelector('[data-chevron]');if(chev)chev.classList.add('rotate-180');}});
 
-  var tier = getCaseTier();
-  document.querySelectorAll('[data-tier-required]').forEach(function(section) {
-    var req = parseInt(section.getAttribute('data-tier-required'));
-    var badge = section.querySelector('.tier-badge');
-    if (tier < req) {
+  var grade = getCaseGrade();
+  document.querySelectorAll('[data-grade-required]').forEach(function(section) {
+    var req = parseInt(section.getAttribute('data-grade-required'));
+    var badge = section.querySelector('.grade-badge');
+    if (grade < req) {
       if (badge) badge.textContent = 'Optional';
       section.classList.add('opacity-60');
     }
@@ -627,7 +627,7 @@ dd_q4 = question_item("ed-dd-q4", 4, f"Have you identified any alternative means
 dd_q5 = question_item("ed-dd-q5", 5, f"How does the cost{mdash}both time and resources{mdash}of this deposition compare to the value it{rsquo}s expected to deliver for the case outcome?")
 
 pre_phase_questions = f'''
-<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDiscQuestions" data-tier-required="2">
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDiscQuestions" data-grade-required="2">
   <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
     <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
       <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
@@ -635,7 +635,7 @@ pre_phase_questions = f'''
     </h3>
     <div class="flex items-center gap-2 shrink-0">
       <span class="badge">Attorney</span>
-      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="badge grade-badge">Required (Grade 2+)</span>
       <span class="text-xs text-muted-foreground" id="preDiscProgress">0 / 5</span>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
@@ -651,7 +651,7 @@ pre_phase_questions = f'''
   </div>
 </div>
 
-<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDepoQuestions" data-tier-required="2">
+<div class="rounded-lg border-2 border-purple-200 bg-card shadow-sm mb-4" id="preDepoQuestions" data-grade-required="2">
   <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
     <h3 class="text-sm font-semibold text-foreground flex items-center gap-3">
       <span class="w-7 h-7 rounded-full bg-[#8b5cf6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">&#9733;</span>
@@ -659,7 +659,7 @@ pre_phase_questions = f'''
     </h3>
     <div class="flex items-center gap-2 shrink-0">
       <span class="badge">Attorney</span>
-      <span class="badge tier-badge">Required (Tier 2+)</span>
+      <span class="badge grade-badge">Required (Grade 2+)</span>
       <span class="text-xs text-muted-foreground" id="preDepoProgress">0 / 5</span>
       <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform duration-200 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
     </div>
