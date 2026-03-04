@@ -272,6 +272,17 @@ tailwind.config = {
         <option>Cost of depositions outweighs evidentiary value for case posture</option>
         <option>Non-party witnesses corroborated by other admissible evidence</option>
       </select>
+      <div class="mt-3 rounded-md bg-muted/50 border border-border p-3">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Available Reasons</p>
+        <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
+          <li>Liability clearly established — no disputed witness testimony needed</li>
+          <li>Documentary evidence sufficient to prove all contested facts</li>
+          <li>Witness statements already obtained through informal investigation</li>
+          <li>Early settlement negotiations make depositions unnecessary</li>
+          <li>Cost of depositions outweighs evidentiary value for case posture</li>
+          <li>Non-party witnesses corroborated by other admissible evidence</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -292,6 +303,17 @@ tailwind.config = {
         <option>Key facts stipulated by agreement between parties</option>
         <option>Default judgment entered or anticipated</option>
       </select>
+      <div class="mt-3 rounded-md bg-muted/50 border border-border p-3">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Available Reasons</p>
+        <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
+          <li>Defendant admitted liability in pleadings or discovery responses</li>
+          <li>Summary judgment anticipated — no material fact disputes</li>
+          <li>Clear negligence established by objective evidence (citations, reports)</li>
+          <li>Insurance carrier authorized to settle without defendant testimony</li>
+          <li>Key facts stipulated by agreement between parties</li>
+          <li>Default judgment entered or anticipated</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -313,6 +335,17 @@ tailwind.config = {
         <option>Cost of expert fees exceeds proportional case value</option>
         <option>No technical disputes requiring specialized testimony</option>
       </select>
+      <div class="mt-3 rounded-md bg-muted/50 border border-border p-3">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-1.5">Available Reasons</p>
+        <ul class="text-[11px] text-muted-foreground space-y-0.5 list-disc pl-4">
+          <li>Straightforward liability with no disputed causation</li>
+          <li>Simple injuries with obvious and undisputed causation</li>
+          <li>Medical records sufficient to establish injury without expert opinion</li>
+          <li>Defendant not challenging extent or nature of injuries</li>
+          <li>Cost of expert fees exceeds proportional case value</li>
+          <li>No technical disputes requiring specialized testimony</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -606,231 +639,6 @@ tailwind.config = {
   </table>
   </div>
   <div class="rounded-md border border-green-200 bg-green-50 p-4 text-sm text-green-900"><strong>Exit Condition:</strong> Client attends IME &rarr; IME report received and uploaded.</div>
-</div>
-</div>
-
-</section>
-
-<!-- Phase 4: Expert Report Follow-Up -->
-<div class="rounded-lg border border-border bg-card shadow-sm mb-4 overflow-hidden" id="ph4">
-<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#10b981] text-white rounded-full text-xs font-bold shrink-0">4</span> Expert Report Follow-Up</h3>
-  <div class="flex items-center gap-2 shrink-0">
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">System</span>
-    <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">Pursuit ladder + review</span>
-    <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-  </div>
-</button>
-<div data-card-body class="px-6 py-5 border-t border-border">
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Track expert report delivery, escalate delays through pursuit ladder, review report quality, and ensure compliance with disclosure deadlines.</div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">4A: Report Pursuit Ladder</h3>
-    <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Trigger:</strong> Activates when expert report deadline is within 14 days and no report received.</div>
-
-    <div class="flex flex-col gap-0.5 my-3">
-      <div class="flex items-stretch border border-border rounded-md overflow-hidden text-xs mb-1 hover:bg-muted/50 transition-colors">
-        <div class="bg-primary text-primary-foreground min-w-[44px] flex items-center justify-center font-bold text-sm shrink-0">1</div>
-        <div class="flex-1 p-3 pr-8 bg-card relative">
-          <div class="font-semibold text-foreground mb-0.5">Status Check Email <span class="rung-who"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></span></div>
-          <div class="text-[11px] text-muted-foreground mb-0.5">SLA: 14 days before deadline</div>
-          <div class="text-[11px] text-muted-foreground">Send status inquiry to expert. Confirm receipt of all materials and expected delivery date.</div>
-          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button>
-          <div class="info-popover"><strong>Status Check</strong>Initial outreach to expert confirming they have all needed materials and are on track for deadline.</div>
-        </div>
-      </div>
-      <div class="flex items-stretch border border-border rounded-md overflow-hidden text-xs mb-1 hover:bg-muted/50 transition-colors">
-        <div class="bg-primary text-primary-foreground min-w-[44px] flex items-center justify-center font-bold text-sm shrink-0">2</div>
-        <div class="flex-1 p-3 pr-8 bg-card relative">
-          <div class="font-semibold text-foreground mb-0.5">Follow-Up Call <span class="rung-who"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></span></div>
-          <div class="text-[11px] text-muted-foreground mb-0.5">SLA: 7 days before deadline</div>
-          <div class="text-[11px] text-muted-foreground">Call expert office to confirm report progress. If delayed, obtain revised ETA and notify attorney.</div>
-          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button>
-          <div class="info-popover"><strong>Follow-Up Call</strong>Direct phone contact with expert or their office. Document revised timeline if applicable.</div>
-        </div>
-      </div>
-      <div class="flex items-stretch border border-border rounded-md overflow-hidden text-xs mb-1 hover:bg-muted/50 transition-colors">
-        <div class="bg-primary text-primary-foreground min-w-[44px] flex items-center justify-center font-bold text-sm shrink-0">3</div>
-        <div class="flex-1 p-3 pr-8 bg-card relative">
-          <div class="font-semibold text-foreground mb-0.5">Urgent Follow-Up <span class="rung-who"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></span></div>
-          <div class="text-[11px] text-muted-foreground mb-0.5">SLA: 3 days before deadline</div>
-          <div class="text-[11px] text-muted-foreground">Escalated follow-up. If report still not received, notify attorney for direct expert contact.</div>
-          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button>
-          <div class="info-popover"><strong>Urgent Follow-Up</strong>Third attempt. If no response, escalate to attorney for direct intervention.</div>
-        </div>
-      </div>
-      <div class="ladder-rung rung-atty">
-        <div class="bg-primary text-primary-foreground min-w-[44px] flex items-center justify-center font-bold text-sm shrink-0" style="background:#7c3aed">4</div>
-        <div class="flex-1 p-3 pr-8 bg-card relative">
-          <div class="font-semibold text-foreground mb-0.5">Attorney Direct Contact <span class="rung-who"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></span></div>
-          <div class="text-[11px] text-muted-foreground mb-0.5">SLA: 1 day before deadline</div>
-          <div class="text-[11px] text-muted-foreground">Attorney contacts expert directly. Assess need for extension motion or replacement expert.</div>
-          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button>
-          <div class="info-popover"><strong>Attorney Escalation</strong>Attorney intervenes directly. May need to file motion for extension or begin replacement expert search.</div>
-        </div>
-      </div>
-      <div class="ladder-rung rung-auto">
-        <div class="bg-primary text-primary-foreground min-w-[44px] flex items-center justify-center font-bold text-sm shrink-0" style="background:#15803d">A</div>
-        <div class="flex-1 p-3 pr-8 bg-card relative">
-          <div class="font-semibold text-foreground mb-0.5">AUTO: Overdue Alert <span class="rung-who"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">System</span></span></div>
-          <div class="text-[11px] text-muted-foreground mb-0.5">Trigger: Deadline passed, no report</div>
-          <div class="text-[11px] text-muted-foreground">System flags matter as expert-report-overdue. Alerts management dashboard. Blocks disclosure workflow.</div>
-          <button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button>
-          <div class="info-popover"><strong>Overdue Alert</strong>Automated system alert when deadline passes without report. Management visibility and workflow block.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rounded-md border border-green-200 bg-green-50 p-4 text-sm text-green-900"><strong>Exit Condition (Success):</strong> Expert report received &rarr; Attorney Review</div>
-    <div class="rounded-md border border-green-200 bg-green-50 p-4 text-sm text-green-900" style="background:#fef2f2;border-color:#fecaca;margin-top:6px"><strong>Exit Condition (Failure):</strong> Overdue &gt;14 days &rarr; Replacement Expert or Extension Motion</div>
-  </div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">4B: Report Review &amp; Disclosure</h3>
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-      <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">1</td><td class="px-4 py-3 text-sm text-foreground">Attorney Report Review<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Report Review</strong>Attorney reviews expert report for: completeness, accuracy, opinion strength, Daubert vulnerability, and alignment with case theory.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days from receipt</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">2</td><td class="px-4 py-3 text-sm text-foreground">Request Report Revisions<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Report Revisions</strong>If deficiencies identified, attorney provides specific revision requests to expert with deadline.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-yellow-100 text-yellow-800">Comp / NA / Def</span></td><td class="px-4 py-3 text-sm text-foreground">2 days from review</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">3</td><td class="px-4 py-3 text-sm text-foreground">Disclose Expert Report<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Expert Disclosure</strong>Serve expert report and disclosure on opposing counsel per scheduling order deadline. Include CV and fee schedule.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Per scheduling order</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">4</td><td class="px-4 py-3 text-sm text-foreground">Update Expert Performance Score<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Performance Score</strong>Rate expert on timeliness, report quality, responsiveness, and opinion strength. Updates Expert Performance Index.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days from disclosure</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- Phase 5: Amended Expert Reports -->
-<div class="rounded-lg border border-border bg-card shadow-sm mb-4 overflow-hidden" id="ph5">
-<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#10b981] text-white rounded-full text-xs font-bold shrink-0">5</span> Amended Expert Reports</h3>
-  <div class="flex items-center gap-2 shrink-0">
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span>
-    <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">As needed per scheduling order</span>
-    <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-  </div>
-</button>
-<div data-card-body class="px-6 py-5 border-t border-border">
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Manage amended or supplemental expert reports when new evidence, additional treatment, or changed circumstances require updated expert opinions.</div>
-
-  <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-  <table class="w-full text-sm">
-    <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-    <tbody>
-      <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">1</td><td class="px-4 py-3 text-sm text-foreground">Identify Amendment Trigger<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Amendment Trigger</strong>Attorney identifies need for amended report: new medical records, additional surgery, changed prognosis, new economic data, deposition testimony.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Ongoing monitoring</td></tr>
-      <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">2</td><td class="px-4 py-3 text-sm text-foreground">Transmit Supplemental Materials<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Supplemental Materials</strong>Send new/updated materials to expert with specific instructions on what opinions need updating.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days from trigger</td></tr>
-      <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">3</td><td class="px-4 py-3 text-sm text-foreground">Review Amended Report<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Amended Review</strong>Attorney reviews amended report for consistency with original, strengthened opinions, and disclosure compliance.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days from receipt</td></tr>
-      <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">4</td><td class="px-4 py-3 text-sm text-foreground">Disclose Amended Report<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Amended Disclosure</strong>Serve amended expert report on opposing counsel. Must comply with supplemental disclosure deadlines.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Per scheduling order</td></tr>
-      <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">5</td><td class="px-4 py-3 text-sm text-foreground">Update Case Valuation<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Valuation Update</strong>Reassess case value based on amended expert opinions. Update settlement range and demand strategy.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days from amended disclosure</td></tr>
-    </tbody>
-  </table>
-  </div>
-</div>
-</div>
-
-<!-- Phase 6: Client Deposition & Scoring -->
-<div class="rounded-lg border border-border bg-card shadow-sm mb-4 overflow-hidden" id="ph6">
-<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#10b981] text-white rounded-full text-xs font-bold shrink-0">6</span> Client Deposition &amp; Scoring</h3>
-  <div class="flex items-center gap-2 shrink-0">
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span>
-    <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">Prep + Execution + Scoring</span>
-    <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-  </div>
-</button>
-<div data-card-body class="px-6 py-5 border-t border-border">
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Prepare client for deposition by defense counsel, attend and defend the deposition, and score client performance for case strategy adjustment.</div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">6A: Client Deposition Preparation</h3>
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-      <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">1</td><td class="px-4 py-3 text-sm text-foreground">Schedule Deposition Prep Session<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Prep Session</strong>Schedule 2-3 hour preparation session with client. Must occur at least 3 days before deposition date.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">7 days before deposition</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">2</td><td class="px-4 py-3 text-sm text-foreground">Conduct Deposition Prep<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Deposition Prep</strong>Attorney conducts prep: review rules, practice Q&amp;A, address problem areas, review prior statements, discuss demeanor and presentation.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days before deposition</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">3</td><td class="px-4 py-3 text-sm text-foreground">Prepare Objection Strategy<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Objection Strategy</strong>Anticipate defense questioning areas and prepare objection triggers: scope, form, privilege, harassment, asked and answered.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Day before deposition</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">6B: Deposition Execution &amp; Scoring</h3>
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-      <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">4</td><td class="px-4 py-3 text-sm text-foreground">Defend Client Deposition<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Defend Deposition</strong>Attorney attends and defends client deposition. Make appropriate objections, protect privilege, and manage breaks.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Scheduled date</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">5</td><td class="px-4 py-3 text-sm text-foreground">Post-Deposition Client Debrief<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Client Debrief</strong>Debrief client immediately after deposition. Address concerns, discuss next steps, and assess client emotional state.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Same day</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">6</td><td class="px-4 py-3 text-sm text-foreground">Score Client Deposition Performance<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Client Depo Score</strong>Score client on: consistency (1-5), demeanor (1-5), credibility (1-5), responsiveness (1-5), preparation adherence (1-5). Updates Client Deposition Score.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">1 day from deposition</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">7</td><td class="px-4 py-3 text-sm text-foreground">Review &amp; Correct Client Transcript<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Transcript Review</strong>Review client deposition transcript with client. File errata sheet for any corrections within allowed timeframe.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Per jurisdiction rules</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">8</td><td class="px-4 py-3 text-sm text-foreground">Update Case Strategy<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Strategy Update</strong>Based on deposition performance, reassess case value, settlement strategy, and trial presentation approach.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days from deposition</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- Phase 7: IME Management -->
-<div class="rounded-lg border border-border bg-card shadow-sm mb-4 overflow-hidden" id="ph7">
-<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="inline-flex items-center justify-center w-7 h-7 bg-[#10b981] text-white rounded-full text-xs font-bold shrink-0">7</span> IME Management</h3>
-  <div class="flex items-center gap-2 shrink-0">
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span>
-    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">System</span>
-    <span class="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded">Scheduling + Attendance + Rebuttal</span>
-    <svg data-chevron class="w-5 h-5 text-muted-foreground transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-  </div>
-</button>
-<div data-card-body class="px-6 py-5 border-t border-border">
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900"><strong>Objective:</strong> Manage defense-requested Independent Medical Examinations (IMEs). Coordinate client attendance, monitor for abuse, obtain and rebut adverse IME reports.</div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">7A: IME Scheduling &amp; Preparation</h3>
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-      <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">1</td><td class="px-4 py-3 text-sm text-foreground">Review IME Notice<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>IME Notice Review</strong>Attorney reviews IME notice for: proper service, reasonable location, qualified examiner, appropriate scope, and compliance with jurisdictional requirements.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days from receipt</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">2</td><td class="px-4 py-3 text-sm text-foreground">Object to IME (if warranted)<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>IME Objection</strong>File objection if IME notice is deficient: unreasonable location, unqualified examiner, overly broad scope, or procedural defects.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-yellow-100 text-yellow-800">Comp / NA / Def</span></td><td class="px-4 py-3 text-sm text-foreground">Per jurisdiction rules</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">3</td><td class="px-4 py-3 text-sm text-foreground">Prepare Client for IME<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>IME Prep</strong>Coach client on: be honest, do not exaggerate, describe symptoms accurately, note all tests performed, track time spent with examiner.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days before IME</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">4</td><td class="px-4 py-3 text-sm text-foreground">Confirm IME Logistics<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Logistics</strong>Confirm date, time, location with client. Arrange transportation if needed. Send reminder 2 days before.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days before IME</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">5</td><td class="px-4 py-3 text-sm text-foreground">AUTO: IME Reminder to Client<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Auto Reminder</strong>System sends automated reminder to client 48 hours before scheduled IME with location details and preparation notes.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">System</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-green-100 text-green-800">Auto</span></td><td class="px-4 py-3 text-sm text-foreground">2 days before IME</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <div class="my-6">
-    <h3 class="text-sm font-semibold text-foreground mb-3">7B: Post-IME &amp; Rebuttal</h3>
-    <div class="rounded-md border border-border overflow-hidden overflow-x-auto overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead>
-<tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">#</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Task</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned To</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Badge</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">SLA</th></tr></thead>
-      <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">6</td><td class="px-4 py-3 text-sm text-foreground">Client Post-IME Debrief<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Post-IME Debrief</strong>Debrief client: what tests were performed, time spent, questions asked, examiner demeanor, any concerning statements.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">1 day from IME</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">7</td><td class="px-4 py-3 text-sm text-foreground">Obtain IME Report<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Obtain Report</strong>Request IME report from defense counsel. Track delivery against jurisdictional requirements for timely disclosure.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">Per jurisdiction rules</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">8</td><td class="px-4 py-3 text-sm text-foreground">Attorney IME Report Analysis<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>IME Analysis</strong>Analyze IME report for: factual errors, inconsistencies with records, unsupported conclusions, examiner bias, and Daubert vulnerabilities.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">5 days from receipt</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">9</td><td class="px-4 py-3 text-sm text-foreground">Commission Rebuttal Report<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Rebuttal Report</strong>If warranted, retain treating physician or expert to prepare rebuttal report addressing IME findings and conclusions.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-purple-100 text-purple-800">Attorney</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-yellow-100 text-yellow-800">Comp / NA / Def</span></td><td class="px-4 py-3 text-sm text-foreground">14 days from analysis</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">10</td><td class="px-4 py-3 text-sm text-foreground">Log IME in Litify<button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help ml-1 shrink-0" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>Litify Entry</strong>Record IME details: examiner, date, report findings, rebuttal status, and impact on case valuation.</div></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">Para</span></td><td class="px-4 py-3 text-sm text-foreground"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-red-100 text-red-800">Required</span></td><td class="px-4 py-3 text-sm text-foreground">3 days from report receipt</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
 </div>
 </div>
 
