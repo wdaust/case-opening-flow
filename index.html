@@ -53,24 +53,27 @@ tailwind.config = {
 </head>
 <body class="bg-background text-foreground font-[-apple-system,BlinkMacSystemFont,'Inter',sans-serif] text-sm leading-relaxed">
 <!-- TOP NAV -->
-<nav class="sticky top-0 z-50 h-14 border-b border-border bg-card">
+<nav class="sticky top-0 z-50 h-14 border-b border-border bg-black">
   <div class="max-w-[1460px] mx-auto h-full flex items-center justify-between px-6">
-    <span class="text-sm font-semibold text-muted-foreground tracking-wide">BJB Performance Plan</span>
-    <div class="hidden md:flex items-center gap-1">
-      <a href="index.html" class="px-3 py-1.5 text-sm font-medium text-foreground bg-accent rounded-md no-underline" style="border-bottom: 2px solid #3b82f6">Case Opening</a>
-      <a href="treatment-monitoring.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Treatment Monitoring</a>
-      <a href="written-discovery.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Written Discovery</a>
-      <a href="expert-deposition.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Expert &amp; Deposition</a>
-      <a href="arbitration-mediation.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Arb &amp; Mediation</a>
-      <a href="trial.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Trial</a>
-      <a href="litify-dev-summary.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Dev Summary</a>
-      <a href="scoring-review.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Scoring Review</a>
+    <div class="flex flex-col leading-tight">
+      <span class="text-sm font-bold text-white tracking-wider" style="font-family:Georgia,serif">BRANDON J. BRODERICK</span>
+      <span class="text-[10px] text-gray-400 tracking-widest uppercase" style="font-family:Georgia,serif">Attorney at Law</span>
     </div>
-    <button id="nav-hamburger" class="md:hidden text-foreground" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+    <div class="hidden md:flex items-center gap-1">
+      <a href="index.html" class="px-3 py-1.5 text-sm font-medium text-white bg-white/10 rounded-md no-underline" style="border-bottom: 2px solid #3b82f6">Case Opening</a>
+      <a href="treatment-monitoring.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Treatment Monitoring</a>
+      <a href="written-discovery.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Written Discovery</a>
+      <a href="expert-deposition.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Expert &amp; Deposition</a>
+      <a href="arbitration-mediation.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Arb &amp; Mediation</a>
+      <a href="trial.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Trial</a>
+      <a href="litify-dev-summary.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Dev Summary</a>
+      <a href="scoring-review.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Scoring Review</a>
+    </div>
+    <button id="nav-hamburger" class="md:hidden text-white" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
-  <div id="mobile-nav" class="hidden md:hidden bg-card border-t border-border px-4 pb-3">
+  <div id="mobile-nav" class="hidden md:hidden bg-black border-t border-gray-700 px-4 pb-3">
     <a href="index.html" class="block px-3 py-2 text-sm font-medium text-foreground bg-accent rounded-md no-underline">Case Opening</a>
     <a href="treatment-monitoring.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Treatment Monitoring</a>
     <a href="written-discovery.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Written Discovery</a>
@@ -83,9 +86,10 @@ tailwind.config = {
 </nav>
 <div class="flex h-[calc(100vh-3.5rem)]">
 <aside class="hidden md:flex w-64 flex-col border-r border-border bg-card overflow-y-auto shrink-0">
-  <div class="px-5 pt-6 pb-4 border-b border-border">
-    <h2 class="text-xs font-bold text-foreground tracking-wide uppercase">BJB Case Opening</h2>
-    <p class="text-[11px] text-muted-foreground mt-1">Litify Dev Spec v4.0</p>
+  <div class="px-5 pt-6 pb-4 border-b border-border bg-black">
+    <h2 class="text-xs font-bold text-white tracking-wider uppercase" style="font-family:Georgia,serif">BRANDON J. BRODERICK</h2>
+    <p class="text-[10px] text-gray-400 tracking-widest uppercase mt-0.5" style="font-family:Georgia,serif">Attorney at Law</p>
+    <p class="text-[11px] text-gray-400 mt-1">Litify Dev Spec v4.0</p>
   </div>
   <div class="py-3">
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
@@ -108,7 +112,7 @@ tailwind.config = {
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b2')">2. Liability (LSI + SLI)</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b3')">3. Policy &amp; Collectability</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b4')">4. TSI</a>
-    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b5')">5. CPI (7 Pillars)</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b5')">5. CPI (5 Pillars)</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('b6')">6. MCHS</a>
   </div>
   <div class="py-3">
@@ -562,13 +566,13 @@ tailwind.config = {
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
   <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#3b82f6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">3</span> OA &mdash; 14-Point Orientation Call</h3>
   <div class="flex items-center gap-2 shrink-0">
-    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para / Legal Asst</span>
+    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-purple-100 text-purple-700">Attorney</span>
     <span class="text-[11px] font-semibold text-muted-foreground bg-muted px-2 py-0.5 rounded">24 biz hrs from assignment</span>
     <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
   </div>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Conduct the full Orientation Appointment covering all 14 agenda points. Gate: all OA Quality Gate fields must be populated before status can advance to OA Completed.</div>
+  <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Objective:</strong> The attorney conducts the full Orientation Appointment covering all 14 agenda points. Gate: all OA Quality Gate fields must be populated before status can advance to OA Completed.</div>
 
   <h4 class="text-xs font-bold text-foreground mb-2 mt-4">14-Point Agenda</h4>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-5">
@@ -585,7 +589,24 @@ tailwind.config = {
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">11</span><span>Social media guidance &mdash; do not post, lock accounts, do not accept new followers</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Explain clearly: defense investigators actively monitor social media. A single photo or post contradicting injury claims can destroy case value. Instructions: do not post about the accident, injuries, or legal case. Set all accounts to private. Do not accept new followers or friend requests from unknown people. Do not delete existing posts (spoliation risk). This guidance should be repeated at every subsequent client contact.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">12</span><span>DocuSign engagement letter + HIPAA authorizations &mdash; walk through, collect signature</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Send DocuSign link before or during the call. Walk client through the engagement letter — explain contingency fee %, termination rights, scope of representation. Explain HIPAA authorizations and why they're needed (to obtain medical records). Do not end the call without confirming the client can access DocuSign. If client cannot sign during call, set a hard follow-up task for within 24 hours. BJB__Engagement_Letter_Signed__c = TRUE is required for the Final Gate.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">13</span><span>Collect all provider names for medical records requests &mdash; at least first treating provider required</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Collect name, address, and phone for every provider: ER/hospital, PCP, specialists, PT, chiro, mental health, pain management. At minimum: the first treating provider after the incident is required to pass the OA gate. Set BJB__Provider_List_Initiated__c = TRUE once any provider is entered. OA Burst will fire records request letters to all entered providers immediately after call completion.</div></div>
-    <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">14</span><span>Set next steps &mdash; what client should expect, timeline, how to reach the team</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Summarize what happens next: records requests going out today, complaint being drafted, what the client will receive in writing. Give the paralegal's direct contact information. Tell client when they will hear from the team next (set expectation). Confirm the preferred contact method noted earlier. Remind: continue treatment, keep all appointments, contact us before speaking to anyone about the case. End on an affirming, confident note.</div></div>
+    <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">14</span><span>Set next steps &mdash; what client should expect, timeline, how to reach the team</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Summarize what happens next: records requests going out today, complaint being drafted, what the client will receive in writing. Give the team's direct contact information. Tell client when they will hear from the team next (set expectation). Confirm the preferred contact method noted earlier. Remind: continue treatment, keep all appointments, contact us before speaking to anyone about the case. End on an affirming, confident note.</div></div>
+  </div>
+
+  <!-- OA Data Handoff -->
+  <div class="mt-6 rounded-md border-2 border-amber-300 bg-amber-50 p-4 mb-6">
+    <h4 class="text-sm font-bold text-amber-900 mb-2 flex items-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+      OA Data Handoff &mdash; Attorney to Paralegal
+    </h4>
+    <p class="text-sm text-amber-800 mb-3">The attorney conducts the OA but <strong>does not input data into Litify</strong>. Data entry is the paralegal's responsibility.</p>
+    <div class="text-sm text-amber-800">
+      <p class="font-semibold mb-1">Two handoff methods:</p>
+      <ol class="list-decimal pl-5 space-y-1 mb-3">
+        <li><strong>Structured email:</strong> Attorney emails organized notes covering all 14 agenda points to the assigned paralegal immediately after the call.</li>
+        <li><strong>Brief handoff call:</strong> Attorney conducts a short verbal handoff with the paralegal to relay key findings and flags.</li>
+      </ol>
+      <p class="font-semibold">The paralegal is responsible for entering all OA data into Litify. All OA Quality Gate fields (below) must be populated by the paralegal after receiving the attorney's notes.</p>
+    </div>
   </div>
 
   <div class="mt-6">
@@ -836,6 +857,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Response Time</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Response_Time__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Same day</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">24&ndash;48 hours</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">3&ndash;7 days</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Rarely responds</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">No response</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Follow-Through on Requests</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Follow_Through__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Completes docs/sigs/forms/IDs immediately</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minor delays</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Needs reminders</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequently misses</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Fails to comply</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Appointment Reliability</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Appointment_Reliability__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Always shows up on time</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Rarely cancels</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Occasional cancels</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequent cancels</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Chronic no-shows</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -852,6 +874,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Trust / Alignment with Firm</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Trust_Alignment__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Coaches well, buys into strategy</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally aligned</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Sometimes pushes back</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequently disagrees</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Combative / undermines</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Consistency of Story</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Story_Consistency__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Stable facts throughout</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minor variations</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Some shifting details</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Noticeable changes</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Major contradictions</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Transparency</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Transparency__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Fully discloses prior injuries, claims, meds</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly transparent</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Some gaps need prodding</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Withholds info</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Actively deceptive</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -868,6 +891,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Compliance with Care Plan</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Care_Plan_Compliance__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Completes PT, referrals, home exercise</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly compliant</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Partial compliance</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequently non-compliant</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Refuses care</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Escalation Readiness</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Escalation_Readiness__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Willing for injections / diagnostics / surgery when appropriate</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Open to recommendations</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Hesitant but persuadable</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Resistant</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Refuses all escalation</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Treatment Documentation Strength</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Tx_Doc_Strength__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Providers support claims, detailed notes</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Good documentation</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Adequate</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Sparse notes</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Poor / contradictory docs</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -884,6 +908,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Behavioral Volatility</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Behavioral_Volatility__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Calm, predictable</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly even-tempered</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Occasional outbursts</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">High-conflict, impulsive</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Unpredictable, dangerous</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Social Media Risk</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Social_Media_Risk__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">No concerning posts</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minimal exposure</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Some risky posts</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Posts contradict injuries</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Active contradiction of case</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Prior Claims / Litigation History</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Prior_Claims_Risk__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">None</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">One unrelated prior</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Some history, manageable</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Pattern of claims</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Serial litigant / fraud risk</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -900,6 +925,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Patience / Timeline Tolerance</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Patience__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Understands process takes time</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally patient</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Gets anxious sometimes</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequently impatient</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Demands immediate resolution</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Authority / Decision Readiness</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Decision_Readiness__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Can make decisions independently</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minor consultation needed</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Defers to family</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Significant delays deciding</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Cannot / will not decide</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Negotiation Temperament</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Negotiation_Temperament__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Calm, rational</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly calm</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Emotional at times</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Highly emotional</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Combative / irrational</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -916,6 +942,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Signature Reliability</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Signature_Reliability__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">DocuSign completed same day</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Within 24 hrs</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Within 48 hrs</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Needs multiple reminders</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Won't sign / loses access</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Communication Preference Clarity</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Comm_Preference_Clarity__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Clear on best channel / time / language</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally clear</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Somewhat unclear</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Confusing preferences</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">No clear way to reach</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Rules Adherence</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Rules_Adherence__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Follows all guidance, keeps appts, avoids prohibited contact</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly compliant</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Occasional lapses</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Frequent violations</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Ignores all guidance</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -932,6 +959,7 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Damage Narrative Clarity</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Damage_Narrative__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Articulates limitations and impact consistently</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally clear</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Needs coaching</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Inconsistent narrative</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Cannot articulate damages</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Employment / Wage Loss Cooperation</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Wage_Loss_Coop__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Supports verification, provides records promptly</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mostly cooperative</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Slow but willing</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Resistant to providing records</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Refuses / conceals info</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>Prior Medical Disclosure Quality</strong></td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CP_Prior_Medical_Disclosure__c</code></td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Complete history, no surprises</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minor omissions</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Some gaps discovered later</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Significant undisclosed history</td><td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Major surprises / lies</td></tr>
+        <tr class="bg-gray-50"><td colspan="7" class="px-4 py-2 text-xs text-muted-foreground italic"><strong>Unknown</strong> &mdash; Not yet assessed (available for all sub-metrics above)</td></tr>
       </tbody>
     </table>
     </div>
@@ -1208,7 +1236,7 @@ tailwind.config = {
 <!-- B5: CPI -->
 <div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="b5">
 <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
-  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#3b82f6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">B5</span> Case Performance Index (CPI) &mdash; 7 Pillars, 1&ndash;5 Scale</h3>
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#3b82f6] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">B5</span> Case Performance Index (CPI) &mdash; 5 Pillars, 1&ndash;5 Scale Each</h3>
   <div class="flex items-center gap-2 shrink-0">
     <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-700">Para / Legal Asst</span>
     <span class="text-[11px] font-semibold text-muted-foreground bg-muted px-2 py-0.5 rounded">Within 1 hr of OA</span>
@@ -1216,16 +1244,16 @@ tailwind.config = {
   </div>
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
-  <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures "How strong is this file as a BUSINESS asset?" NOT about liability, treatment, or client behavior. Measures operational efficiency, file quality, and strategic value.<br>7 pillars, each scored 1&ndash;5. CPI Total = weighted average producing a 1.0&ndash;5.0 composite. Each pillar field: Number(2,1), range 1.0&ndash;5.0.</div>
+  <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures "How strong is this file as a BUSINESS asset?" NOT about liability, treatment, or client behavior. Measures operational efficiency, file quality, and strategic value.<br>5 pillars, each scored 1&ndash;5, each weighted 20%. CPI Total = weighted average producing a 1.0&ndash;5.0 composite. Each pillar field: Number(2,1), range 1.0&ndash;5.0.</div>
 
   <div class="mt-6">
-<h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">CPI Rubric &mdash; All 7 Pillars</h3>
+<h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">CPI Rubric &mdash; All 5 Pillars</h3>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Pillar</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Weight</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">5</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">4</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">3</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">2</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">1</th></tr></thead>
       <tbody>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>1. Economic Efficiency</strong><br><em style="font-size:11px;color:#737373">Is this case economically viable relative to internal cost?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
+          <td class="px-4 py-3 text-sm text-foreground">20%</td>
           <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Economic_Efficiency__c</code></td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Low labor relative to expected fee, clean file, minimal admin drain</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Manageable labor, routine admin, reasonable cost ratio</td>
@@ -1234,7 +1262,7 @@ tailwind.config = {
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Unsustainable cost-to-resolution, aging with unclear upside</td>
         </tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>2. Momentum &amp; Velocity</strong><br><em style="font-size:11px;color:#737373">Is this case moving at proper operational speed?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
+          <td class="px-4 py-3 text-sm text-foreground">20%</td>
           <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Momentum__c</code></td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Smooth stage progression, no rework, minimal stagnation</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally on-track, minor delays resolved quickly</td>
@@ -1243,7 +1271,7 @@ tailwind.config = {
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Chronic delays, repeated task reopening, files drifting</td>
         </tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>3. File Integrity &amp; Organization</strong><br><em style="font-size:11px;color:#737373">How structurally clean is the file?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
+          <td class="px-4 py-3 text-sm text-foreground">20%</td>
           <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_File_Integrity__c</code></td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Clean professional file, easy for claims/lit to absorb</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Well-organized with minor gaps in summaries</td>
@@ -1251,17 +1279,8 @@ tailwind.config = {
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Disorganized, hard to interpret quickly</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Major gaps, missing documents, no chronology</td>
         </tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>4. Defense Friction Index</strong><br><em style="font-size:11px;color:#737373">How difficult will this case be to settle?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
-          <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Defense_Friction__c</code></td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Cooperative carrier, predictable adjuster, smooth process</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Generally reasonable carrier, minor delays</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Mixed carrier behavior, some pushback expected</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Known difficult carrier, adjuster delays, early denials</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">SIU-heavy, aggressive defense, known stall tactics</td>
-        </tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>5. Strategic Priority</strong><br><em style="font-size:11px;color:#737373">Does this case matter beyond dollars?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">10%</td>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>4. Strategic Priority</strong><br><em style="font-size:11px;color:#737373">Does this case matter beyond dollars?</em></td>
+          <td class="px-4 py-3 text-sm text-foreground">20%</td>
           <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Strategic_Priority__c</code></td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Strategic case aligned with firm growth targets, high precedent value</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Good strategic fit, referral source or venue importance</td>
@@ -1269,8 +1288,8 @@ tailwind.config = {
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Isolated case, limited broader value</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Non-strategic, potential reputational drag</td>
         </tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>6. Risk Exposure</strong><br><em style="font-size:11px;color:#737373">What internal/operational risk does this case carry?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>5. Risk Exposure</strong><br><em style="font-size:11px;color:#737373">What internal/operational risk does this case carry?</em></td>
+          <td class="px-4 py-3 text-sm text-foreground">20%</td>
           <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Risk_Exposure__c</code></td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Clean compliance posture, no deadline pressure</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Minor compliance items, all deadlines comfortable</td>
@@ -1278,21 +1297,12 @@ tailwind.config = {
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Approaching critical deadlines, documentation weakness</td>
           <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Missed obligations, statute proximity, malpractice exposure</td>
         </tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><strong>7. Negotiation Readiness</strong><br><em style="font-size:11px;color:#737373">How close is this case to true settlement leverage?</em></td>
-          <td class="px-4 py-3 text-sm text-foreground">15%</td>
-          <td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Negotiation_Readiness__c</code></td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">File could go to negotiation tomorrow, demand components assembled</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Most demand components ready, minor gaps</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Partial readiness, value band identified but gaps remain</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Early stage, value unclear, specials incomplete</td>
-          <td class="px-4 py-3 text-sm text-foreground text-[11px] leading-snug">Still conceptual, no settlement thesis</td>
-        </tr>
       </tbody>
     </table>
     </div>
   </div>
 
-  <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm font-mono"><strong>CPI Total:</strong> <code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Total__c</code> = Formula(Num) = Weighted average of all 7 pillars (1.0&ndash;5.0)<br>= (Efficiency &times; 0.15) + (Momentum &times; 0.15) + (File_Integrity &times; 0.15) + (Defense_Friction &times; 0.15) + (Strategic_Priority &times; 0.10) + (Risk_Exposure &times; 0.15) + (Negotiation_Readiness &times; 0.15)<br><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Band__c</code> = Formula(Text)</div>
+  <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm font-mono"><strong>CPI Total:</strong> <code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Total__c</code> = Formula(Num) = Weighted average of all 5 pillars (1.0&ndash;5.0)<br>= (Efficiency &times; 0.20) + (Momentum &times; 0.20) + (File_Integrity &times; 0.20) + (Strategic_Priority &times; 0.20) + (Risk_Exposure &times; 0.20)<br><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Band__c</code> = Formula(Text)</div>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">CPI Classification Bands</h3>
@@ -1552,19 +1562,17 @@ tailwind.config = {
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.7 &mdash; Case Performance Index Fields (CPI)</h3>
-    <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm">All 7 CPI pillar fields: <strong>Number(2,1)</strong>, range 1.0&ndash;5.0. See Part B5 for full rubric anchors.</div>
+    <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm">All 5 CPI pillar fields: <strong>Number(2,1)</strong>, range 1.0&ndash;5.0, each weighted 20%. See Part B5 for full rubric anchors.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Notes</th></tr></thead>
       <tbody>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Economic_Efficiency__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 1 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Momentum__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 2 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_File_Integrity__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 3 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Defense_Friction__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 4 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Strategic_Priority__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 5 &mdash; weight 10% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Risk_Exposure__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 6 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Negotiation_Readiness__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 7 &mdash; weight 15% &mdash; range 1.0&ndash;5.0</td></tr>
-        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Total__c</code></td><td class="px-4 py-3 text-sm text-foreground">Formula(Num)</td><td class="px-4 py-3 text-sm text-foreground">Weighted average of all 7 pillars (1.0&ndash;5.0). Formula: (P1&times;0.15)+(P2&times;0.15)+(P3&times;0.15)+(P4&times;0.15)+(P5&times;0.10)+(P6&times;0.15)+(P7&times;0.15)</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Economic_Efficiency__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 1 &mdash; weight 20% &mdash; range 1.0&ndash;5.0</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Momentum__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 2 &mdash; weight 20% &mdash; range 1.0&ndash;5.0</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_File_Integrity__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 3 &mdash; weight 20% &mdash; range 1.0&ndash;5.0</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Strategic_Priority__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 4 &mdash; weight 20% &mdash; range 1.0&ndash;5.0</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Risk_Exposure__c</code></td><td class="px-4 py-3 text-sm text-foreground">Number(2,1)</td><td class="px-4 py-3 text-sm text-foreground">Pillar 5 &mdash; weight 20% &mdash; range 1.0&ndash;5.0</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Total__c</code></td><td class="px-4 py-3 text-sm text-foreground">Formula(Num)</td><td class="px-4 py-3 text-sm text-foreground">Weighted average of all 5 pillars (1.0&ndash;5.0). Formula: (P1&times;0.20)+(P2&times;0.20)+(P3&times;0.20)+(P4&times;0.20)+(P5&times;0.20)</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__CPI_Band__c</code></td><td class="px-4 py-3 text-sm text-foreground">Formula(Text)</td><td class="px-4 py-3 text-sm text-foreground">4.0&ndash;5.0 = Prime Asset / 3.0&ndash;3.9 = Strong Performer / 2.0&ndash;2.9 = Manage Closely / 1.0&ndash;1.9 = At Risk / Intervention Required</td></tr>
       </tbody>
     </table>
@@ -1705,21 +1713,61 @@ tailwind.config = {
   <h3 class="text-base font-bold text-foreground mb-1">Management Approval Checklist</h3>
   <p class="text-sm text-muted-foreground mb-4">Approved by Ryan Broderick</p>
   <div id="sync-status" class="text-[11px] text-muted-foreground mb-3">⏳ Loading...</div>
-  <div class="flex items-center gap-3 py-2.5 border-b border-border text-sm">
-    <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground min-w-[280px]"><input type="checkbox" id="appr-a" data-key="partA" class="w-4 h-4 accent-primary"> <span></span> Part A &mdash; Process Phases Approved</label>
-    <span class="text-[11px] text-muted-foreground ml-auto" id="appr-a-date"></span>
+
+  <!-- Approval Card: Part A -->
+  <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
+    <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
+      <h3 class="text-sm font-semibold text-foreground">Part A &mdash; Process Phases</h3>
+      <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="border-t border-border px-5 py-4" data-card-body>
+      <div class="flex items-center gap-3 text-sm">
+        <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground"><input type="checkbox" id="appr-a" data-key="partA" class="w-4 h-4 accent-primary"> Part A &mdash; Process Phases Approved</label>
+        <span class="text-[11px] text-muted-foreground ml-auto" id="appr-a-date"></span>
+      </div>
+    </div>
   </div>
-  <div class="flex items-center gap-3 py-2.5 border-b border-border text-sm">
-    <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground min-w-[280px]"><input type="checkbox" id="appr-b" data-key="partB" class="w-4 h-4 accent-primary"> <span></span> Part B &mdash; Scoring Systems Approved</label>
-    <span class="text-[11px] text-muted-foreground ml-auto" id="appr-b-date"></span>
+
+  <!-- Approval Card: Part B -->
+  <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
+    <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
+      <h3 class="text-sm font-semibold text-foreground">Part B &mdash; Scoring Systems</h3>
+      <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="border-t border-border px-5 py-4" data-card-body>
+      <div class="flex items-center gap-3 text-sm">
+        <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground"><input type="checkbox" id="appr-b" data-key="partB" class="w-4 h-4 accent-primary"> Part B &mdash; Scoring Systems Approved</label>
+        <span class="text-[11px] text-muted-foreground ml-auto" id="appr-b-date"></span>
+      </div>
+    </div>
   </div>
-  <div class="flex items-center gap-3 py-2.5 border-b border-border text-sm">
-    <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground min-w-[280px]"><input type="checkbox" id="appr-c" data-key="partC" class="w-4 h-4 accent-primary"> <span></span> Part C &mdash; Dev Spec Approved</label>
-    <span class="text-[11px] text-muted-foreground ml-auto" id="appr-c-date"></span>
+
+  <!-- Approval Card: Part C -->
+  <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
+    <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
+      <h3 class="text-sm font-semibold text-foreground">Part C &mdash; Dev Spec</h3>
+      <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="border-t border-border px-5 py-4" data-card-body>
+      <div class="flex items-center gap-3 text-sm">
+        <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground"><input type="checkbox" id="appr-c" data-key="partC" class="w-4 h-4 accent-primary"> Part C &mdash; Dev Spec Approved</label>
+        <span class="text-[11px] text-muted-foreground ml-auto" id="appr-c-date"></span>
+      </div>
+    </div>
   </div>
-  <div class="flex items-center gap-3 py-2.5 text-sm">
-    <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground min-w-[280px]"><input type="checkbox" id="appr-full" data-key="full" class="w-4 h-4 accent-primary"> <span></span> Full Specification Approved</label>
-    <span class="text-[11px] text-muted-foreground ml-auto" id="appr-full-date"></span>
+
+  <!-- Approval Card: Full Specification -->
+  <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
+    <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
+      <h3 class="text-sm font-semibold text-foreground">Full Specification</h3>
+      <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="border-t border-border px-5 py-4" data-card-body>
+      <div class="flex items-center gap-3 text-sm">
+        <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground"><input type="checkbox" id="appr-full" data-key="full" class="w-4 h-4 accent-primary"> Full Specification Approved</label>
+        <span class="text-[11px] text-muted-foreground ml-auto" id="appr-full-date"></span>
+      </div>
+    </div>
   </div>
 
   <h3 class="text-base font-bold text-foreground mb-3 mt-6 pt-4 border-t border-border">Notes</h3>
@@ -1735,10 +1783,29 @@ tailwind.config = {
 
 <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-primary-foreground border-none w-10 h-10 rounded-full cursor-pointer text-lg hidden items-center justify-center shadow-lg z-50 hover:bg-primary/90 transition-colors" onclick="document.getElementById('main-scroll').scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
 
+<!-- Scoring Reminder Modal -->
+<div id="scoring-reminder-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:0.75rem;max-width:420px;width:90%;padding:24px 28px;box-shadow:0 8px 32px rgba(0,0,0,0.2);text-align:center">
+    <div style="width:48px;height:48px;border-radius:50%;background:#fef3c7;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
+      <svg style="width:24px;height:24px;color:#d97706" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
+    </div>
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;color:#0a0a0a">Scoring Reminder</h3>
+    <p style="font-size:14px;color:#525252;line-height:1.6;margin-bottom:20px">This information should be gathered naturally through conversation. Never push the client for this information.</p>
+    <button onclick="document.getElementById('scoring-reminder-modal').style.display='none'" style="background:#171717;color:#fafafa;border:none;padding:8px 24px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Understood</button>
+  </div>
+</div>
+
 <script>
 function toggleCard(header){
   var card=header.parentElement;
+  var cardId=card.id;
+  var isOpening=!card.classList.contains('open');
   card.classList.toggle('open');
+  // Show scoring reminder for B1-B5 cards when opening
+  if(isOpening && cardId && /^b[1-5]$/.test(cardId)){
+    var modal=document.getElementById('scoring-reminder-modal');
+    if(modal) modal.style.display='flex';
+  }
 }
 // Open all cards by default
 document.querySelectorAll('[data-card-body]').forEach(function(body){
