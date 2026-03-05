@@ -53,28 +53,28 @@ tailwind.config = {
 </head>
 <body class="bg-background text-foreground font-[-apple-system,BlinkMacSystemFont,'Inter',sans-serif] text-sm leading-relaxed">
 <!-- TOP NAV -->
-<nav class="sticky top-0 z-50 h-14 border-b border-border bg-black">
+<nav class="sticky top-0 z-50 h-14 border-b border-border bg-card">
   <div class="max-w-[1460px] mx-auto h-full flex items-center justify-between px-6">
-    <img src="logo-bjb.png" alt="Brandon J. Broderick — Attorney at Law" class="h-9">
+    <span class="text-sm font-semibold text-muted-foreground tracking-wide">BJB Performance Plan</span>
     <div class="hidden md:flex items-center gap-1">
-      <a href="index.html" class="px-3 py-1.5 text-sm font-medium text-white bg-white/10 rounded-md no-underline" style="border-bottom: 2px solid #3b82f6">Case Opening</a>
-      <a href="treatment-monitoring.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Treatment Monitoring</a>
-      <a href="written-discovery.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Written Discovery</a>
-      <a href="expert-deposition.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Expert &amp; Deposition</a>
-      <a href="arbitration-mediation.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Arb &amp; Mediation</a>
-      <a href="trial.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Trial</a>
-      <a href="litify-dev-summary.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Dev Summary</a>
-      <a href="scoring-review.html" class="px-3 py-1.5 text-sm font-medium text-gray-400 rounded-md hover:bg-white/10 hover:text-white transition-colors no-underline">Scoring Review</a>
+      <a href="index.html" class="px-3 py-1.5 text-sm font-medium text-foreground bg-accent rounded-md no-underline" style="border-bottom: 2px solid #3b82f6">Case Opening</a>
+      <a href="treatment-monitoring.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Treatment Monitoring</a>
+      <a href="written-discovery.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Written Discovery</a>
+      <a href="expert-deposition.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Expert &amp; Deposition</a>
+      <a href="arbitration-mediation.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Arb &amp; Mediation</a>
+      <a href="trial.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Trial</a>
+      <a href="litify-dev-summary.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Dev Summary</a>
+      <a href="scoring-review.html" class="px-3 py-1.5 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Scoring Review</a>
     </div>
-    <button id="nav-hamburger" class="md:hidden text-white" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+    <button id="nav-hamburger" class="md:hidden text-foreground" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </div>
-  <div id="mobile-nav" class="hidden md:hidden bg-black border-t border-gray-700 px-4 pb-3">
+  <div id="mobile-nav" class="hidden md:hidden bg-card border-t border-border px-4 pb-3">
     <a href="index.html" class="block px-3 py-2 text-sm font-medium text-foreground bg-accent rounded-md no-underline">Case Opening</a>
-    <a href="treatment-monitoring.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Treatment Monitoring</a>
-    <a href="written-discovery.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Written Discovery</a>
-    <a href="expert-deposition.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md hover:bg-accent hover:text-accent-foreground transition-colors no-underline">Expert &amp; Deposition</a>
+    <a href="treatment-monitoring.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Treatment Monitoring</a>
+    <a href="written-discovery.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Written Discovery</a>
+    <a href="expert-deposition.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Expert &amp; Deposition</a>
     <a href="arbitration-mediation.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Arb &amp; Mediation</a>
     <a href="trial.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Trial</a>
     <a href="litify-dev-summary.html" class="block px-3 py-2 text-sm font-medium text-muted-foreground rounded-md no-underline">Dev Summary</a>
@@ -83,9 +83,9 @@ tailwind.config = {
 </nav>
 <div class="flex h-[calc(100vh-3.5rem)]">
 <aside class="hidden md:flex w-64 flex-col border-r border-border bg-card overflow-y-auto shrink-0">
-  <div class="px-5 pt-6 pb-4 border-b border-border bg-black">
-    <img src="logo-bjb.png" alt="Brandon J. Broderick — Attorney at Law" class="h-8 mb-2">
-    <p class="text-[11px] text-gray-400 mt-1">Litify Dev Spec v4.0</p>
+  <div class="px-5 pt-6 pb-4 border-b border-border">
+    <h2 class="text-xs font-bold text-foreground tracking-wide uppercase">BJB Case Opening</h2>
+    <p class="text-[11px] text-muted-foreground mt-1">Litify Dev Spec v4.0</p>
   </div>
   <div class="py-3">
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
