@@ -91,6 +91,7 @@ tailwind.config = {
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
     <a class="sidebar-link block px-5 py-1.5 text-xs font-semibold text-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('partA')">Overview</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0')">Phase 0: Case Grading</a>
+    <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0a')">Phase 0A: Jurisdiction</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph0b')">Phase 0B: Attorney Assignment</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph1')">Phase 1: Contact Pursuit</a>
     <a class="sidebar-link block px-5 pl-7 py-1.5 text-xs text-muted-foreground cursor-pointer hover:bg-accent hover:text-accent-foreground transition-colors" onclick="navTo('ph2')">Phase 2: Pre-OA Prep</a>
@@ -142,6 +143,7 @@ tailwind.config = {
 
 <!-- PHASE BAR -->
 <div class="flex gap-2 mb-9 flex-wrap">
+  <button class="px-3 py-2 bg-card border border-border rounded-md text-xs font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap" onclick="navTo('ph0a')">0A &mdash; Jurisdiction</button>
   <button class="px-3 py-2 bg-card border border-border rounded-md text-xs font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap" onclick="navTo('ph1')">1 &mdash; Contact Pursuit</button>
   <button class="px-3 py-2 bg-card border border-border rounded-md text-xs font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap" onclick="navTo('ph2')">2 &mdash; Pre-OA Prep</button>
   <button class="px-3 py-2 bg-card border border-border rounded-md text-xs font-semibold text-foreground hover:bg-primary hover:text-primary-foreground transition-colors whitespace-nowrap" onclick="navTo('ph3')">3 &mdash; OA 14-Point</button>
@@ -294,6 +296,71 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Comprehensive records</label>
       </div>
     </div>
+  </div>
+</div>
+</div>
+
+<!-- Phase 0A: Jurisdiction & Venue -->
+<div class="rounded-lg border border-border bg-card shadow-sm mb-4" id="ph0a">
+<button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-4 hover:bg-accent/50 transition-colors text-left">
+  <h3 class="text-sm font-semibold text-foreground flex items-center gap-3"><span class="w-7 h-7 rounded-full bg-[#06b6d4] text-white text-xs font-bold inline-flex items-center justify-center shrink-0">0A</span> Phase 0A: Jurisdiction &amp; Venue</h3>
+  <div class="flex items-center gap-2 shrink-0">
+    <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</button>
+<div class="border-t border-border px-5 py-5 hidden" data-card-body>
+  <div class="rounded-md border border-cyan-200 bg-cyan-50 p-3 mb-4 text-sm"><strong>Objective:</strong> Capture geographic jurisdiction data for venue selection and attorney assignment. All three county fields are required before attorney assignment.</div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+    <!-- Client Residence -->
+    <div class="rounded-md border border-border p-4">
+      <h4 class="text-xs font-bold text-foreground mb-3 uppercase tracking-wide">Client Residence</h4>
+      <div class="mb-3">
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-client-county">County</label>
+        <input type="text" id="jur-client-county" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="e.g. Essex">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-client-state">State</label>
+        <select id="jur-client-state" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+          <option value="">Select state…</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>DC</option>
+        </select>
+      </div>
+    </div>
+    <!-- Defendant Residence -->
+    <div class="rounded-md border border-border p-4">
+      <h4 class="text-xs font-bold text-foreground mb-3 uppercase tracking-wide">Defendant Residence</h4>
+      <div class="mb-3">
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-defendant-county">County</label>
+        <input type="text" id="jur-defendant-county" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="e.g. Bergen">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-defendant-state">State</label>
+        <select id="jur-defendant-state" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+          <option value="">Select state…</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>DC</option>
+        </select>
+      </div>
+    </div>
+    <!-- Incident Location -->
+    <div class="rounded-md border border-border p-4">
+      <h4 class="text-xs font-bold text-foreground mb-3 uppercase tracking-wide">Incident Location</h4>
+      <div class="mb-3">
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-incident-county">County</label>
+        <input type="text" id="jur-incident-county" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring" placeholder="e.g. Middlesex">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-muted-foreground mb-1" for="jur-incident-state">State</label>
+        <select id="jur-incident-state" class="w-full rounded-md border border-input bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring">
+          <option value="">Select state…</option>
+          <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option><option>DC</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-md border border-blue-200 bg-blue-50 p-3 text-sm text-blue-800">
+    <strong>Note:</strong> Attorney assignment prioritizes attorneys located in or near these counties. Filing venue is typically determined by where the incident occurred or where the defendant resides.
   </div>
 </div>
 </div>
@@ -508,7 +575,7 @@ tailwind.config = {
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">1</span><span>Introduce self and firm &mdash; who we are, what we do, how we win</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>State your name, role, and direct contact. Name the lead attorney. Explain the firm's specialization in personal injury. Give a brief plain-language explanation of how contingency fee works ("you pay nothing unless we recover"). Set a professional but human tone — this is often the first real conversation the client has with the firm.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">2</span><span>Explain the litigation process &mdash; timeline, stages, what to expect</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Walk through the major stages: case opening → treatment → demand → negotiation → litigation if needed. Give realistic timelines (most cases: 12–24 months). Explain that delays often come from treatment completion and carrier behavior, not the firm. Emphasize that no news is often good news — the team is working in the background. Set expectation: client will hear from team at milestone events.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">3</span><span>Set communication expectations &mdash; preferred method, best time, language if applicable</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Ask explicitly: best phone number, best time to call, preferred channel (phone/text/email). Ask about language preference — arrange interpreter if needed before next contact. Explain how the client portal works if available. Confirm: the client should NEVER speak to the other side's insurer or attorney without calling the firm first. Populate BJB__Preferred_Contact_Method__c and BJB__Preferred_Contact_Time__c before call ends.</div></div>
-    <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">4</span><span>Review the incident &mdash; confirm facts, date, location, all parties, police report</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Confirm: exact date, time, and location of incident. All vehicles/parties involved. Police report number and whether client has a copy. Any citations issued (to client or defendant). Weather, road, lighting conditions. Any emergency transport. Ask if client has given any recorded statements to anyone. Note any factual inconsistencies from intake notes for attorney review.</div></div>
+    <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">4</span><span>Review the incident &mdash; confirm facts, date, location, all parties, police report</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Confirm: exact date, time, and location of incident. All vehicles/parties involved. Police report number and whether client has a copy. Any citations issued (to client or defendant). Weather, road, lighting conditions. Any emergency transport. Ask if client has given any recorded statements to anyone. Note any factual inconsistencies from intake notes for attorney review. Confirm county and state for: client's residence, defendant's residence, and incident location. Update the Phase 0A Jurisdiction fields if corrections are needed.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">5</span><span>Review injuries and current treatment status &mdash; providers, gaps, compliance</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>List all current body parts affected. All providers seen to date (ER, PCP, specialist, PT, chiropractor). Any imaging performed (MRI, X-ray, CT). Ask explicitly: any gaps in treatment? Any appointments missed? Is client still treating? If treatment has stopped, why? Flag any gaps &gt;14 days for attorney review. Emphasize: consistent treatment is critical to case value.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">6</span><span>Identify all insurance coverage &mdash; client auto, health, PIP, med-pay, at-fault carrier</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Collect: client's own auto carrier + policy number, health insurance carrier + member ID, PIP/no-fault status, med-pay availability, at-fault defendant's carrier (if known). Ask if client has UIM/UM coverage. Ask if client is on anyone else's policy (parent, spouse). Note: this feeds directly into the OA Burst letters and lien requests that fire immediately after call ends.</div></div>
     <div class="flex gap-2 bg-muted border border-border rounded-md p-2.5 text-xs items-start relative pr-10"><span class="font-bold text-foreground min-w-[20px]">7</span><span>Collect benefit flags &mdash; Medicare / Medicaid / ERISA / VA Benefits (Yes/No/Unknown for each)</span><button class="inline-flex items-center justify-center w-5 h-5 rounded-full text-muted-foreground hover:text-foreground hover:bg-accent transition-colors cursor-help" title="More detail"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 8h.01M12 12v4"/></svg></button><div class="info-popover"><strong>What to cover</strong>Ask directly for each: Are you on Medicare? Medicaid? ERISA-governed health plan (employer-sponsored)? VA benefits? Record each as Yes / No / Unknown — never leave blank. "Unknown" triggers follow-up but doesn't block OA gate. A "Yes" on any of these triggers lien request tasks in the OA Burst. Medicare/Medicaid Yes = immediate lien protection obligations.</div></div>
@@ -540,6 +607,9 @@ tailwind.config = {
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Prior injuries flag</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Prior_Injuries_Flag__c</code></td><td class="px-4 py-3 text-sm text-foreground">Yes / No. If YES: attorney notified within 24 hrs</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Treatment gaps flag</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Treatment_Gaps_Flag__c</code></td><td class="px-4 py-3 text-sm text-foreground">Yes / No. If YES: attorney notified within 24 hrs</td></tr>
         <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Defense contact flag</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Defense_Contact_Flag__c</code></td><td class="px-4 py-3 text-sm text-foreground">Yes / No. If YES: attorney notified within 24 hrs</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Client County / State</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Client_County__c</code><br><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Client_State__c</code></td><td class="px-4 py-3 text-sm text-foreground">Must be populated</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Defendant County / State</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Defendant_County__c</code><br><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Defendant_State__c</code></td><td class="px-4 py-3 text-sm text-foreground">Must be populated</td></tr>
+        <tr class="border-b border-border last:border-b-0 hover:bg-muted/50"><td class="px-4 py-3 text-sm text-foreground">Incident County / State</td><td><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Incident_County__c</code><br><code class="text-xs bg-muted border border-border rounded px-1 py-0.5">BJB__Incident_State__c</code></td><td class="px-4 py-3 text-sm text-foreground">Must be populated</td></tr>
       </tbody>
     </table>
     </div>
@@ -1759,44 +1829,59 @@ for(let i=1;i<=6;i++){document.querySelectorAll('input[name="dim-'+i+'"]').forEa
 
 /* ========== Attorney Assignment Dashboard ========== */
 const ATTORNEYS=[
-  {id:'martinez',name:'Sarah Martinez',specialties:['TBI','Auto','Wrongful Death'],capacity:18,maxCapacity:25,gradeAffinity:[2,3],
+  {id:'martinez',name:'Sarah Martinez',specialties:['TBI','Auto','Wrongful Death'],county:'Essex',state:'NJ',capacity:18,maxCapacity:25,gradeAffinity:[2,3],
    conflicts:{depositions:2,trials:0,hearings:1},perf:{avgSettlement:'$485k',winRate:87,avgResolution:'14 mo'},
    g1:5,g2:8,g3:5},
-  {id:'chen',name:'David Chen',specialties:['Slip & Fall','Auto','Premises'],capacity:22,maxCapacity:25,gradeAffinity:[1,2],
+  {id:'chen',name:'David Chen',specialties:['Slip & Fall','Auto','Premises'],county:'Bergen',state:'NJ',capacity:22,maxCapacity:25,gradeAffinity:[1,2],
    conflicts:{depositions:1,trials:0,hearings:0},perf:{avgSettlement:'$210k',winRate:82,avgResolution:'10 mo'},
    g1:12,g2:8,g3:2},
-  {id:'oconnor',name:"Megan O'Connor",specialties:['Med Mal','TBI','Product Liability'],capacity:12,maxCapacity:20,gradeAffinity:[3],
+  {id:'oconnor',name:"Megan O'Connor",specialties:['Med Mal','TBI','Product Liability'],county:'Middlesex',state:'NJ',capacity:12,maxCapacity:20,gradeAffinity:[3],
    conflicts:{depositions:3,trials:1,hearings:2},perf:{avgSettlement:'$920k',winRate:91,avgResolution:'22 mo'},
    g1:1,g2:3,g3:8},
-  {id:'ramirez',name:'Carlos Ramirez',specialties:['Auto','Trucking','Wrongful Death'],capacity:15,maxCapacity:25,gradeAffinity:[2,3],
+  {id:'ramirez',name:'Carlos Ramirez',specialties:['Auto','Trucking','Wrongful Death'],county:'Hudson',state:'NJ',capacity:15,maxCapacity:25,gradeAffinity:[2,3],
    conflicts:{depositions:1,trials:0,hearings:1},perf:{avgSettlement:'$390k',winRate:85,avgResolution:'16 mo'},
    g1:3,g2:7,g3:5},
-  {id:'patel',name:'Anita Patel',specialties:['Slip & Fall','Dog Bite','Auto'],capacity:20,maxCapacity:25,gradeAffinity:[1],
+  {id:'patel',name:'Anita Patel',specialties:['Slip & Fall','Dog Bite','Auto'],county:'Hartford',state:'CT',capacity:20,maxCapacity:25,gradeAffinity:[1],
    conflicts:{depositions:0,trials:0,hearings:1},perf:{avgSettlement:'$145k',winRate:79,avgResolution:'8 mo'},
    g1:14,g2:5,g3:1},
-  {id:'wright',name:'James Wright',specialties:['Wrongful Death','TBI','Construction'],capacity:8,maxCapacity:15,gradeAffinity:[3],
+  {id:'wright',name:'James Wright',specialties:['Wrongful Death','TBI','Construction'],county:'New York',state:'NY',capacity:8,maxCapacity:15,gradeAffinity:[3],
    conflicts:{depositions:2,trials:1,hearings:3},perf:{avgSettlement:'$1.2M',winRate:93,avgResolution:'26 mo'},
    g1:0,g2:2,g3:6}
 ];
 let selectedAttorneyId=null;
 
+function getJurisdictionData(){
+  try{return JSON.parse(localStorage.getItem('bjb-jurisdiction')||'{}');}catch(e){return {};}
+}
+function calcProximity(att){
+  const jur=getJurisdictionData();
+  const counties=[ {c:jur.clientCounty,s:jur.clientState},{c:jur.defendantCounty,s:jur.defendantState},{c:jur.incidentCounty,s:jur.incidentState} ];
+  let best=0;
+  for(const loc of counties){
+    if(!loc.c||!loc.s)continue;
+    if(loc.c.toLowerCase().trim()===att.county.toLowerCase()&&loc.s===att.state){best=Math.max(best,25);}
+    else if(loc.s===att.state){best=Math.max(best,15);}
+  }
+  return best;
+}
 function calcMatchScore(att){
   const grade=parseInt(localStorage.getItem('bjb-case-grade')||'1');
   let score=0;
-  // Specialty affinity (0-40): grade match
-  if(att.gradeAffinity.includes(grade))score+=40;
-  else{const dist=Math.min(...att.gradeAffinity.map(g=>Math.abs(g-grade)));score+=Math.max(0,40-dist*15);}
+  // Specialty affinity (0-25): grade match
+  if(att.gradeAffinity.includes(grade))score+=25;
+  else{const dist=Math.min(...att.gradeAffinity.map(g=>Math.abs(g-grade)));score+=Math.max(0,25-dist*10);}
+  // Proximity (0-25): county/state match
+  score+=calcProximity(att);
   // Availability (0-30): inverse of load %
   const loadPct=att.capacity/att.maxCapacity;score+=Math.round((1-loadPct)*30);
   // Low conflicts (0-20): penalize 3pts per conflict
   const totalConflicts=att.conflicts.depositions+att.conflicts.trials+att.conflicts.hearings;
   score+=Math.max(0,20-totalConflicts*3);
-  // Win rate (0-10)
-  score+=Math.round((att.perf.winRate/100)*10);
   return Math.min(100,Math.max(0,score));
 }
 
 function capacityColor(pct){return pct>=0.85?'bg-red-400':pct>=0.65?'bg-amber-400':'bg-green-400';}
+function proximityBadge(att){const p=calcProximity(att);if(p>=25)return'<span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-green-100 text-green-700">In-County</span>';if(p>=15)return'<span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-blue-100 text-blue-700">In-State</span>';return'<span class="inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-medium bg-gray-100 text-gray-600">Out-of-State</span>';}
 
 function renderAttorneyRoster(){
   const roster=document.getElementById('attorney-roster');if(!roster)return;
@@ -1808,6 +1893,7 @@ function renderAttorneyRoster(){
     return `<div class="rounded-lg border-2 ${isSelected?'border-purple-500 bg-purple-50':'border-border bg-card'} p-4 cursor-pointer hover:border-purple-300 transition-colors" onclick="selectAttorney('${att.id}')">
       <div class="flex items-center justify-between mb-2">
         <div><div class="font-semibold text-foreground text-sm">${att.name}</div>
+        <div class="text-xs text-muted-foreground mt-0.5">${att.county}, ${att.state} &nbsp;${proximityBadge(att)}</div>
         <div class="text-xs text-muted-foreground mt-0.5">${att.specialties.join(' · ')}</div></div>
         <div class="text-right"><div class="text-lg font-bold ${att.matchScore>=70?'text-green-600':att.matchScore>=40?'text-amber-600':'text-red-600'}">${att.matchScore}</div>
         <div class="text-[10px] text-muted-foreground uppercase">Match</div></div>
@@ -1840,6 +1926,46 @@ function confirmAssignment(){
   debounceSave(300);
 }
 document.addEventListener('caseGradeChanged',()=>{renderAttorneyRoster();});
+document.addEventListener('jurisdictionChanged',()=>{renderAttorneyRoster();});
+
+/* ========== Jurisdiction Save/Restore ========== */
+function saveJurisdiction(){
+  const data={
+    clientCounty:document.getElementById('jur-client-county').value,
+    clientState:document.getElementById('jur-client-state').value,
+    defendantCounty:document.getElementById('jur-defendant-county').value,
+    defendantState:document.getElementById('jur-defendant-state').value,
+    incidentCounty:document.getElementById('jur-incident-county').value,
+    incidentState:document.getElementById('jur-incident-state').value
+  };
+  localStorage.setItem('bjb-jurisdiction',JSON.stringify(data));
+  document.dispatchEvent(new CustomEvent('jurisdictionChanged'));
+  debounceSave(300);
+}
+function restoreJurisdiction(){
+  const saved=localStorage.getItem('bjb-jurisdiction');
+  if(!saved)return;
+  try{
+    const d=JSON.parse(saved);
+    if(d.clientCounty)document.getElementById('jur-client-county').value=d.clientCounty;
+    if(d.clientState)document.getElementById('jur-client-state').value=d.clientState;
+    if(d.defendantCounty)document.getElementById('jur-defendant-county').value=d.defendantCounty;
+    if(d.defendantState)document.getElementById('jur-defendant-state').value=d.defendantState;
+    if(d.incidentCounty)document.getElementById('jur-incident-county').value=d.incidentCounty;
+    if(d.incidentState)document.getElementById('jur-incident-state').value=d.incidentState;
+  }catch(e){}
+}
+(function wireJurisdiction(){
+  let jurTimer;
+  const debouncedSave=()=>{clearTimeout(jurTimer);jurTimer=setTimeout(saveJurisdiction,400);};
+  ['jur-client-county','jur-defendant-county','jur-incident-county'].forEach(id=>{
+    document.getElementById(id).addEventListener('input',debouncedSave);
+  });
+  ['jur-client-state','jur-defendant-state','jur-incident-state'].forEach(id=>{
+    document.getElementById(id).addEventListener('change',debouncedSave);
+  });
+  restoreJurisdiction();
+})();
 (function restoreAttorney(){
   const saved=localStorage.getItem('bjb-assigned-attorney');
   if(saved){try{const d=JSON.parse(saved);selectedAttorneyId=d.id;
