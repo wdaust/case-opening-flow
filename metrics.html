@@ -60,7 +60,7 @@ tailwind.config = {
 <!-- Header -->
 <div class="bg-primary text-primary-foreground px-6 py-4 rounded-t-lg">
   <h1 class="text-lg font-bold">Metrics &amp; Feedback</h1>
-  <p class="text-sm text-primary-foreground/70 mt-0.5">Ideas, comments, and suggestions from the team</p>
+  <p class="text-sm text-primary-foreground/70 mt-0.5">Submit ideas for all metrics related to weekly scorecards, dashboard insights, KPI's or any kind of performance metric</p>
 </div>
 
 <!-- Form + List -->
@@ -82,8 +82,16 @@ tailwind.config = {
         <option>Eason Recto</option>
         <option>Justin Billingsley</option>
         <option>William D'Aust</option>
+        <option>Zachary Terracciano</option>
       </select>
-      <button onclick="submitFeedback()" class="px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors">Submit</button>
+      <select id="feedback-category" class="border border-border rounded-md px-3 py-2 text-sm bg-card text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+        <option value="">Select category...</option>
+        <option>Weekly Scorecard</option>
+        <option>Dashboard Insight</option>
+        <option>KPI</option>
+        <option>Other Performance Metric</option>
+      </select>
+      <button onclick="submitFeedback()" class="px-4 py-2 bg-primary text-primary-foreground text-sm font-semibold rounded-md hover:bg-primary/90 transition-colors whitespace-nowrap">Submit</button>
     </div>
     <textarea id="feedback-text" class="w-full min-h-[100px] border border-border rounded-md p-3 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-ring" placeholder="Share an idea, suggestion, or comment..."></textarea>
   </div>
@@ -99,29 +107,33 @@ import{neon}from'https://esm.sh/@neondatabase/serverless';
 const sql=neon('postgresql://neondb_owner:npg_rwK4vVmAyzG5@ep-mute-cloud-aik2rpsg.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require');
 const PAGE_ID='metrics';
 
-async function ensureFeedbackTable(){await sql`CREATE TABLE IF NOT EXISTS spec_feedback(id SERIAL PRIMARY KEY,page_id TEXT,author TEXT,comment TEXT,created_at TIMESTAMPTZ DEFAULT now())`;}
+async function ensureFeedbackTable(){
+  await sql`CREATE TABLE IF NOT EXISTS spec_feedback(id SERIAL PRIMARY KEY,page_id TEXT,author TEXT,comment TEXT,created_at TIMESTAMPTZ DEFAULT now())`;
+  try{await sql`ALTER TABLE spec_feedback ADD COLUMN IF NOT EXISTS category TEXT DEFAULT ''`;}catch(e){}
+}
 
 async function loadFeedback(){
   const list=document.getElementById('feedback-list');if(!list)return;
   try{
     await ensureFeedbackTable();
-    const rows=await sql`SELECT author,comment,created_at FROM spec_feedback ORDER BY created_at DESC`;
+    const rows=await sql`SELECT author,comment,category,created_at FROM spec_feedback ORDER BY created_at DESC`;
     if(rows.length===0){list.innerHTML='<p class="text-muted-foreground text-sm">No feedback yet. Be the first to share!</p>';return;}
     list.innerHTML=rows.map(r=>{
       const d=new Date(r.created_at).toLocaleString();
-      return `<div class="rounded-lg border border-border bg-card p-4 shadow-sm"><div class="flex items-center justify-between mb-1"><span class="font-semibold text-foreground text-sm">${r.author}</span><span class="text-[11px] text-muted-foreground">${d}</span></div><p class="text-sm text-foreground/80">${r.comment.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p></div>`;
+      const cat=r.category?`<span class="inline-block rounded-full px-2 py-0.5 text-[10px] font-medium bg-accent text-accent-foreground">${r.category}</span>`:'';
+      return `<div class="rounded-lg border border-border bg-card p-4 shadow-sm"><div class="flex items-center justify-between mb-1"><span class="font-semibold text-foreground text-sm">${r.author} ${cat}</span><span class="text-[11px] text-muted-foreground">${d}</span></div><p class="text-sm text-foreground/80">${r.comment.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p></div>`;
     }).join('');
   }catch(e){console.error(e);list.innerHTML='<p class="text-red-500 text-sm">Failed to load feedback.</p>';}
 }
 
 window.submitFeedback=async function(){
-  const authorEl=document.getElementById('feedback-author'),textEl=document.getElementById('feedback-text'),statusEl=document.getElementById('feedback-status');
-  const author=authorEl.value,comment=textEl.value.trim();
-  if(!author||!comment){statusEl.textContent='Please select your name and enter a comment.';statusEl.style.color='#c62828';return;}
+  const authorEl=document.getElementById('feedback-author'),textEl=document.getElementById('feedback-text'),catEl=document.getElementById('feedback-category'),statusEl=document.getElementById('feedback-status');
+  const author=authorEl.value,comment=textEl.value.trim(),category=catEl.value;
+  if(!author||!category||!comment){statusEl.textContent='Please select your name, a category, and enter a comment.';statusEl.style.color='#c62828';return;}
   try{
     statusEl.textContent='Submitting...';statusEl.style.color='#737373';
-    await sql`INSERT INTO spec_feedback(page_id,author,comment)VALUES(${PAGE_ID},${author},${comment})`;
-    textEl.value='';statusEl.textContent='Submitted!';statusEl.style.color='#2e7d32';
+    await sql`INSERT INTO spec_feedback(page_id,author,comment,category)VALUES(${PAGE_ID},${author},${comment},${category})`;
+    textEl.value='';catEl.value='';statusEl.textContent='Submitted!';statusEl.style.color='#2e7d32';
     await loadFeedback();
   }catch(e){console.error(e);statusEl.textContent='Submit failed.';statusEl.style.color='#c62828';}
 };
