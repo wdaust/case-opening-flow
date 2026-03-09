@@ -87,7 +87,7 @@ tailwind.config = {
 <aside class="hidden md:flex w-64 flex-col border-r border-border bg-card overflow-y-auto shrink-0">
   <div class="px-5 pt-6 pb-4 border-b border-border">
     <h2 class="text-xs font-bold text-foreground tracking-wide uppercase">BJB Case Opening</h2>
-    <p class="text-[11px] text-muted-foreground mt-1">Litify Dev Spec v4.0</p>
+    <p class="text-[11px] text-muted-foreground mt-1">Litify Dev Spec v4.2</p>
   </div>
   <div class="py-3">
     <div class="px-5 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Part A — Process</div>
@@ -144,7 +144,7 @@ tailwind.config = {
 <div class="border-b-2 border-[#3b82f6] pb-8 mb-8">
   <h1 class="text-2xl font-bold text-foreground">BJB Case Opening &mdash; Litify Dev Specification</h1>
   <p class="text-sm text-muted-foreground mt-1">Litigation Transfer Through File-Ready &nbsp;|&nbsp; Developer Handoff &nbsp;|&nbsp; Parts A + B + C</p>
-  <span class="inline-block mt-3 px-3 py-0.5 text-xs font-medium border border-border rounded-full text-muted-foreground">v4.1 &bull; March 2026</span>
+  <span class="inline-block mt-3 px-3 py-0.5 text-xs font-medium border border-border rounded-full text-muted-foreground">v4.2 &bull; March 2026</span>
 </div>
 
 <!-- PHASE BAR -->
@@ -226,6 +226,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Severe / permanent disability</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-1" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Catastrophic / TBI / death</label>
       </div>
+      <textarea name="dim-1-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
     <!-- Dimension 2: Liability Clarity -->
     <div class="rounded-md border border-border p-4">
@@ -241,6 +242,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Strong liability / independent witnesses</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-2" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Clear-cut defendant liability</label>
       </div>
+      <textarea name="dim-2-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
     <!-- Dimension 3: Case Value Potential -->
     <div class="rounded-md border border-border p-4">
@@ -256,6 +258,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> $500k – $1M</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> $1M+</label>
       </div>
+      <textarea name="dim-3-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
     <!-- Dimension 4: Medical Complexity -->
     <div class="rounded-md border border-border p-4">
@@ -271,6 +274,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Specialists + surgery, extended care</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Multi-specialist, ongoing, multiple surgeries</label>
       </div>
+      <textarea name="dim-4-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
     <!-- Dimension 5: Defendant Type -->
     <div class="rounded-md border border-border p-4">
@@ -286,6 +290,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Multi-defendant / large fleet</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government entity / large corporation</label>
       </div>
+      <textarea name="dim-5-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
     <!-- Dimension 6: Documentation Quality -->
     <div class="rounded-md border border-border p-4">
@@ -301,6 +306,7 @@ tailwind.config = {
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Strong records, well-organized</label>
         <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-6" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Comprehensive records</label>
       </div>
+      <textarea name="dim-6-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
   </div>
 </div>
@@ -847,6 +853,7 @@ tailwind.config = {
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Scores the CLIENT, not the case. Measures behavior, cooperation, and risk factors. Each sub-metric scored 1&ndash;5. Displayed as dials on a dashboard at top of every matter panel. Re-scored at every case stage progression.<br><strong>Who scores:</strong> Legal Asst / Paralegal &nbsp;|&nbsp; <strong>When:</strong> Within 1 hour of OA completion</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Score Comments:</strong> Every scored factor includes a companion <code>_Comment__c</code> (Long Text Area) field in Litify for scorer justification and context notes.</div>
 
   <!-- Cat 1 -->
   <div class="mt-6">
@@ -992,6 +999,7 @@ tailwind.config = {
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Produces two scores:</strong> LSI (Liability Strength Index) = pure fault + proof &nbsp;|&nbsp; SLI (Settlement Leverage Index) = LSI + coverage + venue + defense exposure.<br><strong>Re-scored at:</strong> Stage changes and new evidence events.</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Score Comments:</strong> Every scored factor includes a companion <code>_Comment__c</code> (Long Text Area) field in Litify for scorer justification and context notes.</div>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">LSI &mdash; Liability Strength Index (5 Factors, Pure Fault + Proof)</h3>
@@ -1073,6 +1081,7 @@ tailwind.config = {
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Produces two scores:</strong> CSI (Coverage Strength Index) = how big the money bucket is &nbsp;|&nbsp; RDI (Recovery Difficulty Index) = how hard to extract payment.<br><strong>Re-scored at:</strong> Account opening, pre-demand, discovery.</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Score Comments:</strong> Every scored factor includes a companion <code>_Comment__c</code> (Long Text Area) field in Litify for scorer justification and context notes.</div>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">CSI &mdash; Coverage Strength Index (5 Factors)</h3>
@@ -1139,6 +1148,7 @@ tailwind.config = {
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures quality, seriousness, credibility, and profitability of medical treatment. Includes defense perspective column on each anchor to show how defense will view the case.</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Score Comments:</strong> Every scored factor includes a companion <code>_Comment__c</code> (Long Text Area) field in Litify for scorer justification and context notes.</div>
 
   <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
   <table class="w-full text-sm">
@@ -1247,6 +1257,7 @@ tailwind.config = {
 </button>
 <div class="border-t border-border px-5 py-5" data-card-body>
   <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm"><strong>Purpose:</strong> Measures "How strong is this file as a BUSINESS asset?" NOT about liability, treatment, or client behavior. Measures operational efficiency, file quality, and strategic value.<br>5 pillars, each scored 1&ndash;5, each weighted 20%. CPI Total = weighted average producing a 1.0&ndash;5.0 composite. Each pillar field: Number(2,1), range 1.0&ndash;5.0.</div>
+  <div class="rounded-md border border-amber-200 bg-amber-50 p-3 mb-4 text-sm"><strong>Score Comments:</strong> Every scored factor includes a companion <code>_Comment__c</code> (Long Text Area) field in Litify for scorer justification and context notes.</div>
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">CPI Rubric &mdash; All 5 Pillars</h3>
@@ -1454,6 +1465,7 @@ tailwind.config = {
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.3 &mdash; Client Profile Scoring Fields (28 Sub-Metrics)</h3>
     <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm">All 28 sub-metric fields: <strong>Number(2,1)</strong>, range 1.0&ndash;5.0. See Part B1 for full rubric anchors.</div>
+    <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm"><strong>Build Note:</strong> Each sub-metric has a companion <code>_Comment__c</code> Long Text Area (e.g. <code>BJB__CP_Contactability_Comment__c</code>). 28 comment fields total.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Category</th></tr></thead>
@@ -1496,6 +1508,7 @@ tailwind.config = {
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.4 &mdash; Liability Scoring Fields (LSI + SLI)</h3>
+    <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm"><strong>Build Note:</strong> Each scored factor has a companion <code>_Comment__c</code> Long Text Area (e.g. <code>BJB__LSI_Fault_Clarity_Comment__c</code>). 9 comment fields total for LSI/SLI.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Notes</th></tr></thead>
@@ -1518,6 +1531,7 @@ tailwind.config = {
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.5 &mdash; Policy &amp; Collectability Fields (CSI + RDI)</h3>
+    <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm"><strong>Build Note:</strong> Each scored factor has a companion <code>_Comment__c</code> Long Text Area (e.g. <code>BJB__CSI_Limits_Adequacy_Comment__c</code>). 10 comment fields total for CSI/RDI.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Notes</th></tr></thead>
@@ -1541,6 +1555,7 @@ tailwind.config = {
 
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.6 &mdash; Treatment Strength Index Fields (TSI)</h3>
+    <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm"><strong>Build Note:</strong> Each scored factor has a companion <code>_Comment__c</code> Long Text Area (e.g. <code>BJB__TSI_Severity_Comment__c</code>). 5 comment fields total for TSI.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Notes</th></tr></thead>
@@ -1565,6 +1580,7 @@ tailwind.config = {
   <div class="mt-6">
 <h3 class="text-sm font-bold text-foreground mb-3 pb-1.5 border-b-2 border-border">D.2.7 &mdash; Case Performance Index Fields (CPI)</h3>
     <div class="rounded-md border border-blue-200 bg-blue-50 p-3 mb-4 text-sm">All 5 CPI pillar fields: <strong>Number(2,1)</strong>, range 1.0&ndash;5.0, each weighted 20%. See Part B5 for full rubric anchors.</div>
+    <div class="rounded-md border border-green-200 bg-green-50 p-3 mb-4 text-sm"><strong>Build Note:</strong> Each pillar has a companion <code>_Comment__c</code> Long Text Area (e.g. <code>BJB__CPI_Economic_Efficiency_Comment__c</code>). 5 comment fields total for CPI.</div>
     <div class="rounded-md border border-border overflow-hidden overflow-x-auto">
     <table class="w-full text-sm">
       <thead><tr class="border-b border-border bg-muted"><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">API Name</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Type</th><th class="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">Notes</th></tr></thead>
@@ -2013,6 +2029,8 @@ function calcCaseGrade(){
   for(let i=1;i<=6;i++){
     const sel=document.querySelector('input[name="dim-'+i+'"]:checked');
     const v=sel?parseInt(sel.value):1;total+=v;details['dim'+i]=v;
+    const cmt=document.querySelector('textarea[name="dim-'+i+'-comment"]');
+    if(cmt)details['dim'+i+'_comment']=cmt.value;
     const ds=document.querySelector('[data-dim-score="'+i+'"]');
     if(ds)ds.textContent='Score: '+v+'/5';
   }
@@ -2032,10 +2050,10 @@ function calcCaseGrade(){
   document.dispatchEvent(new CustomEvent('caseGradeChanged',{detail:{grade,total,details}}));
   debounceSave(300);
 }
-for(let i=1;i<=6;i++){document.querySelectorAll('input[name="dim-'+i+'"]').forEach(r=>{r.addEventListener('change',calcCaseGrade);});}
+for(let i=1;i<=6;i++){document.querySelectorAll('input[name="dim-'+i+'"]').forEach(r=>{r.addEventListener('change',calcCaseGrade);});const cta=document.querySelector('textarea[name="dim-'+i+'-comment"]');if(cta)cta.addEventListener('input',()=>{calcCaseGrade();debounceSave(500);});}
 (function restoreGradeDetails(){
   const saved=localStorage.getItem('bjb-case-grade-details');
-  if(saved){try{const d=JSON.parse(saved);for(let i=1;i<=6;i++){const v=d['dim'+i];if(v){const rb=document.querySelector('input[name="dim-'+i+'"][value="'+v+'"]');if(rb)rb.checked=true;}}}catch(e){}}
+  if(saved){try{const d=JSON.parse(saved);for(let i=1;i<=6;i++){const v=d['dim'+i];if(v){const rb=document.querySelector('input[name="dim-'+i+'"][value="'+v+'"]');if(rb)rb.checked=true;}const c=d['dim'+i+'_comment'];if(c){const ta=document.querySelector('textarea[name="dim-'+i+'-comment"]');if(ta)ta.value=c;}}}catch(e){}}
   else{const oldTier=localStorage.getItem('bjb-case-tier')||localStorage.getItem('bjb-case-grade');if(oldTier)localStorage.setItem('bjb-case-grade',oldTier);}
   calcCaseGrade();
 })();
