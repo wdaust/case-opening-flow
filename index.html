@@ -283,19 +283,33 @@ tailwind.config = {
       </div>
       <textarea name="dim-4-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
-    <!-- Dimension 5: Defendant Type, Pre-Existing Injuries & Priors -->
+    <!-- Dimension 5: Defendant Type (Auto / Premises toggle) -->
     <div class="rounded-md border border-border p-4">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">5</span>
-        <span class="font-semibold text-foreground text-sm">Defendant Type, Pre-Existing Injuries &amp; Priors</span>
+        <span class="font-semibold text-foreground text-sm">Defendant Type</span>
         <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="5">Score: 1/5</span>
       </div>
-      <div class="flex flex-col gap-1.5">
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Individual / small business; extensive pre-existing injuries &amp; prior claims</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Mid-size company / insured individual; significant pre-existing conditions</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Large company / commercial insurer; some pre-existing history</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Multi-defendant / large fleet; minimal pre-existing issues</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government entity / large corporation; no pre-existing injuries or priors</label>
+      <!-- Case type toggle -->
+      <div class="flex gap-1 mb-3 bg-muted rounded-md p-0.5 w-fit">
+        <button type="button" id="dim5-toggle-auto" onclick="setDim5Type('auto')" class="px-3 py-1 text-xs font-medium rounded bg-primary text-primary-foreground transition-colors">Auto</button>
+        <button type="button" id="dim5-toggle-premises" onclick="setDim5Type('premises')" class="px-3 py-1 text-xs font-medium rounded text-muted-foreground hover:text-foreground transition-colors">Premises</button>
+      </div>
+      <!-- Auto defendant types -->
+      <div id="dim5-auto" class="flex flex-col gap-1.5">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Personal</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Ride Share</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Commercial</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Commercial Heavy Trucking</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government Entity</label>
+      </div>
+      <!-- Premises defendant types -->
+      <div id="dim5-premises" class="flex flex-col gap-1.5 hidden">
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5-premises" value="1" class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Commercial Small Business</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5-premises" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Commercial Large Business</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5-premises" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Private Home</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5-premises" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Government Property</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5-premises" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Multi-Unit Residential / Property Management</label>
       </div>
       <textarea name="dim-5-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
@@ -2044,11 +2058,36 @@ async function saveState(){try{setStatus('Saving...','#737373');const s=gatherSt
 async function loadState(){try{await ensureTable();const rows=await sql`SELECT checkboxes,notes FROM spec_approvals WHERE page_id=${PAGE_ID}`;if(rows.length>0){const{checkboxes:cb,notes}=rows[0];if(cb)checkboxes.forEach(c=>{const k=c.dataset.key;if(cb[k]){c.checked=cb[k].checked||false;const d=document.getElementById(c.id+'-date');if(d)d.textContent=cb[k].date||'';}});if(notesEl&&notes)notesEl.value=notes;}setStatus('Synced','#2e7d32');}catch(e){console.error(e);setStatus('Offline','#c62828');}}
 checkboxes.forEach(cb=>{cb.addEventListener('change',()=>{const d=document.getElementById(cb.id+'-date');if(d)d.textContent=cb.checked?'Approved: '+new Date().toLocaleString():'';debounceSave(300);});});
 if(notesEl)notesEl.addEventListener('input',()=>debounceSave(500));
+/* ========== Dim 5 Auto/Premises Toggle ========== */
+let dim5Type='auto';
+function setDim5Type(type){
+  dim5Type=type;
+  const autoEl=document.getElementById('dim5-auto'),premEl=document.getElementById('dim5-premises');
+  const autoBtn=document.getElementById('dim5-toggle-auto'),premBtn=document.getElementById('dim5-toggle-premises');
+  if(type==='auto'){
+    autoEl.classList.remove('hidden');premEl.classList.add('hidden');
+    autoBtn.className='px-3 py-1 text-xs font-medium rounded bg-primary text-primary-foreground transition-colors';
+    premBtn.className='px-3 py-1 text-xs font-medium rounded text-muted-foreground hover:text-foreground transition-colors';
+  }else{
+    premEl.classList.remove('hidden');autoEl.classList.add('hidden');
+    premBtn.className='px-3 py-1 text-xs font-medium rounded bg-primary text-primary-foreground transition-colors';
+    autoBtn.className='px-3 py-1 text-xs font-medium rounded text-muted-foreground hover:text-foreground transition-colors';
+    if(!document.querySelector('input[name="dim-5-premises"]:checked')){const first=document.querySelector('input[name="dim-5-premises"]');if(first)first.checked=true;}
+  }
+  calcCaseGrade();
+}
 /* ========== Case Grade Scoring System ========== */
 function calcCaseGrade(){
   let total=0;const details={};
+  details['dim5_type']=dim5Type;
   for(let i=1;i<=6;i++){
-    const sel=document.querySelector('input[name="dim-'+i+'"]:checked');
+    let sel;
+    if(i===5){
+      const radioName=dim5Type==='auto'?'dim-5':'dim-5-premises';
+      sel=document.querySelector('input[name="'+radioName+'"]:checked');
+    }else{
+      sel=document.querySelector('input[name="dim-'+i+'"]:checked');
+    }
     const v=sel?parseInt(sel.value):1;total+=v;details['dim'+i]=v;
     const cmt=document.querySelector('textarea[name="dim-'+i+'-comment"]');
     if(cmt)details['dim'+i+'_comment']=cmt.value;
@@ -2073,9 +2112,15 @@ function calcCaseGrade(){
   debounceSave(300);
 }
 for(let i=1;i<=6;i++){document.querySelectorAll('input[name="dim-'+i+'"]').forEach(r=>{r.addEventListener('change',calcCaseGrade);});const cta=document.querySelector('textarea[name="dim-'+i+'-comment"]');if(cta)cta.addEventListener('input',()=>{calcCaseGrade();debounceSave(500);});}
+document.querySelectorAll('input[name="dim-5-premises"]').forEach(r=>{r.addEventListener('change',calcCaseGrade);});
 (function restoreGradeDetails(){
   const saved=localStorage.getItem('bjb-case-grade-details');
-  if(saved){try{const d=JSON.parse(saved);for(let i=1;i<=6;i++){const v=d['dim'+i];if(v){const rb=document.querySelector('input[name="dim-'+i+'"][value="'+v+'"]');if(rb)rb.checked=true;}const c=d['dim'+i+'_comment'];if(c){const ta=document.querySelector('textarea[name="dim-'+i+'-comment"]');if(ta)ta.value=c;}}}catch(e){}}
+  if(saved){try{const d=JSON.parse(saved);
+    if(d.dim5_type){setDim5Type(d.dim5_type);}
+    for(let i=1;i<=6;i++){const v=d['dim'+i];if(v){
+      if(i===5&&d.dim5_type==='premises'){const rb=document.querySelector('input[name="dim-5-premises"][value="'+v+'"]');if(rb)rb.checked=true;}
+      else{const rb=document.querySelector('input[name="dim-'+i+'"][value="'+v+'"]');if(rb)rb.checked=true;}
+    }const c=d['dim'+i+'_comment'];if(c){const ta=document.querySelector('textarea[name="dim-'+i+'-comment"]');if(ta)ta.value=c;}}}catch(e){}}
   else{const oldTier=localStorage.getItem('bjb-case-tier')||localStorage.getItem('bjb-case-grade');if(oldTier)localStorage.setItem('bjb-case-grade',oldTier);}
   calcCaseGrade();
 })();
