@@ -2060,6 +2060,7 @@ checkboxes.forEach(cb=>{cb.addEventListener('change',()=>{const d=document.getEl
 if(notesEl)notesEl.addEventListener('input',()=>debounceSave(500));
 /* ========== Dim 5 Auto/Premises Toggle ========== */
 let dim5Type='auto';
+window.setDim5Type=setDim5Type;
 function setDim5Type(type){
   dim5Type=type;
   const autoEl=document.getElementById('dim5-auto'),premEl=document.getElementById('dim5-premises');
