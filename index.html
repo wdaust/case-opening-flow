@@ -1883,6 +1883,20 @@ tailwind.config = {
     </div>
   </div>
 
+  <!-- Approval Card: OA Agenda -->
+  <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
+    <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
+      <h3 class="text-sm font-semibold text-foreground">OA Agenda</h3>
+      <svg class="w-4 h-4 text-muted-foreground transition-transform" data-chevron fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <div class="border-t border-border px-5 py-4" data-card-body>
+      <div class="flex items-center gap-3 text-sm">
+        <label class="flex items-center gap-2 cursor-pointer font-semibold text-foreground"><input type="checkbox" id="appr-oa" data-key="oaAgenda" class="w-4 h-4 accent-primary"> OA Agenda &mdash; Reviewed by Brandon &amp; Ryan</label>
+        <span class="text-[11px] text-muted-foreground ml-auto" id="appr-oa-date"></span>
+      </div>
+    </div>
+  </div>
+
   <!-- Approval Card: Part B -->
   <div class="rounded-lg border border-border bg-card shadow-sm mb-3">
     <button onclick="toggleCard(this)" class="w-full flex items-center justify-between px-5 py-3 hover:bg-accent/50 transition-colors text-left">
