@@ -206,7 +206,7 @@ tailwind.config = {
   <div id="grade-summary-bar" class="sticky top-0 z-10 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 mb-5 flex items-center justify-between shadow-sm">
     <div class="flex items-center gap-3">
       <span class="text-sm font-semibold text-foreground">Total Score:</span>
-      <span id="grade-total" class="text-lg font-bold text-amber-700">6 / 30</span>
+      <span id="grade-total" class="text-lg font-bold text-amber-700">6 / 37</span>
     </div>
     <span id="grade-calc-badge" class="inline-flex items-center rounded-full px-3 py-1 text-xs font-bold bg-green-100 text-green-700 border border-green-300">Grade 1 — Standard</span>
   </div>
@@ -249,14 +249,21 @@ tailwind.config = {
       <div class="flex items-center gap-2 mb-3">
         <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">3</span>
         <span class="font-semibold text-foreground text-sm">Case Value Potential</span>
-        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="3">Score: 1/5</span>
+        <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="3">Score: 1/12</span>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Under $25k</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> $25k – $100k</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> $100k – $500k</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> $500k – $1M</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> $1M+</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> $0 – $15k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> $16k – $25k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> $26k – $50k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> $51k – $100k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> $101k – $250k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="6" class="accent-[#f59e0b]"><span class="text-muted-foreground">6 —</span> $251k – $500k</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="7" class="accent-[#f59e0b]"><span class="text-muted-foreground">7 —</span> $501k – $1M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="8" class="accent-[#f59e0b]"><span class="text-muted-foreground">8 —</span> $1.1M – $2M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="9" class="accent-[#f59e0b]"><span class="text-muted-foreground">9 —</span> $2.1M – $3M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="10" class="accent-[#f59e0b]"><span class="text-muted-foreground">10 —</span> $3.1M – $4M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="11" class="accent-[#f59e0b]"><span class="text-muted-foreground">11 —</span> $4.1M – $5M</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-3" value="12" class="accent-[#f59e0b]"><span class="text-muted-foreground">12 —</span> $5M+</label>
       </div>
       <textarea name="dim-3-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
@@ -2032,13 +2039,14 @@ function calcCaseGrade(){
     const cmt=document.querySelector('textarea[name="dim-'+i+'-comment"]');
     if(cmt)details['dim'+i+'_comment']=cmt.value;
     const ds=document.querySelector('[data-dim-score="'+i+'"]');
-    if(ds)ds.textContent='Score: '+v+'/5';
+    const maxVal=i===3?12:5;
+    if(ds)ds.textContent='Score: '+v+'/'+maxVal;
   }
   let grade,label,badgeClass;
-  if(total<=12){grade=1;label='Grade 1 — Standard';badgeClass='bg-green-100 text-green-700 border-green-300';}
-  else if(total<=22){grade=2;label='Grade 2 — Complex';badgeClass='bg-amber-100 text-amber-700 border-amber-300';}
+  if(total<=15){grade=1;label='Grade 1 — Standard';badgeClass='bg-green-100 text-green-700 border-green-300';}
+  else if(total<=27){grade=2;label='Grade 2 — Complex';badgeClass='bg-amber-100 text-amber-700 border-amber-300';}
   else{grade=3;label='Grade 3 — High-Stakes';badgeClass='bg-red-100 text-red-700 border-red-300';}
-  document.getElementById('grade-total').textContent=total+' / 30';
+  document.getElementById('grade-total').textContent=total+' / 37';
   const cb=document.getElementById('grade-calc-badge');
   cb.textContent=label;cb.className='inline-flex items-center rounded-full px-3 py-1 text-xs font-bold border '+badgeClass;
   const hb=document.getElementById('grade-badge');
