@@ -260,35 +260,35 @@ tailwind.config = {
       </div>
       <textarea name="dim-3-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
-    <!-- Dimension 4: Medical Complexity -->
+    <!-- Dimension 4: Medical Complexity & Extent of Treatment -->
     <div class="rounded-md border border-border p-4">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">4</span>
-        <span class="font-semibold text-foreground text-sm">Medical Complexity</span>
+        <span class="font-semibold text-foreground text-sm">Medical Complexity &amp; Extent of Treatment</span>
         <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="4">Score: 1/5</span>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Single provider, resolved</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> 2–3 providers, mostly resolved</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Multiple providers, ongoing treatment</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Specialists + surgery, extended care</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Multi-specialist, ongoing, multiple surgeries</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Single provider, resolved; minimal treatment extent</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> 2–3 providers, mostly resolved; limited ongoing care</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Multiple providers, ongoing treatment; moderate treatment extent</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Specialists + surgery, extended care; significant treatment history</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-4" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Multi-specialist, ongoing, multiple surgeries; extensive long-term treatment</label>
       </div>
       <textarea name="dim-4-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
-    <!-- Dimension 5: Defendant Type -->
+    <!-- Dimension 5: Defendant Type, Pre-Existing Injuries & Priors -->
     <div class="rounded-md border border-border p-4">
       <div class="flex items-center gap-2 mb-3">
         <span class="w-6 h-6 rounded-full bg-amber-500 text-white text-xs font-bold inline-flex items-center justify-center shrink-0">5</span>
-        <span class="font-semibold text-foreground text-sm">Defendant Type</span>
+        <span class="font-semibold text-foreground text-sm">Defendant Type, Pre-Existing Injuries &amp; Priors</span>
         <span class="ml-auto text-xs font-medium text-muted-foreground" data-dim-score="5">Score: 1/5</span>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Individual / small business</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Mid-size company / insured individual</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Large company / commercial insurer</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Multi-defendant / large fleet</label>
-        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government entity / large corporation</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="1" checked class="accent-[#f59e0b]"><span class="text-muted-foreground">1 —</span> Individual / small business; extensive pre-existing injuries &amp; prior claims</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="2" class="accent-[#f59e0b]"><span class="text-muted-foreground">2 —</span> Mid-size company / insured individual; significant pre-existing conditions</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="3" class="accent-[#f59e0b]"><span class="text-muted-foreground">3 —</span> Large company / commercial insurer; some pre-existing history</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="4" class="accent-[#f59e0b]"><span class="text-muted-foreground">4 —</span> Multi-defendant / large fleet; minimal pre-existing issues</label>
+        <label class="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 cursor-pointer text-xs"><input type="radio" name="dim-5" value="5" class="accent-[#f59e0b]"><span class="text-muted-foreground">5 —</span> Government entity / large corporation; no pre-existing injuries or priors</label>
       </div>
       <textarea name="dim-5-comment" placeholder="Notes on this score..." class="w-full mt-2 p-2 text-xs border border-border rounded resize-y h-8 focus:outline-none focus:ring-1 focus:ring-ring"></textarea>
     </div>
