@@ -769,8 +769,7 @@ function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);setSync('Saving...
 
 /* ── tables ── */
 async function ensureTable(){
-  await sql`CREATE TABLE IF NOT EXISTS spec_approvals(id SERIAL PRIMARY KEY,page_id TEXT,field_key TEXT,approved BOOLEAN DEFAULT false,updated_at TIMESTAMPTZ DEFAULT now(),UNIQUE(page_id,field_key))`;
-  await sql`CREATE TABLE IF NOT EXISTS spec_notes(id SERIAL PRIMARY KEY,page_id TEXT UNIQUE,notes TEXT DEFAULT '',updated_at TIMESTAMPTZ DEFAULT now())`;
+  await sql`CREATE TABLE IF NOT EXISTS spec_approvals(page_id TEXT PRIMARY KEY,checkboxes JSONB NOT NULL DEFAULT '{}',notes TEXT DEFAULT '',updated_at TIMESTAMPTZ DEFAULT now())`;
   await sql`CREATE TABLE IF NOT EXISTS sections(id TEXT PRIMARY KEY,data JSONB DEFAULT '{}',updated_at TIMESTAMPTZ DEFAULT now())`;
 }
 
@@ -1026,39 +1025,65 @@ window.addIssue=function(type){
   renderIssues(type);
 };
 
-/* ── APPROVALS (existing) ── */
-function initApprovals(rows){
-  rows.forEach(r=>{
-    const cb=document.querySelector(`[data-key="${r.field_key}"]`);
-    if(cb){cb.checked=r.approved;const ds=document.querySelector(`[data-date="${r.field_key}"]`);if(ds&&r.approved)ds.textContent='('+new Date(r.updated_at).toLocaleDateString()+')';}
+/* ── APPROVALS + NOTES (using spec_approvals: page_id PK, checkboxes JSONB, notes TEXT) ── */
+const checkboxes=document.querySelectorAll('[data-key]');
+const notesEl=document.getElementById('notes-area');
+const notesStatus=document.getElementById('notes-status');
+let saveApprTimer;
+
+function gatherApprState(){
+  const cbState={};
+  checkboxes.forEach(cb=>{
+    const key=cb.dataset.key;
+    const ds=document.querySelector(`[data-date="${key}"]`);
+    cbState[key]={checked:cb.checked,date:ds?ds.textContent:''};
   });
+  return{checkboxes:cbState,notes:notesEl?notesEl.value:''};
 }
-document.querySelectorAll('[data-key]').forEach(cb=>{
-  cb.addEventListener('change',async function(){
+
+async function saveApprState(){
+  try{
+    setSync('Saving...','#737373');
+    const s=gatherApprState();
+    await sql`INSERT INTO spec_approvals(page_id,checkboxes,notes,updated_at)VALUES(${PAGE_ID},${JSON.stringify(s.checkboxes)},${s.notes},now())ON CONFLICT(page_id)DO UPDATE SET checkboxes=${JSON.stringify(s.checkboxes)},notes=${s.notes},updated_at=now()`;
+    setSync('Saved','#10b981');setTimeout(()=>setSync('',''),2000);
+    if(notesStatus){notesStatus.textContent='Saved';notesStatus.style.color='#10b981';}
+  }catch(e){console.error(e);setSync('Save failed','#ef4444');if(notesStatus){notesStatus.textContent='Save failed';notesStatus.style.color='#ef4444';}}
+}
+
+function debouncedApprSave(ms){clearTimeout(saveApprTimer);saveApprTimer=setTimeout(saveApprState,ms);}
+
+checkboxes.forEach(cb=>{
+  cb.addEventListener('change',function(){
     const key=this.dataset.key,val=this.checked;
-    try{
-      await sql`INSERT INTO spec_approvals(page_id,field_key,approved,updated_at)VALUES(${PAGE_ID},${key},${val},now())ON CONFLICT(page_id,field_key)DO UPDATE SET approved=${val},updated_at=now()`;
-      const ds=document.querySelector(`[data-date="${key}"]`);
-      if(ds)ds.textContent=val?'('+new Date().toLocaleDateString()+')':'';
-      setSync('Saved','#10b981');setTimeout(()=>setSync('',''),2000);
-    }catch(e){console.error(e);setSync('Save failed','#ef4444');}
+    const ds=document.querySelector(`[data-date="${key}"]`);
+    if(ds)ds.textContent=val?'('+new Date().toLocaleDateString()+')':'';
+    debouncedApprSave(200);
   });
 });
 
-/* ── NOTES (existing) ── */
-let noteTimer;
-document.getElementById('notes-area').addEventListener('input',function(){
-  clearTimeout(noteTimer);
-  const status=document.getElementById('notes-status');
-  status.textContent='Saving...';status.style.color='#737373';
-  noteTimer=setTimeout(async()=>{
-    try{
-      await sql`INSERT INTO spec_notes(page_id,notes,updated_at)VALUES(${PAGE_ID},${this.value},now())ON CONFLICT(page_id)DO UPDATE SET notes=${this.value},updated_at=now()`;
-      status.textContent='Saved';status.style.color='#10b981';
-      setSync('Saved','#10b981');setTimeout(()=>setSync('',''),2000);
-    }catch(e){console.error(e);status.textContent='Save failed';status.style.color='#ef4444';setSync('Save failed','#ef4444');}
-  },1200);
-});
+if(notesEl){
+  notesEl.addEventListener('input',function(){
+    if(notesStatus){notesStatus.textContent='Saving...';notesStatus.style.color='#737373';}
+    debouncedApprSave(1200);
+  });
+}
+
+function loadApprState(row){
+  if(!row)return;
+  const{checkboxes:cbData,notes}=row;
+  if(cbData){
+    document.querySelectorAll('[data-key]').forEach(cb=>{
+      const key=cb.dataset.key;
+      if(cbData[key]){
+        cb.checked=cbData[key].checked||false;
+        const ds=document.querySelector(`[data-date="${key}"]`);
+        if(ds)ds.textContent=cbData[key].date||'';
+      }
+    });
+  }
+  if(notesEl&&notes)notesEl.value=notes;
+}
 
 /* ── LOAD EVERYTHING ── */
 async function loadAll(){
@@ -1067,9 +1092,8 @@ async function loadAll(){
     await ensureTable();
 
     // Load all sections in parallel
-    const [approvals,notes,sc,rk,jd,ic,id]=await Promise.all([
-      sql`SELECT field_key,approved,updated_at FROM spec_approvals WHERE page_id=${PAGE_ID}`,
-      sql`SELECT notes FROM spec_notes WHERE page_id=${PAGE_ID}`,
+    const [apprRows,sc,rk,jd,ic,id]=await Promise.all([
+      sql`SELECT checkboxes,notes FROM spec_approvals WHERE page_id=${PAGE_ID}`,
       loadSection('mos-scorecards'),
       loadSection('mos-rocks'),
       loadSection('mos-jaiden'),
@@ -1077,11 +1101,8 @@ async function loadAll(){
       loadSection('mos-issues-dept'),
     ]);
 
-    // Approvals
-    initApprovals(approvals);
-
-    // Notes
-    if(notes.length>0)document.getElementById('notes-area').value=notes[0].notes;
+    // Approvals + Notes
+    if(apprRows.length>0)loadApprState(apprRows[0]);
 
     // Scorecards, rocks, jaiden, issues
     scorecardData=sc||{};
